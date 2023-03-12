@@ -17,7 +17,7 @@ const EmptyIconWithDescription = ({iconComponent, description}) => {
 };
 const styles = StyleSheet.create({
   iconContainer: {
-    backgroundColor: '#e9dfe4',
+    backgroundColor: colors.primaryColorBrighter,
     padding: wp(20),
     borderRadius: wp(35),
   },

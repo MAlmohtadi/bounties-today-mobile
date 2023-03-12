@@ -303,7 +303,7 @@ const CheckoutScreen = ({
             <Icon
               type="material-community"
               name="ticket-percent-outline"
-              color="#000"
+              color={colors.primaryColor}
               size={30}
             />
           </View>
@@ -311,7 +311,7 @@ const CheckoutScreen = ({
         <View
           style={{
             margin: 15,
-            backgroundColor: '#f0e7ec',
+            backgroundColor: colors.primaryColorBrighter,
             borderRadius: 10,
             padding: 10,
           }}>

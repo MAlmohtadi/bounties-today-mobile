@@ -135,7 +135,7 @@ const GridCard = ({
             <HeartActive height={wp(6)} style={{ aspectRatio: 1 }} />
           ) : (
             <FavoriteIcon
-              fill={'black'}
+              fill={'#85a83d'}
               height={wp(6)}
               style={{ aspectRatio: 1 }}
             />

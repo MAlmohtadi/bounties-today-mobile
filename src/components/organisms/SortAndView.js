@@ -25,9 +25,9 @@ const SortAndView = ({
             onPress={() => setActiveView(true)}
             icon={
               isGridView ? (
-                <GridViewActive width={wp(5)} style={{aspectRatio: 1}} />
+                <GridViewActive width={wp(5)} style={{aspectRatio: 1}} fill={colors.primaryColor} />
               ) : (
-                <GridViewInactive width={wp(5)} style={{aspectRatio: 1}} />
+                <GridViewInactive width={wp(5)} style={{aspectRatio: 1}} fill={colors.primaryColor} />
               )
             }
             type="clear"
@@ -40,9 +40,9 @@ const SortAndView = ({
           <Button
             icon={
               !isGridView ? (
-                <MenuIcon width={wp(5)} style={{aspectRatio: 1}} />
+                <MenuIcon width={wp(5)} style={{aspectRatio: 1}} fill={colors.primaryColor}/>
               ) : (
-                <MenuActiveIcon width={wp(5)} style={{aspectRatio: 1}} />
+                <MenuActiveIcon width={wp(5)} style={{aspectRatio: 1}} fill={colors.primaryColor} />
               )
             }
             onPress={() => setActiveView(false)}
@@ -57,9 +57,9 @@ const SortAndView = ({
         <Button
           icon={
             !sortType ? (
-              <SortIcon width={wp(5)} style={{aspectRatio: 1}} />
+              <SortIcon width={wp(5)} style={{aspectRatio: 1}} fill={colors.primaryColor} />
             ) : (
-              <SortActiveIcon width={wp(5)} style={{aspectRatio: 1}} />
+              <SortActiveIcon width={wp(5)} style={{aspectRatio: 1}} fill={colors.primaryColor} />
             )
           }
           onPress={() => setShowSort(true)}

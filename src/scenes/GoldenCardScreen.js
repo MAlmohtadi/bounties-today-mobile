@@ -152,7 +152,7 @@ const GoldenCardScreen = ({
                 style={{
                   margin: 15,
                   marginBottom: 5,
-                  backgroundColor: '#f0e7ec',
+                  backgroundColor: colors.primaryColorBrighter,
                   borderRadius: 15,
                   padding: 10,
                 }}>

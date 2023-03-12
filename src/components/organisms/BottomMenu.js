@@ -12,9 +12,8 @@ import {
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
 
-import WholesaleInactive from '_icons/wholesale-inactive';
-import DiscountInactive from '_icons/discount-inactive';
-import DiscountActive from '_icons/discount-active';
+import WholesaleIcon from '_icons/wholesale';
+import DiscountIcon from '_icons/discount';
 import CartIcon from '_icons/cart';
 import Pages from '../../navigations/Pages';
 import { connect } from 'react-redux';
@@ -58,7 +57,7 @@ const BottomMenu = ({
           }}>
           <View style={styles.iconContainer}>
             <HomeIcon width={wp(8)} height={hp(3)} fill={routeName.toLowerCase().includes('home')
-                ? colors.primaryColor
+                ? colors.secondryColor
                 : '#FFF'} />
             <Text
               style={[
@@ -72,11 +71,7 @@ const BottomMenu = ({
         <TouchableOpacity
           onPress={() => navigation.navigate(Pages.Offer.route)}>
           <View style={styles.iconContainer}>
-            {routeName === Pages.Offer.route ? (
-              <DiscountActive width={wp(8)} height={hp(3)} />
-            ) : (
-              <DiscountInactive width={wp(8)} height={hp(3)} />
-            )}
+            <DiscountIcon width={wp(8)} height={hp(3)} fill={routeName === Pages.Offer.route ? colors.secondryColor: '#ffff'}/>
             <Text
               style={[
                 styles.iconTitle,
@@ -95,7 +90,7 @@ const BottomMenu = ({
         <TouchableOpacity
           style={styles.cartButton}
           onPress={() => navigation.navigate(Pages.Cart.route)}>
-          <CartIcon width={wp(8)} height={hp(4)} />
+          <CartIcon width={wp(8)} height={hp(4)} fill={colors.secondryColor} />
           {products.length > 0 && (
             <View style={styles.cartCounterContainer}>
               <Text style={styles.cartCounter}>{products.length}</Text>
@@ -107,7 +102,7 @@ const BottomMenu = ({
         <TouchableOpacity
           onPress={() => navigation.navigate(Pages.Category.route)}>
           <View style={styles.iconContainer}>
-            <Grocery width={wp(8)} height={hp(3)} fill={routeName === Pages.Category.route ? colors.primaryColor : '#ffff'} />
+            <Grocery width={wp(8)} height={hp(3)} fill={routeName === Pages.Category.route ? colors.secondryColor : '#ffff'} />
             <Text
               style={[
                 styles.iconTitle,
@@ -125,7 +120,7 @@ const BottomMenu = ({
               changeSaleFlag();
             }}>
             <View style={styles.iconContainer}>
-              <WholesaleInactive width={wp(8)} height={hp(3)} />
+              <WholesaleIcon width={wp(8)} height={hp(3)} fill={colors.secondryColor} />
               <Text style={[styles.iconTitle]}>
                 {isWholeSale ? 'البيع بالتجزئة' : 'البيع بالجملة'}
               </Text>
@@ -142,7 +137,7 @@ const BottomMenu = ({
             }}>
             <View style={[styles.iconContainer]}>
               <CheckList width={wp(8)} height={hp(3)} fill={routeName.toLowerCase().includes('order')
-                ? colors.primaryColor
+                ? colors.secondryColor
                 : '#FFF'} />
               <Text
                 style={[
@@ -226,10 +221,10 @@ const styles = StyleSheet.create({
     marginVertical: 2,
   },
   activeIcon: {
-    color: colors.primaryColor,
+    color: colors.secondryColor,
   },
   bullet: {
-    color: colors.primaryColor,
+    color: colors.secondryColor,
     fontSize: wp(2.5),
   },
   cartButton: {

@@ -44,7 +44,7 @@ const CategoriesInMenu = ({ navigation, homeReducer: { categories }, setLoadingP
               name="chevron-back-outline"
               size={wp(5)}
               iconStyle={styles.iconStyle}
-              color="#61012D"
+              color={colors.primaryColor}
             />
             <ListItem.Content >
               <ListItem.Title style={styles.categoryLable}>{activeCategory.name}</ListItem.Title>

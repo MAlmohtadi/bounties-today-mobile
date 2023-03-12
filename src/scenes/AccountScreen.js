@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import Account from '_organisms/AccountModal';
+import Account from '_templates/Account';
 
 const AccountScreen = () => {
   return (

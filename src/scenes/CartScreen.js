@@ -99,7 +99,7 @@ const CartScreen = ({
           <View style={{ alignItems: 'center' }}>
             <EmptyIconWithDescription
               iconComponent={
-                <CartIcon width={wp(5)} style={{ aspectRatio: 1 }} />
+                <CartIcon width={wp(5)} style={{ aspectRatio: 1 }} fill={colors.primaryColor} />
               }
               description="سلة المشتريات فارغة !"
             />

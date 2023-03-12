@@ -150,7 +150,7 @@ const Card = ({
             <FavoriteIcon
               height={wp(6)}
               style={{ aspectRatio: 1 }}
-              fill={'black'}
+              fill={'#85a83d'}
             />
           )}
         </TouchableOpacity>

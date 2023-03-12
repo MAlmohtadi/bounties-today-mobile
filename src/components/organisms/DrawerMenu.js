@@ -33,7 +33,7 @@ const DrawerMenu = ({
           size={wp(7)}
           iconStyle={styles.iconStyle}
           onPress={() => navigation.toggleDrawer()}
-          color="#61012D"
+          color={colors.primaryColor}
         />
       </View>
       <Divider style={styles.deviderStyle} />
