@@ -30,7 +30,7 @@ import colors from '_utils/constants/Colors';
 const BottomMenu = ({
   homeReducer: {
     isWholeSale,
-    adminSettingsResponse: { wholeSaleEnabled },
+    adminSettingsResponse: { wholeSaleEnabled,offersEnabled },
   },
   cartReducer,
   cartWholesaleReducer,
@@ -68,7 +68,7 @@ const BottomMenu = ({
             </Text>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity
+       {offersEnabled&& <TouchableOpacity
           onPress={() => navigation.navigate(Pages.Offer.route)}>
           <View style={styles.iconContainer}>
             <DiscountIcon width={wp(8)} height={hp(3)} fill={routeName === Pages.Offer.route ? colors.secondryColor: '#ffff'}/>
@@ -80,7 +80,7 @@ const BottomMenu = ({
               {Pages.Offer.title}
             </Text>
           </View>
-        </TouchableOpacity>
+        </TouchableOpacity>}
       </View>
       <View style={styles.middleSubContainer}>
         <View style={styles.halfCircleContainer}>

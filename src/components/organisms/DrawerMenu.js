@@ -22,6 +22,10 @@ import colors from '_utils/constants/Colors';
 const DrawerMenu = ({
   navigation,
   authReducer: { id, name, phone },
+  homeReducer: {
+    isWholeSale,
+    adminSettingsResponse: { goldenEnabled },
+  },
   logoutUser,
 }) => {
   return (
@@ -75,14 +79,14 @@ const DrawerMenu = ({
         </View>
         <FavoriteIcon width={wp(6)} height={hp(3)} fill={colors.primaryColor} />
       </TouchableOpacity>
-      <TouchableOpacity
+      {goldenEnabled&&<TouchableOpacity
         style={styles.lableAndTextContainer}
         onPress={() => navigation.navigate(Pages.GoldenCard.route)}>
         <View style={styles.textContainer}>
           <Text style={styles.textStyle}>البطاقة الذهبية</Text>
         </View>
         <LoyaltyIcon width={wp(6)} height={hp(3)} fill={colors.primaryColor} />
-      </TouchableOpacity>
+      </TouchableOpacity>}
       <TouchableOpacity
         style={styles.lableAndTextContainer}
         onPress={() => navigation.navigate(Pages.UserCoupon.route)}>
@@ -150,8 +154,8 @@ const styles = StyleSheet.create({
 });
 const mapStateToProps = (state) => {
   return {
-    authReducer: state.authReducer
-
+    authReducer: state.authReducer,
+    homeReducer: state.homeReducer,
   };
 };
 
