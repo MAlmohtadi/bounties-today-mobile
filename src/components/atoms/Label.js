@@ -1,5 +1,6 @@
 import React, {memo} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import fonts from '_utils/constants/Fonts';
 
 const Label = ({text, ...restProps}) => {
   return (
@@ -19,7 +20,7 @@ const styles = StyleSheet.create({
   text: {
     margin: 5,
     fontSize: 11,
-    fontFamily: 'Tajawal-Regular',
+    fontFamily: fonts.regular,
     color: '#000',
   },
 });

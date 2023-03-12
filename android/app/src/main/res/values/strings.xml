@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">Bounties Today</string>
+    <string name="facebook_app_id">178116954972517</string>
+    <string name="fb_login_protocol_scheme">fb178116954972517</string>
+    <string name="facebook_client_token">d640a7733316e1e805eeebe4193ae7fc</string>
 </resources>

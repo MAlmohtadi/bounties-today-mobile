@@ -19,6 +19,8 @@ import {
   appleAuth,
   AppleButton,
 } from '@invertase/react-native-apple-authentication';
+import fonts from '_utils/constants/Fonts';
+import colors from '_utils/constants/Colors';
 
 const initialValidation = {
   name: {
@@ -206,7 +208,6 @@ const CreateAccount = ({
         onPress={() => {
           loginFacebook();
         }}
-        raised
         type="clear"
         title="إنشاء حساب باستخدام"
         icon={
@@ -321,7 +322,7 @@ const CreateAccount = ({
         type="solid"
         title="تأكيد المعلومات"
         titleStyle={[styles.buttonTitleStyle, {color: '#fff'}]}
-        buttonStyle={[styles.buttonStyle, {backgroundColor: '#61032D'}]}
+        buttonStyle={[styles.buttonStyle, {backgroundColor: colors.primaryColor}]}
         containerStyle={{
           marginTop: 10,
           borderRadius: wp(2),
@@ -363,35 +364,35 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   subContainer: {marginVertical: hp(3), alignItems: 'flex-end'},
-  titleStyle: {fontFamily: 'Tajawal-Bold', fontSize: hp(2)},
+  titleStyle: {fontFamily: fonts.bold, fontSize: hp(2)},
   buttonStyle: {
     // paddingVertical: hp(2),
     borderRadius: wp(2),
     borderWidth: 1,
-    borderColor: '#61012D',
+    borderColor: colors.primaryColor,
     backgroundColor: '#fff',
   },
   containerStyle: {paddingHorizontal: 0, marginBottom: 10},
   inputContainerStyle: {
-    borderColor: '#61012D',
+    borderColor: colors.primaryColor,
     borderWidth: 1,
     borderRadius: wp(2),
   },
   inputTextStyle: {
-    fontFamily: 'Tajawal-Regular',
-    color: '#61012D',
+    fontFamily: fonts.regular,
+    color: colors.primaryColor,
     marginHorizontal: 20,
     fontSize: hp(2.2),
   },
   customText: {
-    fontFamily: 'Tajawal-Regular',
+    fontFamily: fonts.regular,
     color: '#FF0000',
     fontSize: hp(2),
   },
   buttonTitleStyle: {
     color: '#415F9B',
     fontSize: hp(2),
-    fontFamily: 'Tajawal-Bold',
+    fontFamily: fonts.bold,
   },
 });
 

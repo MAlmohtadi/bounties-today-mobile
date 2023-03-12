@@ -9,6 +9,8 @@ import MapView, { MarkerAnimated } from 'react-native-maps';
 import { updateCheckoutDetails,getDeliveryInfo} from '_actions/checkoutActions';
 import { Button } from 'react-native-elements';
 import Geolocation from '@react-native-community/geolocation';
+import colors from '_utils/constants/Colors';
+import fonts from '_utils/constants/Fonts';
 
 const MapScreen = ({ navigation, updateCheckoutDetails,getDeliveryInfo }) => {
   const initialRegion = {
@@ -81,10 +83,10 @@ const MapScreen = ({ navigation, updateCheckoutDetails,getDeliveryInfo }) => {
           useForeground
           type="clear"
           title="تأكيد عنوان التوصيل"
-          titleStyle={{ color: '#fff', fontFamily: 'Tajawal-Bold' }}
+          titleStyle={{ color: '#fff', fontFamily: fonts.bold }}
           containerStyle={[styles.buttonContainerStyle, styles.buttonStyle,
           {
-            backgroundColor: '#61012D',
+            backgroundColor: colors.primaryColor,
             marginHorizontal: wp(2),
             marginBottom: hp(2),
           }]}
@@ -110,7 +112,7 @@ const styles = StyleSheet.create({
   buttonStyle: {
     borderRadius: wp(2),
     borderWidth: 1,
-    borderColor: '#61012D',
+    borderColor: colors.primaryColor,
   },
 });
 

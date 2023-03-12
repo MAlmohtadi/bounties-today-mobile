@@ -6,6 +6,7 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import Account from '_templates/Account';
+import fonts from '_utils/constants/Fonts';
 
 const AccountModal = ({visible, toggleOverlay}) => {
   return (
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
   modalTitle: {
     textAlign: 'center',
     fontSize: wp(4.5),
-    fontFamily: 'Tajawal-Bold',
+    fontFamily: fonts.bold,
   },
   closeContainerStyle: {
     borderWidth: 1,

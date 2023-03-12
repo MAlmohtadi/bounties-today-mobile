@@ -10,10 +10,12 @@ import Pages from '../../navigations/Pages';
 import AlertMessage from '_organisms/AlertMessage';
 
 import { useRoute } from '@react-navigation/core';
+import colors from '_utils/constants/Colors';
+import fonts from '_utils/constants/Fonts';
 
 const HeaderSearch = ({
   navigation,
-  insets,
+  // insets,
   productReducer: { textToSearch },
   updateSearchCriteria,
 }) => {
@@ -41,7 +43,7 @@ const HeaderSearch = ({
     <View
       style={[
         styles.headerStyle,
-        { paddingTop: insets.top - 10, marginBottom: 5 },
+        // { paddingTop: insets.top - 10, marginBottom: 5 },
       ]}>
       <View style={styles.searchContainer}>
         {!showFilterButton ? <SearchIcon /> : <Button title='إبحث' raised
@@ -50,7 +52,7 @@ const HeaderSearch = ({
         <TextInput
           style={[
             styles.inputContainerStyle,
-            { textAlign: 'center', fontSize: 16, fontFamily: 'Tajawal-Bold' },
+            { textAlign: 'center', fontSize: 16, fontFamily: fonts.bold },
           ]}
           onChangeText={(value) => setTextValue(value)}
           value={textValue}
@@ -81,7 +83,7 @@ const HeaderSearch = ({
         name="grid-outline"
         size={30}
         onPress={() => navigation.toggleDrawer()}
-        color="#61012D"
+        color={colors.primaryColor}
       />
       <Filter
         textToSearch={textValue}
@@ -156,7 +158,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#61012D',
+    backgroundColor: colors.primaryColor,
     borderTopRightRadius: 18,
     borderBottomRightRadius: 18,
     borderTopLeftRadius: 5,
@@ -164,7 +166,7 @@ const styles = StyleSheet.create({
     elevation: 7,
   },
   searchButtonStyle: {
-    backgroundColor: '#61012D',
+    backgroundColor: colors.primaryColor,
     borderTopLeftRadius: 18,
     borderBottomLeftRadius: 18,
     borderTopRightRadius: 5,

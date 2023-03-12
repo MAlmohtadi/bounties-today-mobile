@@ -19,6 +19,8 @@ import SortAndView from '_organisms/SortAndView';
 import GridCard from '_organisms/GridCard';
 import Card from '_organisms/Card';
 import { Text } from 'react-native';
+import fonts from '_utils/constants/Fonts';
+import colors from '_utils/constants/Colors';
 
 const OffersScreen = ({
   navigation,
@@ -112,8 +114,8 @@ const OffersScreen = ({
     <View style={{ flex: 1, alignItems: 'center', margin: 20 }}>
       <Text
         style={{
-          fontFamily: 'Tajawal-Regular',
-          color: '#61012D',
+          fontFamily: fonts.regular,
+          color: colors.primaryColor,
           fontSize: wp(4),
         }}>
         لا يوجد عروض
@@ -169,14 +171,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   buttonTitleStyle: {
-    fontFamily: 'Tajawal-Regular',
-    color: '#61012D',
+    fontFamily: fonts.regular,
+    color: colors.primaryColor,
     fontSize: hp(2),
   },
   buttonStyle: {
     borderRadius: 9,
     backgroundColor: '#F7F7F7',
-    borderColor: '#61012D',
+    borderColor: colors.primaryColor,
     paddingHorizontal: 13,
     paddingTop: 18,
     paddingBottom: 10,

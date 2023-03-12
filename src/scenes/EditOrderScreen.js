@@ -19,6 +19,8 @@ import Card from '_organisms/Card';
 import { Button } from 'react-native-elements';
 import LoadingSpinner from '_organisms/LoadingSpinner';
 import AlertMessage from '_organisms/AlertMessage';
+import fonts from '_utils/constants/Fonts';
+import colors from '_utils/constants/Colors';
 
 const EditOrderScreen = ({
   navigation,
@@ -217,15 +219,15 @@ const EditOrderScreen = ({
           raised
           type="clear"
           title="تأكيد"
-          titleStyle={{ color: '#fff', fontFamily: 'Tajawal-Bold' }}
+          titleStyle={{ color: '#fff', fontFamily: fonts.bold }}
           containerStyle={{
 
             position: 'absolute',
             bottom: widthPercentageToDP(32),
             left: widthPercentageToDP(30),
             borderWidth: 1,
-            borderColor: '#61012D',
-            backgroundColor: '#61012D',
+            borderColor: colors.primaryColor,
+            backgroundColor: colors.primaryColor,
             width: widthPercentageToDP(40),
           }}
           useForeground

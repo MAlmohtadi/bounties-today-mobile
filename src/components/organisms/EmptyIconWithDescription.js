@@ -4,6 +4,8 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
+import colors from '_utils/constants/Colors';
+import fonts from '_utils/constants/Fonts';
 
 const EmptyIconWithDescription = ({iconComponent, description}) => {
   return (
@@ -21,8 +23,8 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: wp(5),
-    fontFamily: 'Tajawal-Bold',
-    color: '#61012D',
+    fontFamily: fonts.bold,
+    color: colors.primaryColor,
     margin: hp(4),
   },
 });

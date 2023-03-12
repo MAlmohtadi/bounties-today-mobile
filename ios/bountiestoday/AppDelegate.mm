@@ -1,4 +1,5 @@
 #import "AppDelegate.h"
+#import <Firebase.h>
 #import "RNBootSplash.h" // <- add the header import
 #import <React/RCTBundleURLProvider.h>
 
@@ -13,7 +14,7 @@
 
   [super application:application didFinishLaunchingWithOptions:launchOptions];
   [RNBootSplash initWithStoryboard:@"BootSplash" rootView:self.window.rootViewController.view]; // <- initialization using the storyboard file name
-
+  [FIRApp configure];
   return YES;
 }
 

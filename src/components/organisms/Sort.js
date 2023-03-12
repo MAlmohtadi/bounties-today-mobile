@@ -7,6 +7,8 @@ import {
 } from 'react-native-responsive-screen';
 import {connect} from 'react-redux';
 import {setSortTypeConfig} from '_actions/configActions';
+import colors from '_utils/constants/Colors';
+import fonts from '_utils/constants/Fonts';
 
 const Sort = ({
   configReducer: {sortType},
@@ -46,7 +48,7 @@ const Sort = ({
             />
           </View>
           <View style={{alignItems: 'flex-end', marginVertical: hp(3)}}>
-            <Text style={{fontFamily: 'Tajawal-Bold', fontSize: wp(4)}}>
+            <Text style={{fontFamily: fonts.bold, fontSize: wp(4)}}>
               ترتيب حسب :
             </Text>
           </View>
@@ -134,7 +136,7 @@ const styles = StyleSheet.create({
   modalTitle: {
     textAlign: 'center',
     fontSize: wp(4.5),
-    fontFamily: 'Tajawal-Bold',
+    fontFamily: fonts.bold,
   },
   cancelTextStyle: {
     color: '#FD0D1B',
@@ -147,8 +149,8 @@ const styles = StyleSheet.create({
     padding: 2,
   },
   buttonTitleStyle: {
-    fontFamily: 'Tajawal-Regular',
-    color: '#61012D',
+    fontFamily: fonts.regular,
+    color: colors.primaryColor,
     fontSize: Dimensions.get('screen').width < 350 ? hp(4) : hp(2),
   },
   buttonTitleStyleActive: {
@@ -157,14 +159,14 @@ const styles = StyleSheet.create({
   buttonStyle: {
     borderRadius: 9,
     backgroundColor: 'transparent',
-    borderColor: '#61012D',
+    borderColor: colors.primaryColor,
     // paddingHorizontal: wp(10),
     padding: wp(4),
     borderWidth: 1,
     marginVertical: 5,
   },
   buttonStyleActive: {
-    backgroundColor: '#61012D',
+    backgroundColor: colors.primaryColor,
   },
   buttonContainerStyle: {
     marginVertical: 5,

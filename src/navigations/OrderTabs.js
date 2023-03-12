@@ -2,6 +2,8 @@ import React from 'react';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import Pages from './Pages';
 import OrderScreen from '_scenes/OrderScreen';
+import fonts from '_utils/constants/Fonts';
+import colors from '_utils/constants/Colors';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -11,10 +13,10 @@ const OrderTabs = ({navigation}) => {
       initialRouteName={Pages.AllOrder.route}
       sceneContainerStyle={{backgroundColor: '#fff'}}
       tabBarOptions={{
-        activeTintColor: '#61032D',
+        activeTintColor: colors.primaryColor,
         inactiveTintColor: '#8f8f8f',
-        indicatorStyle: {borderBottomWidth: 4, borderColor: '#61032D'},
-        labelStyle: {fontFamily: 'Tajawal-Bold'},
+        indicatorStyle: {borderBottomWidth: 4, borderColor: colors.primaryColor},
+        labelStyle: {fontFamily: fonts.bold},
       }}>
       <Tab.Screen
         name={Pages.PreviousOrder.route}

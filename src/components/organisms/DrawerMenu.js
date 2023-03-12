@@ -16,6 +16,8 @@ import UserIcon from '_icons/user';
 import HomeIcon from '_icons/home';
 import CustomerServiceIcon from '_icons/customer-service';
 import LogoutIcon from '_icons/logout';
+import fonts from '_utils/constants/Fonts';
+import colors from '_utils/constants/Colors';
 
 const DrawerMenu = ({
   navigation,
@@ -55,7 +57,7 @@ const DrawerMenu = ({
         <View style={styles.textContainer}>
           <Text style={styles.textStyle}>حسابي</Text>
         </View>
-        <UserIcon width={wp(6)} height={hp(3)} fill='#61012D' />
+        <UserIcon width={wp(6)} height={hp(3)} fill={colors.primaryColor} />
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.lableAndTextContainer}
@@ -63,7 +65,7 @@ const DrawerMenu = ({
         <View style={styles.textContainer}>
           <Text style={styles.textStyle}>الرئيسية</Text>
         </View>
-        <HomeIcon width={wp(6)} height={hp(3)} fill='#61012D' />
+        <HomeIcon width={wp(6)} height={hp(3)} fill={colors.primaryColor} />
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.lableAndTextContainer}
@@ -71,7 +73,7 @@ const DrawerMenu = ({
         <View style={styles.textContainer}>
           <Text style={styles.textStyle}>المفضلة</Text>
         </View>
-        <FavoriteIcon width={wp(6)} height={hp(3)} fill='#61012D' />
+        <FavoriteIcon width={wp(6)} height={hp(3)} fill={colors.primaryColor} />
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.lableAndTextContainer}
@@ -79,7 +81,7 @@ const DrawerMenu = ({
         <View style={styles.textContainer}>
           <Text style={styles.textStyle}>البطاقة الذهبية</Text>
         </View>
-        <LoyaltyIcon width={wp(6)} height={hp(3)} fill='#61012D' />
+        <LoyaltyIcon width={wp(6)} height={hp(3)} fill={colors.primaryColor} />
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.lableAndTextContainer}
@@ -87,7 +89,7 @@ const DrawerMenu = ({
         <View style={styles.textContainer}>
           <Text style={styles.textStyle}>الكوبونات </Text>
         </View>
-        <CouponIcon width={wp(6)} height={hp(3)} fill='#61012D' />
+        <CouponIcon width={wp(6)} height={hp(3)} fill={colors.primaryColor} />
       </TouchableOpacity>
       <TouchableOpacity
         style={styles.lableAndTextContainer}
@@ -95,7 +97,7 @@ const DrawerMenu = ({
         <View style={styles.textContainer}>
           <Text style={styles.textStyle}>طلباتي</Text>
         </View>
-        <CheckList width={wp(6)} height={hp(3)} fill='#61012D' />
+        <CheckList width={wp(6)} height={hp(3)} fill={colors.primaryColor} />
       </TouchableOpacity>
 
       <TouchableOpacity
@@ -104,7 +106,7 @@ const DrawerMenu = ({
         <View style={styles.textContainer}>
           <Text style={styles.textStyle}>خدمة العملاء</Text>
         </View>
-        <CustomerServiceIcon width={wp(6)} height={hp(3)} fill='#61012D' />
+        <CustomerServiceIcon width={wp(6)} height={hp(3)} fill={colors.primaryColor} />
 
       </TouchableOpacity>
       {id && (
@@ -114,7 +116,7 @@ const DrawerMenu = ({
           <View style={styles.textContainer}>
             <Text style={styles.textStyle}>تسجيل خروج</Text>
           </View>
-          <LogoutIcon width={wp(6)} height={hp(3)} fill='#61012D' />
+          <LogoutIcon width={wp(6)} height={hp(3)} fill={colors.primaryColor} />
         </TouchableOpacity>
       )}
     </View>
@@ -133,9 +135,9 @@ const styles = StyleSheet.create({
   },
   iconStyle: { marginHorizontal: 5, aspectRatio: 1 },
   textContainer: { flex: 1, alignItems: 'flex-end', justifyContent: 'center', marginHorizontal: 10 },
-  textStyle: { fontFamily: 'Tajawal-Bold', color: '#61032D', fontSize: hp(2) },
+  textStyle: { fontFamily: fonts.bold, color: colors.primaryColor, fontSize: hp(2) },
   deviderStyle: {
-    backgroundColor: '#61032D',
+    backgroundColor: colors.primaryColor,
     height: 1.5,
     marginTop: 8,
     marginBottom: 15,

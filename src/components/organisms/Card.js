@@ -18,6 +18,8 @@ import {
 import { Icon } from 'react-native-elements';
 import ImageModal from 'react-native-image-modal';
 import defaultImage from '_images/defaultImage.png';
+import fonts from '_utils/constants/Fonts';
+import colors from '_utils/constants/Colors';
 
 const Card = ({
   product,
@@ -49,7 +51,7 @@ const Card = ({
               <Icon
                 type="material-community"
                 name="plus"
-                color={isEditable ? '#fff' : '#61012D'}
+                color={isEditable ? '#fff' : colors.primaryColor}
                 size={wp(5)}
                 style={{ aspectRatio: 1 }}
               />
@@ -57,7 +59,7 @@ const Card = ({
               <Icon
                 type="font-awesome"
                 name="ban"
-                color={isEditable ? '#fff' : '#61012D'}
+                color={isEditable ? '#fff' : colors.primaryColor}
                 size={wp(5)}
                 style={{ aspectRatio: 1 }}
               />
@@ -81,7 +83,7 @@ const Card = ({
                 type="material-community"
                 name="minus"
                 size={wp(5)}
-                color={isEditable ? '#fff' : '#61012D'}
+                color={isEditable ? '#fff' : colors.primaryColor}
                 style={{ aspectRatio: 1 }}
               />
             </TouchableOpacity>
@@ -187,7 +189,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     right: 0,
     zIndex: 1,
-    backgroundColor: '#61012D',
+    backgroundColor: colors.primaryColor,
     paddingHorizontal: 10,
     paddingVertical: 12,
     borderBottomLeftRadius: 15,
@@ -213,7 +215,7 @@ const styles = StyleSheet.create({
   },
   itemName: {
     textAlign: 'right',
-    fontFamily: 'Tajawal-Bold',
+    fontFamily: fonts.bold,
     fontSize: wp(3.4),
   },
   bottomContainer: {
@@ -261,17 +263,17 @@ const styles = StyleSheet.create({
   overlayText: {
     color: '#FFFFFF',
     fontSize: wp(4),
-    fontFamily: 'Tajawal-Medium',
+    fontFamily: fonts.medium,
   },
   addButtonContainer: {
     flexDirection: 'row',
-    backgroundColor: '#61012D',
+    backgroundColor: colors.primaryColor,
     borderTopRightRadius: 15,
     borderBottomLeftRadius: 15,
     alignItems: 'center',
   },
   originalPrice: {
-    fontFamily: 'Tajawal-Bold',
+    fontFamily: fonts.bold,
     fontSize: wp(3.4),
     textAlignVertical: 'center',
     marginHorizontal: 2,
@@ -285,12 +287,12 @@ const styles = StyleSheet.create({
   quantity: {
     color: '#ffff',
     fontSize: Dimensions.get('screen').width < 350 ? hp(4) : hp(2),
-    fontFamily: 'Tajawal-Regular',
+    fontFamily: fonts.regular,
   },
   offerQuantity: {
     marginVertical: 2,
     fontSize: wp(3),
-    fontFamily: 'Tajawal-Bold',
+    fontFamily: fonts.bold,
     textAlign: 'right',
   },
   paddingButtons: {

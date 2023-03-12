@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "751901636318",
+    "project_id": "bounties-today",
+    "storage_bucket": "bounties-today.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:751901636318:android:0b2451ebb6598579deb44f",
+        "android_client_info": {
+          "package_name": "com.bountiestoday"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "751901636318-om70gdlsg82tn934f92dv2ea6o8gbpuj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB-JCT2Hf4P7PsdBoOsOaxyuzEC44JQepM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "751901636318-om70gdlsg82tn934f92dv2ea6o8gbpuj.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "751901636318-2jkln9vp9hdmtffuv6v2g8jce783c1hs.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.bountiestoday"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -28,6 +28,8 @@ import SplashScreen from '_scenes/SplashScreen';
 import CategoryScreen from '_scenes/CategoryScreen';
 import {Fragment} from 'react';
 import BottomMenu from '_organisms/BottomMenu';
+import colors from '_utils/constants/Colors';
+import fonts from '_utils/constants/Fonts';
 
 const Stack = createStackNavigator();
 
@@ -109,11 +111,11 @@ const MainStack = ({navigation, route}) => {
             options({navigation, route, headerTitle: Pages.Account.title})
           }
         />
-        {/* <Stack.Screen
+        <Stack.Screen
           name={Pages.SplashScreen.route}
           component={SplashScreen}
           options={{header: null, headerShown: false}}
-        /> */}
+        />
         <Stack.Screen
           name={Pages.Order.route}
           component={OrderTabs}
@@ -169,11 +171,11 @@ const options = ({navigation, route, headerTitle, isMeneEnabled}) => ({
       name="chevron-forward-outline"
       iconStyle={{paddingHorizontal: 15}}
       onPress={() => navigation.goBack()}
-      color="#61012D"
+      color={colors.primaryColor}
     />
   ),
   headerTitleAlign: 'center',
-  headerTitleStyle: {fontSize: 20, fontFamily: 'Tajawal-Bold'},
+  headerTitleStyle: {fontSize: 20, fontFamily: fonts.bold},
   headerStyle: {
     borderBottomLeftRadius: 25,
     borderBottomRightRadius: 25,

@@ -24,6 +24,8 @@ import {
 import TrushIcon from '_icons/trush.svg';
 import Pages from '../navigations/Pages';
 import AlertMessage from '_organisms/AlertMessage';
+import colors from '_utils/constants/Colors';
+import fonts from '_utils/constants/Fonts';
 
 const CartScreen = ({
   navigation,
@@ -108,12 +110,12 @@ const CartScreen = ({
             }}
             type="clear"
             title="إكمال التسوق"
-            titleStyle={{ color: '#fff', fontFamily: 'Tajawal-Bold' }}
+            titleStyle={{ color: '#fff', fontFamily: fonts.bold }}
             useForeground
             containerStyle={[
               styles.buttonStyle,
               {
-                backgroundColor: '#61012D',
+                backgroundColor: colors.primaryColor,
                 marginHorizontal: wp(2),
                 marginBottom: 15,
                 flex: null
@@ -166,8 +168,8 @@ const CartScreen = ({
               type="clear"
               useForeground
               title="تنفيذ الطلب"
-              titleStyle={{ color: '#fff', fontFamily: 'Tajawal-Bold' }}
-              containerStyle={[styles.buttonStyle, { backgroundColor: '#61012D' }]}
+              titleStyle={{ color: '#fff', fontFamily: fonts.bold }}
+              containerStyle={[styles.buttonStyle, { backgroundColor: colors.primaryColor }]}
             />
             <View style={{ width: 15 }} />
             <Button
@@ -175,7 +177,7 @@ const CartScreen = ({
               type="clear"
               useForeground
               title="إكمال التسوق"
-              titleStyle={{ color: '#61012D', fontFamily: 'Tajawal-Bold' }}
+              titleStyle={{ color: colors.primaryColor, fontFamily: fonts.bold }}
               containerStyle={styles.buttonStyle}
             />
           </View>
@@ -217,7 +219,7 @@ const styles = StyleSheet.create({
   },
   titleStyle: {
     fontSize: wp(4.5),
-    fontFamily: 'Tajawal-Bold',
+    fontFamily: fonts.bold,
     color: 'white',
   },
   buttonStyle: {
@@ -226,7 +228,7 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: wp(2),
     borderWidth: 1,
-    borderColor: '#61012D',
+    borderColor: colors.primaryColor,
   },
   topContainer: {
     flexDirection: 'row',
@@ -246,7 +248,7 @@ const styles = StyleSheet.create({
     borderColor: '#FF0000',
   },
   clearTitle: {
-    fontFamily: 'Tajawal-Medium',
+    fontFamily: fonts.medium,
     fontSize: wp(3.2),
     color: '#FF0000',
   },
@@ -257,7 +259,7 @@ const styles = StyleSheet.create({
     borderRadius: wp(2),
   },
   totalPrice: {
-    fontFamily: 'Tajawal-Bold',
+    fontFamily: fonts.bold,
     fontSize: wp(3.8),
   },
   bottomContainer: {

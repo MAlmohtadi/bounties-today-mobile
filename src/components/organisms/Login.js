@@ -22,6 +22,8 @@ import {
 import { connect } from 'react-redux';
 import { validatePhoneNumber } from '_utils/validation';
 import AlertMessage from '_organisms/AlertMessage';
+import fonts from '_utils/constants/Fonts';
+import colors from '_utils/constants/Colors';
 const initialValidation = {
   phone: {
     isError: false,
@@ -166,7 +168,7 @@ const Login = ({
           }}
           type="clear"
           title="تسجيل باستخدام رقم الهاتف"
-          titleStyle={[styles.buttonTitleStyle, { color: '#61032D' }]}
+          titleStyle={[styles.buttonTitleStyle, { color: colors.primaryColor }]}
           useForeground
           containerStyle={[
             styles.buttonStyle,
@@ -205,7 +207,7 @@ const Login = ({
           title="تسجيل الدخول"
           titleStyle={[styles.buttonTitleStyle, { color: '#fff' }]}
           useForeground
-          containerStyle={[styles.buttonStyle, { backgroundColor: '#61032D', marginTop: 5, borderRadius: wp(2) }]}
+          containerStyle={[styles.buttonStyle, { backgroundColor: colors.primaryColor, marginTop: 5, borderRadius: wp(2) }]}
         />
       )}
       <View style={{ marginTop: 10, alignItems: 'flex-start' }}>
@@ -233,34 +235,34 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-  titleStyle: { fontFamily: 'Tajawal-Bold', fontSize: 15 },
+  titleStyle: { fontFamily: fonts.bold, fontSize: 15 },
   buttonStyle: {
     borderRadius: wp(2),
     borderWidth: 1,
-    borderColor: '#61012D',
+    borderColor: colors.primaryColor,
     backgroundColor: '#fff',
   },
   customText: {
-    fontFamily: 'Tajawal-Regular',
+    fontFamily: fonts.regular,
     color: '#FF0000',
     fontSize: hp(2),
   },
   containerStyle: { paddingHorizontal: 0, marginVertical: 10 },
   inputContainerStyle: {
-    borderColor: '#61012D',
+    borderColor: colors.primaryColor,
     borderWidth: 1,
     borderRadius: wp(2),
   },
   inputTextStyle: {
-    fontFamily: 'Tajawal-Regular',
-    color: '#61012D',
+    fontFamily: fonts.regular,
+    color: colors.primaryColor,
     marginHorizontal: 20,
     fontSize: hp(2.2),
   },
   buttonTitleStyle: {
     color: '#415F9B',
     fontSize: hp(2),
-    fontFamily: 'Tajawal-Bold',
+    fontFamily: fonts.bold,
   },
 });
 const mapStateToProps = (state) => {

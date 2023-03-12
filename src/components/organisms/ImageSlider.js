@@ -7,6 +7,7 @@ import {
 import { SwiperFlatList } from 'react-native-swiper-flatlist';
 import Dots from './Dots';
 import defaultImage from '_images/defaultImage.png'
+import colors from '_utils/constants/Colors';
 
 const renderImage = (item, onPressImage) => {
   if (item.isClickable) {
@@ -50,14 +51,14 @@ const ImageSlider = ({ banners = [], onPressImage }) => {
       <Dots
         dotStyle={styles.shadow}
         activeBorder
-        activeBorderColor="#61012D"
+        activeBorderColor={colors.primaryColor}
         passiveDotWidth={8}
         activeDotWidth={8}
         activeDotHeight={8}
         passiveDotHeight={8}
         length={banners.length}
         active={active}
-        activeColor="#61012D"
+        activeColor={colors.primaryColor}
         passiveColor="#FFFFFF"
       />
     </View>

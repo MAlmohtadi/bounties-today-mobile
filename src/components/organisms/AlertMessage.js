@@ -5,6 +5,8 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
+import colors from '_utils/constants/Colors';
+import fonts from '_utils/constants/Fonts';
 
 const AlertMessage = ({
   visible,
@@ -81,12 +83,12 @@ const styles = StyleSheet.create({
     // paddingVertical: hp(2),
   },
   buttonTitleStyle: {
-    fontFamily: 'Tajawal-Regular',
-    color: '#61012D',
+    fontFamily: fonts.regular,
+    color: colors.primaryColor,
     fontSize: hp(2.2),
   },
   buttonTitleStyleActive: {
-    color: '#61012D',
+    color: colors.primaryColor,
   },
   buttonStyle: {
     borderRadius: 9,
@@ -95,7 +97,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   buttonStyleActive: {
-    backgroundColor: '#61012D',
+    backgroundColor: colors.primaryColor,
   },
   buttonContainerStyle: {
     flex: 1,
@@ -104,11 +106,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
   },
-  subTitle: {fontFamily: 'Tajawal-Bold', fontSize: wp(4), textAlign: 'center'},
+  subTitle: {fontFamily: fonts.bold, fontSize: wp(4), textAlign: 'center'},
   buttonsRowContainer: {
     justifyContent: 'space-between',
     flexDirection: 'row',
-    borderColor: '#61012D',
+    borderColor: colors.primaryColor,
     borderTopWidth: 1,
   },
 });

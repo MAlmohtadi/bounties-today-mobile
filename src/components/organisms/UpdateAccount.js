@@ -16,6 +16,8 @@ import {
   deleteUser,
 } from '_actions/authActions';
 import { validateEmail, validatePhoneNumber } from '_utils/validation';
+import fonts from '_utils/constants/Fonts';
+import colors from '_utils/constants/Colors';
 
 const initialValidation = {
   name: {
@@ -189,7 +191,7 @@ const UpdateAccount = ({
           type="solid"
           title="تعديل المعلومات"
           titleStyle={[styles.buttonTitleStyle, { color: '#fff' }]}
-          buttonStyle={[styles.buttonStyle, { backgroundColor: '#61032D' }]}
+          buttonStyle={[styles.buttonStyle, { backgroundColor: colors.primaryColor }]}
           containerStyle={{ marginTop: 10, borderRadius: wp(2) }}
         />
       </View>
@@ -220,7 +222,7 @@ const UpdateAccount = ({
             type="ionicon"
             name="log-out-outline"
             size={35}
-            color="#61012D"
+            color={colors.primaryColor}
           />
         </TouchableOpacity>
       </View>
@@ -251,30 +253,30 @@ const styles = StyleSheet.create({
     marginVertical: hp(3),
     justifyContent: 'space-between',
   },
-  titleStyle: { fontFamily: 'Tajawal-Bold', fontSize: hp(2) },
+  titleStyle: { fontFamily: fonts.bold, fontSize: hp(2) },
   buttonStyle: {
     borderRadius: wp(2),
     borderWidth: 1,
-    borderColor: '#61012D',
+    borderColor: colors.primaryColor,
     backgroundColor: '#fff',
   },
   containerStyle: { paddingHorizontal: 0, marginBottom: 10 },
   inputContainerStyle: {
-    borderColor: '#61012D',
+    borderColor: colors.primaryColor,
     borderWidth: 1,
     borderRadius: wp(2),
   },
   inputTextStyle: {
-    fontFamily: 'Tajawal-Regular',
-    color: '#61012D',
+    fontFamily: fonts.regular,
+    color: colors.primaryColor,
     marginHorizontal: wp(2),
     fontSize: hp(2.2),
   },
-  customText: { fontFamily: 'Tajawal-Bold', color: '#61012D', fontSize: hp(2) },
+  customText: { fontFamily: fonts.bold, color: colors.primaryColor, fontSize: hp(2) },
   buttonTitleStyle: {
     color: '#415F9B',
     fontSize: hp(2),
-    fontFamily: 'Tajawal-Bold',
+    fontFamily: fonts.bold,
   },
 });
 const mapStateToProps = (state) => {

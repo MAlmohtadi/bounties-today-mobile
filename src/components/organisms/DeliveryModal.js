@@ -11,6 +11,8 @@ import {setSelectedCategory} from '_actions/homeActions';
 import {updateCheckoutDetails} from '_actions/checkoutActions';
 import {TouchableOpacity} from 'react-native';
 import AlertMessage from '_organisms/AlertMessage';
+import fonts from '_utils/constants/Fonts';
+import colors from '_utils/constants/Colors';
 
 const DeliveryModal = ({
   visible,
@@ -167,7 +169,7 @@ const DeliveryModal = ({
                     <View style={{flexDirection: 'row', alignItems: 'center'}}>
                       <Text
                         style={{
-                          fontFamily: 'Tajawal-Regular',
+                          fontFamily: fonts.regular,
                           fontSize: wp(4.5),
                         }}>
                         {item.name}
@@ -178,7 +180,7 @@ const DeliveryModal = ({
                         style={{aspectRatio: 1}}
                         color={
                           selectedPeriod && selectedPeriod.id === item.id
-                            ? '#61012D'
+                            ? colors.primaryColor
                             : '#000'
                         }
                         containerStyle={{marginLeft: 5}}
@@ -250,7 +252,7 @@ const styles = StyleSheet.create({
   modalTitle: {
     textAlign: 'center',
     fontSize: wp(4.5),
-    fontFamily: 'Tajawal-Bold',
+    fontFamily: fonts.bold,
   },
   cancelTextStyle: {color: '#FD0D1B', fontSize: wp(3)},
   closeContainerStyle: {
@@ -260,8 +262,8 @@ const styles = StyleSheet.create({
     padding: 2,
   },
   buttonTitleStyle: {
-    fontFamily: 'Tajawal-Regular',
-    color: '#61012D',
+    fontFamily: fonts.regular,
+    color: colors.primaryColor,
     fontSize: wp(5),
   },
   buttonTitleStyleActive: {
@@ -270,14 +272,14 @@ const styles = StyleSheet.create({
   buttonStyle: {
     borderRadius: 9,
     backgroundColor: 'transparent',
-    borderColor: '#61012D',
+    borderColor: colors.primaryColor,
     // paddingHorizontal: wp(10),
     // paddingVertical: hp(2),
     borderWidth: 1,
     marginHorizontal: 5
   },
   buttonStyleActive: {
-    backgroundColor: '#61012D',
+    backgroundColor: colors.primaryColor,
   },
   buttonContainerStyle: {
     marginHorizontal: 20,
@@ -298,19 +300,19 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
   },
   subTitle: {
-    fontFamily: 'Tajawal-Bold',
+    fontFamily: fonts.bold,
     textAlign: 'right',
-    color: '#61012D',
+    color: colors.primaryColor,
     fontSize: wp(5),
   },
   informationText: {
-    fontFamily: 'Tajawal-Medium',
+    fontFamily: fonts.medium,
     textAlign: 'center',
     color: '#FF0000',
     marginBottom: 20,
     fontSize: wp(3.5),
   },
-  priceText: {fontFamily: 'Tajawal-Bold', color: '#61012D', fontSize: wp(4.5)},
+  priceText: {fontFamily: fonts.bold, color: colors.primaryColor, fontSize: wp(4.5)},
   periodsRowContainer: {
     flex: 1,
     flexDirection: 'row',

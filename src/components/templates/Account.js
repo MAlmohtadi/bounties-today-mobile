@@ -15,6 +15,8 @@ import {
   logoutUser,
 } from '_actions/authActions';
 import UpdateAccount from '_organisms/UpdateAccount';
+import fonts from '_utils/constants/Fonts';
+import colors from '_utils/constants/Colors';
 
 const Account = ({authReducer, showUpdateAccount = true}) => {
   const [viewType, setViewType] = useState(authReducer.id ? null : 'main');
@@ -34,9 +36,9 @@ const Account = ({authReducer, showUpdateAccount = true}) => {
             type="clear"
             title="تسجيل دخول"
             titleStyle={{
-              color: '#61032D',
+              color: colors.primaryColor,
               fontSize: hp(2),
-              fontFamily: 'Tajawal-Bold',
+              fontFamily: fonts.bold,
             }}
             useForeground
             containerStyle={[styles.buttonStyle, {marginTop: 10}]}
@@ -49,9 +51,9 @@ const Account = ({authReducer, showUpdateAccount = true}) => {
             type="clear"
             title="إنشاء حساب"
             titleStyle={{
-              color: '#61032D',
+              color: colors.primaryColor,
               fontSize: hp(2),
-              fontFamily: 'Tajawal-Bold',
+              fontFamily: fonts.bold,
             }}
             useForeground
             containerStyle={[styles.buttonStyle, {marginTop: 10}]}
@@ -87,12 +89,12 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   subContainer: {marginTop: hp(4), alignItems: 'center'},
-  titleStyle: {fontFamily: 'Tajawal-Bold', fontSize: hp(2)},
+  titleStyle: {fontFamily: fonts.bold, fontSize: hp(2)},
   buttonStyle: {
     // paddingVertical: hp(2),
     borderRadius: wp(2),
     borderWidth: 1,
-    borderColor: '#61012D',
+    borderColor: colors.primaryColor,
     backgroundColor: '#fff',
   },
 });

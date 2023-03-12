@@ -13,6 +13,8 @@ import {
   setLoadingProduct,
 } from '_actions/productActions';
 import Pages from '../../navigations/Pages';
+import fonts from '_utils/constants/Fonts';
+import colors from '_utils/constants/Colors';
 
 const CategoriesInMenu = ({ navigation, homeReducer: { categories }, setLoadingProduct, setSelectedCategory }) => {
   const [isExpand, setIsExpand] = useState(false)
@@ -82,7 +84,7 @@ const CategoriesInMenu = ({ navigation, homeReducer: { categories }, setLoadingP
           name={isExpand ? "expand-less" : "expand-more"}
           size={wp(6)}
           iconStyle={styles.iconStyle}
-          color="#61012D"
+          color={colors.primaryColor}
         />
       </>
     }
@@ -99,15 +101,11 @@ const CategoriesInMenu = ({ navigation, homeReducer: { categories }, setLoadingP
 };
 const styles = StyleSheet.create({
   lable: {
-    fontFamily: 'Tajawal-Bold', color: '#61032D',
+    fontFamily: fonts.bold, color: colors.primaryColor,
     fontSize: hp(2), width: '90%', textAlign: 'right'
   },
   categoryLable: {
-    fontFamily: 'Tajawal-Regular', color: '#61032D',
-    fontSize: hp(2), width: '90%', textAlign: 'right'
-  },
-  categoryLable: {
-    fontFamily: 'Tajawal-Regular', color: '#61032D',
+    fontFamily: fonts.regular, color: colors.primaryColor,
     fontSize: hp(1.8), width: '90%', textAlign: 'right'
   },
   iconStyle: { marginHorizontal: 5, aspectRatio: 1 },

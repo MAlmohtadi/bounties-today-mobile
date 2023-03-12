@@ -1,3 +1,31 @@
 {
-  "extends": "@tsconfig/react-native/tsconfig.json"
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  "compilerOptions": {
+    "strict": true,
+    // Path alias config
+    "baseUrl": ".",
+    "paths": {
+      // This needs to be mirrored in babel.config.js
+      // Components is a directory with sub directories
+      "components/*": ["src/components/*"],
+
+      // We want to expose the exports of the buttons index file
+      "buttons": ["src/components/buttons/index"],
+      "_assets": ["src/assets/*"],
+      "_atoms": ["src/components/atoms/*"],
+      "_molecules": ["src/components/molecules/*"],
+      "_organisms": ["src/components/organisms/*"],
+      "_templates": ["src/components/templates/*"],
+      "_navigations": ["src/navigations/*"],
+      "_scenes": ["src/scenes/*"],
+      "_services/*": ["src/services/*"],
+      "_styles/*": ["src/styles/*"],
+      "_utils/*": ["src/utils/*"],
+      "_locales/*": ["src/locales/*"],
+      "_icons/*": ["src/assets/icons/*"],
+      "_images/*": ["src/assets/images/*"],
+      "_actions/*": ["src/store/actions/*"],
+      "_constants": ["src/utils/constants/*"],
+    }
+  }
 }

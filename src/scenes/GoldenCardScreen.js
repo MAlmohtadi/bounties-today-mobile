@@ -27,6 +27,8 @@ import {
 import AlertMessage from '_organisms/AlertMessage';
 import Pages from '../navigations/Pages';
 import LoadingSpinner from '_organisms/LoadingSpinner';
+import colors from '_utils/constants/Colors';
+import fonts from '_utils/constants/Fonts';
 
 const GoldenCardScreen = ({
   navigation,
@@ -181,11 +183,11 @@ const GoldenCardScreen = ({
                 type="clear"
                 title="طلب كوبون"
                 useForeground
-                titleStyle={{color: '#fff', fontFamily: 'Tajawal-Bold'}}
+                titleStyle={{color: '#fff', fontFamily: fonts.bold}}
                 containerStyle={[
                   styles.submitButtonStyle,
                   {
-                    backgroundColor: '#61012D',
+                    backgroundColor: colors.primaryColor,
                     marginHorizontal: wp(5),
                     marginBottom: 20,
                   },
@@ -240,26 +242,26 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
   priceText: {
-    fontFamily: 'Tajawal-Bold',
+    fontFamily: fonts.bold,
     color: '#000',
     fontSize: wp(4),
     textAlign: 'right',
   },
   regularText: {
-    fontFamily: 'Tajawal-Regular',
+    fontFamily: fonts.regular,
     color: '#000',
     fontSize: wp(4.5),
     textAlign: 'right',
   },
   regularText2: {
-    fontFamily: 'Tajawal-Regular',
+    fontFamily: fonts.regular,
     color: '#000',
     fontSize: wp(5),
     width: '100%',
     textAlign: 'right',
   },
   regularText3: {
-    fontFamily: 'Tajawal-Regular',
+    fontFamily: fonts.regular,
     color: '#000',
     fontSize: wp(4),
     width: '100%',
@@ -283,14 +285,14 @@ const styles = StyleSheet.create({
   },
   titleStyle: {
     fontSize: wp(4.5),
-    fontFamily: 'Tajawal-Bold',
+    fontFamily: fonts.bold,
     color: 'white',
   },
   buttonStyle: {
     paddingVertical: hp(1.2),
     borderRadius: wp(2),
     borderWidth: 1,
-    borderColor: '#61012D',
+    borderColor: colors.primaryColor,
   },
   topContainer: {
     flexDirection: 'row',
@@ -310,12 +312,12 @@ const styles = StyleSheet.create({
     borderColor: '#FF0000',
   },
   clearTitle: {
-    fontFamily: 'Tajawal-Medium',
+    fontFamily: fonts.medium,
     fontSize: wp(3.2),
     color: '#FF0000',
   },
   clearTitle2: {
-    fontFamily: 'Tajawal-Medium',
+    fontFamily: fonts.medium,
     fontSize: wp(3.2),
     color: '#FF0000',
     textAlign: 'right',
@@ -327,7 +329,7 @@ const styles = StyleSheet.create({
     borderRadius: wp(2),
   },
   totalPrice: {
-    fontFamily: 'Tajawal-Bold',
+    fontFamily: fonts.bold,
     fontSize: wp(3.2),
   },
   bottomContainer: {

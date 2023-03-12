@@ -35,6 +35,8 @@ import GridCard from '_organisms/GridCard';
 import Card from '_organisms/Card';
 import Sort from '_organisms/Sort';
 import SortAndView from '_organisms/SortAndView';
+import fonts from '_utils/constants/Fonts';
+import colors from '_utils/constants/Colors';
 
 const ProductScreen = ({
   navigation,
@@ -111,7 +113,7 @@ const ProductScreen = ({
     }
     return (
       <View style={{ flex: 1, justifyContent: 'center' }}>
-        <ActivityIndicator size="large" color="#61012D" />
+        <ActivityIndicator size="large" color={colors.primaryColor} />
       </View>
     );
   };
@@ -206,8 +208,8 @@ const ProductScreen = ({
     <View style={{ flex: 1, alignItems: 'center', margin: 20 }}>
       <Text
         style={{
-          fontFamily: 'Tajawal-Regular',
-          color: '#61012D',
+          fontFamily: fonts.regular,
+          color: colors.primaryColor,
           fontSize: wp(4),
         }}>
         لا يوجد منتجات

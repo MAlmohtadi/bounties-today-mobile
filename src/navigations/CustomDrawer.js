@@ -55,13 +55,13 @@ const CustomDrawer = ({
         <Drawer.Navigator
           screenOptions={{
             headerTintColor: 'blue',
-            header: null,
+            // header: null,
             headerShown: false,
             gestureEnabled: true,
           }}
           // drawerType='front'
           drawerContent={(props) => <DrawerMenu {...props} />}
-          drawerStyle={{width: widthPercentageToDP(50)}}
+          // drawerStyle={{width: widthPercentageToDP(50)}}
           drawerPosition="right">
           <Drawer.Screen name="MainScreen" component={MainStack} />
         </Drawer.Navigator>

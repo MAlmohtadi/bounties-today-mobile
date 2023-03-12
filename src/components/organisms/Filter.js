@@ -17,6 +17,8 @@ import { updateSearchCriteria } from '_actions/productActions';
 import { setSelectedCategory } from '_actions/homeActions';
 import { useRoute } from '@react-navigation/core';
 import Pages from '../../navigations/Pages';
+import fonts from '_utils/constants/Fonts';
+import colors from '_utils/constants/Colors';
 
 const Filter = ({
   navigation,
@@ -183,7 +185,7 @@ const styles = StyleSheet.create({
   modalTitle: {
     textAlign: 'center',
     fontSize: wp(4.5),
-    fontFamily: 'Tajawal-Bold',
+    fontFamily: fonts.bold,
   },
   cancelTextStyle: {
     color: '#FD0D1B',
@@ -196,8 +198,8 @@ const styles = StyleSheet.create({
     padding: 2,
   },
   buttonTitleStyle: {
-    fontFamily: 'Tajawal-Regular',
-    color: '#61012D',
+    fontFamily: fonts.regular,
+    color: colors.primaryColor,
     fontSize: Dimensions.get('screen').width < 350 ? wp(5) : wp(4),
   },
   buttonTitleStyleActive: {
@@ -206,12 +208,12 @@ const styles = StyleSheet.create({
   buttonStyle: {
     borderRadius: 9,
     backgroundColor: 'transparent',
-    borderColor: '#61012D',
+    borderColor: colors.primaryColor,
     marginHorizontal: wp(2),
     borderWidth: 1,
   },
   buttonStyleActive: {
-    backgroundColor: '#61012D',
+    backgroundColor: colors.primaryColor,
   },
   buttonContainerStyle: {
     marginHorizontal: 20,
@@ -231,8 +233,8 @@ const styles = StyleSheet.create({
     marginTop: hp(3),
     marginHorizontal: 20,
   },
-  subTitle: { fontFamily: 'Tajawal-Bold', fontSize: wp(4) },
-  subTitle2: { fontFamily: 'Tajawal-Bold', fontSize: wp(3.5) },
+  subTitle: { fontFamily: fonts.bold, fontSize: wp(4) },
+  subTitle2: { fontFamily: fonts.bold, fontSize: wp(3.5) },
 });
 
 const mapStateToProps = (state) => {

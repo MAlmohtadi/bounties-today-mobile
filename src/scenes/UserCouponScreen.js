@@ -28,6 +28,8 @@ import {
 import AlertMessage from '_organisms/AlertMessage';
 import Pages from '../navigations/Pages';
 import LoadingSpinner from '_organisms/LoadingSpinner';
+import fonts from '_utils/constants/Fonts';
+import colors from '_utils/constants/Colors';
 
 const UserCouponScreen = ({
   navigation,
@@ -163,14 +165,14 @@ const styles = StyleSheet.create({
   },
   labelStyle: {
     textAlignVertical: 'center',
-    fontFamily: 'Tajawal-Bold',
+    fontFamily: fonts.bold,
     fontSize: wp(3.4),
     textAlign: 'right',
     
   }, 
   labelStyle2: {
     textAlignVertical: 'center',
-    fontFamily: 'Tajawal-Bold',
+    fontFamily: fonts.bold,
     fontSize: wp(4.2),
     paddingRight: 35,
     paddingLeft: 35,
@@ -179,7 +181,7 @@ const styles = StyleSheet.create({
     
   },
   detailsTextStyle: {
-    fontFamily: 'Tajawal-Regular',
+    fontFamily: fonts.regular,
     fontSize: wp(3.6),
   },
   priceContainer: {
@@ -191,10 +193,10 @@ const styles = StyleSheet.create({
   buttonTitleStyle: {
     color: '#415F9B',
     fontSize: wp(3),
-    fontFamily: 'Tajawal-Bold',
+    fontFamily: fonts.bold,
   },
   buttonStyle: {
-    backgroundColor: '#61032D',
+    backgroundColor: colors.primaryColor,
     borderRadius: wp(2),
     borderWidth: 1,
     borderColor: 'transparent',

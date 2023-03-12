@@ -3,6 +3,7 @@ import {StyleSheet} from 'react-native';
 import {View, Text} from 'react-native';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import {Divider} from 'react-native-elements';
+import fonts from '_utils/constants/Fonts';
 
 const statusTypes = {
   1: {
@@ -89,7 +90,7 @@ const styles = StyleSheet.create({
   bullet: {color: '#AAAAAA', paddingHorizontal: 2},
   deviderStyle: {flex: 1, backgroundColor: '#AAAAAA', height: 4},
   statusLabelStyle: {
-    fontFamily: 'Tajawal-Bold',
+    fontFamily: fonts.bold,
     fontSize: wp(3.8),
     marginVertical: 5,
   },

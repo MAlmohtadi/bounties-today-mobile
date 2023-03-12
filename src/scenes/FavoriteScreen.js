@@ -26,6 +26,8 @@ import Card from '_organisms/Card';
 import AlertMessage from '_organisms/AlertMessage';
 import Pages from '../navigations/Pages';
 import LoadingSpinner from '_organisms/LoadingSpinner';
+import colors from '_utils/constants/Colors';
+import fonts from '_utils/constants/Fonts';
 
 const FavoriteScreen = ({
   navigation,
@@ -165,14 +167,14 @@ const styles = StyleSheet.create({
   },
   titleStyle: {
     fontSize: wp(4.5),
-    fontFamily: 'Tajawal-Bold',
+    fontFamily: fonts.bold,
     color: 'white',
   },
   buttonStyle: {
     paddingVertical: hp(1.2),
     borderRadius: wp(2),
     borderWidth: 1,
-    borderColor: '#61012D',
+    borderColor: colors.primaryColor,
   },
   topContainer: {
     flexDirection: 'row',
@@ -192,7 +194,7 @@ const styles = StyleSheet.create({
     borderColor: '#FF0000',
   },
   clearTitle: {
-    fontFamily: 'Tajawal-Medium',
+    fontFamily: fonts.medium,
     fontSize: wp(3.2),
     color: '#FF0000',
   },
@@ -203,7 +205,7 @@ const styles = StyleSheet.create({
     borderRadius: wp(2),
   },
   totalPrice: {
-    fontFamily: 'Tajawal-Bold',
+    fontFamily: fonts.bold,
     fontSize: wp(3.2),
   },
   bottomContainer: {

@@ -25,6 +25,8 @@ import AlertMessage from '_organisms/AlertMessage';
 import Grocery from '_icons/grocery';
 import CheckList from '_icons/checklist';
 import HomeIcon from '_icons/home';
+import fonts from '_utils/constants/Fonts';
+import colors from '_utils/constants/Colors';
 
 const BottomMenu = ({
   homeReducer: {
@@ -56,7 +58,7 @@ const BottomMenu = ({
           }}>
           <View style={styles.iconContainer}>
             <HomeIcon width={wp(8)} height={hp(3)} fill={routeName.toLowerCase().includes('home')
-                ? '#B26087'
+                ? colors.primaryColor
                 : '#FFF'} />
             <Text
               style={[
@@ -105,7 +107,7 @@ const BottomMenu = ({
         <TouchableOpacity
           onPress={() => navigation.navigate(Pages.Category.route)}>
           <View style={styles.iconContainer}>
-            <Grocery width={wp(8)} height={hp(3)} fill={routeName === Pages.Category.route ? "#B26087" : '#ffff'} />
+            <Grocery width={wp(8)} height={hp(3)} fill={routeName === Pages.Category.route ? colors.primaryColor : '#ffff'} />
             <Text
               style={[
                 styles.iconTitle,
@@ -140,7 +142,7 @@ const BottomMenu = ({
             }}>
             <View style={[styles.iconContainer]}>
               <CheckList width={wp(8)} height={hp(3)} fill={routeName.toLowerCase().includes('order')
-                ? '#B26087'
+                ? colors.primaryColor
                 : '#FFF'} />
               <Text
                 style={[
@@ -176,7 +178,7 @@ const styles = StyleSheet.create({
     aspectRatio: Platform.isPad ? 6 / 1 : 5 / 1,
     borderTopLeftRadius: wp(10),
     borderTopRightRadius: wp(10),
-    backgroundColor: '#61012D',
+    backgroundColor: colors.primaryColor,
     shadowColor: '#00000040',
     shadowOffset: {
       width: -2,
@@ -219,15 +221,15 @@ const styles = StyleSheet.create({
   },
   iconTitle: {
     color: 'white',
-    fontFamily: 'Tajawal-Regular',
+    fontFamily: fonts.regular,
     fontSize: Platform.OS === 'ios' ? wp(3) : wp(3.5),
     marginVertical: 2,
   },
   activeIcon: {
-    color: '#B26087',
+    color: colors.primaryColor,
   },
   bullet: {
-    color: '#B26087',
+    color: colors.primaryColor,
     fontSize: wp(2.5),
   },
   cartButton: {
@@ -252,7 +254,7 @@ const styles = StyleSheet.create({
     fontSize: wp(3.4),
     textAlign: 'center',
     textAlignVertical: 'center',
-    color: '#61012D',
+    color: colors.primaryColor,
   },
   cartCounterContainer: {
     position: 'absolute',
@@ -261,7 +263,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     top: 0,
     right: 4,
-    borderColor: '#61012D',
+    borderColor: colors.primaryColor,
     aspectRatio: 1,
     borderWidth: 1,
     borderRadius: wp(3),

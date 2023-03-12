@@ -18,6 +18,8 @@ import {
 import ImageModal from 'react-native-image-modal';
 import { Icon } from 'react-native-elements';
 import defaultImage from '_images/defaultImage.png';
+import colors from '_utils/constants/Colors';
+import fonts from '_utils/constants/Fonts';
 
 const GridCard = ({
   product,
@@ -65,7 +67,7 @@ const GridCard = ({
               <Icon
                 type="material-community"
                 name="minus"
-                color={isEditable ? '#fff' : '#61012D'}
+                color={isEditable ? '#fff' : colors.primaryColor}
                 size={wp(5)}
                 style={{ aspectRatio: 1 }}
               />
@@ -81,7 +83,7 @@ const GridCard = ({
               <Icon
                 type="material-community"
                 name="plus"
-                color={isEditable ? '#fff' : '#61012D'}
+                color={isEditable ? '#fff' : colors.primaryColor}
                 size={wp(5)}
                 style={{ aspectRatio: 1 }}
               />
@@ -89,7 +91,7 @@ const GridCard = ({
               <Icon
                 type="font-awesome"
                 name="ban"
-                color={isEditable ? '#fff' : '#61012D'}
+                color={isEditable ? '#fff' : colors.primaryColor}
                 size={wp(5)}
                 style={{ aspectRatio: 1 }}
               />
@@ -172,7 +174,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     right: 0,
     zIndex: 1,
-    backgroundColor: '#61012D',
+    backgroundColor: colors.primaryColor,
     paddingHorizontal: 10,
     paddingVertical: 12,
     borderBottomLeftRadius: 15,
@@ -193,7 +195,7 @@ const styles = StyleSheet.create({
   titleContainer: { marginHorizontal: 10 },
   itemName: {
     marginTop: Platform.OS === "ios" ? hp(1) : hp(0),
-    textAlign: 'right', fontFamily: 'Tajawal-Bold', fontSize: wp(3.4)
+    textAlign: 'right', fontFamily: fonts.bold, fontSize: wp(3.4)
   },
   bottomContainer: {
     flex: 1,
@@ -202,7 +204,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   addButtonContainer: {
-    backgroundColor: '#61012D',
+    backgroundColor: colors.primaryColor,
     paddingHorizontal: 6,
     paddingVertical: 10,
     borderTopRightRadius: 15,
@@ -211,7 +213,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   originalPrice: {
-    fontFamily: 'Tajawal-Bold',
+    fontFamily: fonts.bold,
     fontSize: wp(3.4),
     textAlignVertical: 'center',
     marginHorizontal: 2,
@@ -231,7 +233,7 @@ const styles = StyleSheet.create({
   quantity: {
     color: '#ffff',
     fontSize: Dimensions.get('screen').width < 350 ? hp(4) : hp(2),
-    fontFamily: 'Tajawal-Regular',
+    fontFamily: fonts.regular,
     textAlign: 'center',
   },
   overlayShadow: {
@@ -259,7 +261,7 @@ const styles = StyleSheet.create({
   overlayText: {
     color: '#FFFFFF',
     fontSize: wp(4.5),
-    fontFamily: 'Tajawal-Medium',
+    fontFamily: fonts.medium,
   },
 
   paddingButtons: {
@@ -268,7 +270,7 @@ const styles = StyleSheet.create({
   offerQuantity: {
     marginTop: 2,
     fontSize: wp(3),
-    fontFamily: 'Tajawal-Bold',
+    fontFamily: fonts.bold,
     textAlign: 'right',
   },
 });

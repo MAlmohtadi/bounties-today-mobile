@@ -5,6 +5,8 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import { Button } from 'react-native-elements';
+import colors from '_utils/constants/Colors';
+import fonts from '_utils/constants/Fonts';
 
 const HorizontalButtons = ({
   data = [],
@@ -73,8 +75,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row-reverse',
   },
   buttonTitleStyle: {
-    fontFamily: 'Tajawal-Regular',
-    color: '#61012D',
+    fontFamily: fonts.regular,
+    color: colors.primaryColor,
     fontSize: wp(4),
   },
   buttonTitleStyleActive: {
@@ -83,12 +85,12 @@ const styles = StyleSheet.create({
   buttonStyle: {
     borderRadius: 9,
     backgroundColor: 'transparent',
-    borderColor: '#61012D',
+    borderColor: colors.primaryColor,
     borderWidth: 1,
     marginHorizontal: 5
   },
   buttonStyleActive: {
-    backgroundColor: '#61012D',
+    backgroundColor: colors.primaryColor,
   },
 });
 export default HorizontalButtons;

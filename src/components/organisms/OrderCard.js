@@ -7,6 +7,8 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import OrderStatus from '_organisms/OrderStatus';
+import colors from '_utils/constants/Colors';
+import fonts from '_utils/constants/Fonts';
 const OrderCard = ({
   order: {
     id,
@@ -93,11 +95,11 @@ const styles = StyleSheet.create({
   },
   labelStyle: {
     textAlignVertical: 'center',
-    fontFamily: 'Tajawal-Bold',
+    fontFamily: fonts.bold,
     fontSize: wp(3.4),
   },
   detailsTextStyle: {
-    fontFamily: 'Tajawal-Regular',
+    fontFamily: fonts.regular,
     fontSize: wp(3.6),
   },
   priceContainer: {
@@ -109,10 +111,10 @@ const styles = StyleSheet.create({
   buttonTitleStyle: {
     color: '#415F9B',
     fontSize: wp(3),
-    fontFamily: 'Tajawal-Bold',
+    fontFamily: fonts.bold,
   },
   buttonStyle: {
-    backgroundColor: '#61032D',
+    backgroundColor: colors.primaryColor,
     borderRadius: wp(2),
     borderWidth: 1,
     borderColor: 'transparent',

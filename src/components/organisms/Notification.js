@@ -5,6 +5,8 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
+import colors from '_utils/constants/Colors';
+import fonts from '_utils/constants/Fonts';
 
 const Notification = ({visible, notificationData, buttonAction}) => {
   const notificaitonDefaultData = {
@@ -78,12 +80,12 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   buttonTitleStyle: {
-    fontFamily: 'Tajawal-Regular',
-    color: '#61012D',
+    fontFamily: fonts.regular,
+    color: colors.primaryColor,
     fontSize: hp(2.2),
   },
   buttonTitleStyleActive: {
-    color: '#61012D',
+    color: colors.primaryColor,
   },
   buttonStyle: {
     flex:1,
@@ -93,7 +95,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   buttonStyleActive: {
-    backgroundColor: '#61012D',
+    backgroundColor: colors.primaryColor,
   },
   buttonContainerStyle: {
     flex: 1,
@@ -103,17 +105,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
   },
-  title: {fontFamily: 'Tajawal-Bold', fontSize: wp(4), textAlign: 'right'},
+  title: {fontFamily: fonts.bold, fontSize: wp(4), textAlign: 'right'},
 
   subTitle: {
-    fontFamily: 'Tajawal-Regular',
+    fontFamily: fonts.regular,
     fontSize: wp(3),
     textAlign: 'right',
   },
   buttonsRowContainer: {
     justifyContent: 'space-between',
     flexDirection: 'row',
-    borderColor: '#61012D',
+    borderColor: colors.primaryColor,
     borderTopWidth: 1,
   },
 });

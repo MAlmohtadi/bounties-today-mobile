@@ -5,7 +5,7 @@
  * @format
  */
 
-import React from 'react';
+import React ,{ useEffect } from 'react';
 import type {PropsWithChildren} from 'react';
 import {
   SafeAreaView,
@@ -66,7 +66,6 @@ function App(): JSX.Element {
       await RNBootSplash.hide({ fade: true, duration: 500 });
       console.log("Bootsplash has been hidden successfully");
     });
-    
   }, []);
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,

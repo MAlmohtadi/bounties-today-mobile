@@ -28,6 +28,8 @@ import { clearCart } from '_actions/cartActions';
 import Pages from '../navigations/Pages';
 import AccountModal from '_organisms/AccountModal';
 import AlertMessage from '_organisms/AlertMessage';
+import colors from '_utils/constants/Colors';
+import fonts from '_utils/constants/Fonts';
 
 const CheckoutScreen = ({
   navigation,
@@ -348,11 +350,11 @@ const CheckoutScreen = ({
         type="clear"
         title="تأكيد"
         useForeground
-        titleStyle={{ color: '#fff', fontFamily: 'Tajawal-Bold' }}
+        titleStyle={{ color: '#fff', fontFamily: fonts.bold }}
         containerStyle={[
           styles.submitButtonStyle,
           {
-            backgroundColor: '#61012D',
+            backgroundColor: colors.primaryColor,
             marginHorizontal: wp(5),
             marginBottom: 20,
           },
@@ -387,15 +389,15 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#F7F7F7',
     borderWidth: 1,
-    borderColor: '#61012D',
+    borderColor: colors.primaryColor,
   },
   buttonActiveStyle: {
     borderTopLeftRadius: 0,
     borderBottomLeftRadius: 0,
-    backgroundColor: '#61012D',
+    backgroundColor: colors.primaryColor,
     borderWidth: 1,
   },
-  buttonTitleStyle: { color: '#61012D', fontFamily: 'Tajawal-Bold' },
+  buttonTitleStyle: { color: colors.primaryColor, fontFamily: fonts.bold },
   buttonActiveTitleStyle: { color: '#FFF' },
   addressContainer: {
     flexDirection: 'row',
@@ -409,7 +411,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#EFE7EB',
   },
   textContainer: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  textAddress: { fontSize: wp(3), fontFamily: 'Tajawal-Regular' },
+  textAddress: { fontSize: wp(3), fontFamily: fonts.regular },
   commentBox: {
     padding: wp(1),
     height: hp(10),
@@ -417,7 +419,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F7F7F7',
     fontSize: hp(2),
     borderRadius: 10,
-    fontFamily: 'Tajawal-Regular',
+    fontFamily: fonts.regular,
   },
   coupone: {
     flex: 1,
@@ -426,7 +428,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F7F7F7',
     fontSize: wp(3),
     borderRadius: 10,
-    fontFamily: 'Tajawal-Regular',
+    fontFamily: fonts.regular,
   },
   paymentButton: {
     flex: 1,
@@ -435,21 +437,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: hp(1),
   },
-  activePaymentButton: { backgroundColor: '#61012D', borderRadius: 10 },
-  paymentText: { fontFamily: 'Tajawal-Medium', color: '#000', fontSize: wp(3) },
+  activePaymentButton: { backgroundColor: colors.primaryColor, borderRadius: 10 },
+  paymentText: { fontFamily: fonts.medium, color: '#000', fontSize: wp(3) },
   regularText: {
-    fontFamily: 'Tajawal-Regular',
+    fontFamily: fonts.regular,
     color: '#000',
     fontSize: wp(4),
   },
   priceText: {
-    fontFamily: 'Tajawal-Bold',
+    fontFamily: fonts.bold,
     color: '#000',
     fontSize: wp(4),
   },
   subTitle: {
     textAlign: 'right',
-    fontFamily: 'Tajawal-Bold',
+    fontFamily: fonts.bold,
     color: '#000',
     fontSize: wp(4.2),
   },
@@ -462,7 +464,7 @@ const styles = StyleSheet.create({
     // paddingVertical: hp(1.2),
     borderRadius: wp(2),
     borderWidth: 1,
-    borderColor: '#61012D',
+    borderColor: colors.primaryColor,
   },
   overlayStyle: {
     flex: 1,

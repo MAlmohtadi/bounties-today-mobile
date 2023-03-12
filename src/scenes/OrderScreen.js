@@ -12,6 +12,8 @@ import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Pages from '../navigations/Pages';
 import AlertMessage from '_organisms/AlertMessage';
 import LoadingSpinner from '_organisms/LoadingSpinner';
+import fonts from '_utils/constants/Fonts';
+import colors from '_utils/constants/Colors';
 
 const pagesConfig = {
   AllOrder: {
@@ -67,7 +69,7 @@ const OrderScreen = ({
   }, [navigation, userId, isOrderLoading, route.name]);
   const renderEmpty = () => (
     <View style={{flex: 1, alignItems: 'center', margin: 20}}>
-      <Text style={{fontFamily: 'Tajawal-Regular', color: '#61012D'}}>
+      <Text style={{fontFamily: fonts.regular, color: colors.primaryColor}}>
         لا يوجد معلومات في {Pages[route.name].title}
       </Text>
     </View>

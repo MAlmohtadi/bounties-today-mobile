@@ -9,6 +9,8 @@ import NetworkIssue from '_icons/networkIssue';
 import {errorMessage} from '_utils/errorMessages';
 import RNRestart from 'react-native-restart';
 import {connect} from 'react-redux';
+import fonts from '_utils/constants/Fonts';
+import colors from '_utils/constants/Colors';
 
 const NoConnection = ({alertReducer: {error}}) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -25,12 +27,12 @@ const NoConnection = ({alertReducer: {error}}) => {
         <View style={styles.center}>
           <NetworkIssue fill={'#000'} />
           <Text
-            style={{fontFamily: 'Tajawal-Bold', marginTop: 10, fontSize: 20}}>
+            style={{fontFamily: fonts.bold, marginTop: 10, fontSize: 20}}>
             لا يوجد اتصال بالإنترنت
           </Text>
           <Text
             style={{
-              fontFamily: 'Tajawal-Regular',
+              fontFamily: fonts.regular,
               marginTop: 10,
               fontSize: 16,
             }}>
@@ -43,11 +45,11 @@ const NoConnection = ({alertReducer: {error}}) => {
           }}
           type="clear"
           title="إعادة المحاولة"
-          titleStyle={{color: '#fff', fontFamily: 'Tajawal-Bold'}}
+          titleStyle={{color: '#fff', fontFamily: fonts.bold}}
           useForeground
           containerStyle={[
             {
-              backgroundColor: '#61012D',
+              backgroundColor: colors.primaryColor,
               marginHorizontal: wp(2),
               marginBottom: 15,
               borderRadius: 10,
@@ -80,8 +82,8 @@ const styles = StyleSheet.create({
   },
   description: {
     fontSize: wp(5),
-    fontFamily: 'Tajawal-Bold',
-    color: '#61012D',
+    fontFamily: fonts.bold,
+    color: colors.primaryColor,
     margin: hp(4),
   },
 });

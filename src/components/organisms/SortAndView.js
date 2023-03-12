@@ -10,6 +10,7 @@ import GridViewInactive from '_icons/gridView';
 import GridViewActive from '_icons/GridViewActive';
 import {Button} from 'react-native-elements';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
+import colors from '_utils/constants/Colors';
 
 const SortAndView = ({
   configReducer: {isGridView, sortType},
@@ -82,7 +83,7 @@ const styles = StyleSheet.create({
   },
   viewButtonStyleLeft: {
     backgroundColor: '#FFFFFF',
-    borderColor: '#61012D',
+    borderColor: colors.primaryColor,
     borderWidth: wp(0.5),
     borderTopRightRadius: wp(3),
     borderBottomRightRadius: wp(3),
@@ -91,20 +92,20 @@ const styles = StyleSheet.create({
   },
   viewButtonStyle: {
     backgroundColor: '#FFFFFF',
-    borderColor: '#61012D',
+    borderColor: colors.primaryColor,
     borderWidth: wp(0.5),
     borderRadius: wp(3),
     paddingHorizontal: wp(1.5),
     margin: 2,
   },
   viewButtonStyleActive: {
-    backgroundColor: '#61012D',
+    backgroundColor: colors.primaryColor,
     paddingHorizontal: wp(1.5),
     borderWidth: 0,
   },
   viewButtonStyleRight: {
     backgroundColor: '#FFFFFF',
-    borderColor: '#61012D',
+    borderColor: colors.primaryColor,
     borderWidth: wp(0.5),
     borderTopLeftRadius: wp(3),
     borderBottomLeftRadius: wp(3),

@@ -6,6 +6,8 @@ import {
 } from 'react-native-responsive-screen';
 import {Button} from 'react-native-elements';
 import DeliveryModal from '_organisms/DeliveryModal';
+import colors from '_utils/constants/Colors';
+import fonts from '_utils/constants/Fonts';
 
 const DeliveryDetails = ({
   navigateToMapScreen,
@@ -96,17 +98,17 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#F7F7F7',
     borderWidth: 1,
-    borderColor: '#61012D',
+    borderColor: colors.primaryColor,
   },
   buttonActiveStyle: {
     borderTopLeftRadius: 0,
     borderBottomLeftRadius: 0,
-    backgroundColor: '#61012D',
+    backgroundColor: colors.primaryColor,
     borderWidth: 1,
   },
   buttonTitleStyle: {
-    color: '#61012D',
-    fontFamily: 'Tajawal-Bold',
+    color: colors.primaryColor,
+    fontFamily: fonts.bold,
     fontSize: wp(3.5),
   },
   buttonActiveTitleStyle: {color: '#FFF'},
@@ -122,7 +124,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#EFE7EB',
   },
   textContainer: {flex: 1, justifyContent: 'center', alignItems: 'center'},
-  textAddress: {fontSize: wp(3.5), fontFamily: 'Tajawal-Regular'},
+  textAddress: {fontSize: wp(3.5), fontFamily: fonts.regular},
 });
 
 export default DeliveryDetails;

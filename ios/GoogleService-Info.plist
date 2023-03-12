@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>751901636318-2jkln9vp9hdmtffuv6v2g8jce783c1hs.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.751901636318-2jkln9vp9hdmtffuv6v2g8jce783c1hs</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB-jmZ1nssJC2KAKYMg97ykhH4panRaxp0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>751901636318</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.bountiestoday</string>
+	<key>PROJECT_ID</key>
+	<string>bounties-today</string>
+	<key>STORAGE_BUCKET</key>
+	<string>bounties-today.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:751901636318:ios:555279a4a6e42e4cdeb44f</string>
+</dict>
+</plist>
