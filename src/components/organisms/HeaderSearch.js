@@ -52,16 +52,17 @@ const HeaderSearch = ({
         <TextInput
           style={[
             styles.inputContainerStyle,
-            { textAlign: 'center', fontSize: 16, fontFamily: fonts.bold },
+            { textAlign: 'center', fontSize: 16, fontFamily: fonts.bold,color:colors.textColor },
           ]}
           onChangeText={(value) => setTextValue(value)}
           value={textValue}
           placeholder="ابحث عن المنتج"
+          placeholderTextColor={colors.primaryColor}
           onFocus={() => setShowFilterButton(true)}
           onBlur={() => setShowFilterButton(false)}
           onSubmitEditing={() => confirm()}
           clearButtonMode="always"
-          onPressOut={() => setShowFilterButton(false)}
+          // onPressOut={() => setShowFilterButton(false)}
         />
         {showFilterButton && (
           <TouchableOpacity

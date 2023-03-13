@@ -1,6 +1,5 @@
 import React from 'react';
 import 'react-native-gesture-handler';
-import '../translation/configuration';
 import {createStackNavigator} from '@react-navigation/stack';
 import {TouchableOpacity, View, StyleSheet} from 'react-native';
 import {
@@ -38,9 +37,9 @@ const MainStack = ({navigation, route}) => {
     <Fragment>
       <Stack.Navigator
         initialRouteName={Pages.Home.route}
-        headerMode="screen"
         screenOptions={{
           animationEnabled: true,
+          headerMode:"screen",
           animationTypeForReplace: 'pop',
           cardStyle: {backgroundColor: '#fff'},
         }}>

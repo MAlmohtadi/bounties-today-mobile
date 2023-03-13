@@ -10,7 +10,6 @@ import {
   Animated,
   PanResponder,
   View,
-  ViewPropTypes,
   StyleSheet,
 } from 'react-native';
 import PropTypes from 'prop-types';
@@ -482,7 +481,6 @@ const Slider = ({
 };
 
 Slider.propTypes = {
-  ...ViewPropTypes,
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
   step: PropTypes.number.isRequired,

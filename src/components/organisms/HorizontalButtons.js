@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { View, StyleSheet, FlatList } from 'react-native';
+import { View, StyleSheet, FlatList,I18nManager } from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -72,7 +72,7 @@ const HorizontalButtons = ({
 };
 const styles = StyleSheet.create({
   innerScrollContent: {
-    flexDirection: 'row-reverse',
+    flexDirection:  !I18nManager.isRTL ? 'row-reverse' : 'row',
   },
   buttonTitleStyle: {
     fontFamily: fonts.regular,

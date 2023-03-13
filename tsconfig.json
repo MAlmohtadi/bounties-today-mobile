@@ -25,7 +25,6 @@
       "_icons/*": ["src/assets/icons/*"],
       "_images/*": ["src/assets/images/*"],
       "_actions/*": ["src/store/actions/*"],
-      "_constants": ["src/utils/constants/*"],
     }
   }
 }

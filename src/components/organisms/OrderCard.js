@@ -1,6 +1,6 @@
 import moment from 'moment';
 import React from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet,I18nManager} from 'react-native';
 import {Button} from 'react-native-elements';
 import {
   heightPercentageToDP as hp,
@@ -26,8 +26,8 @@ const OrderCard = ({
   const date = moment(orderDate);
   return (
     <View style={styles.container}>
-      <View style={styles.rowStyle}>
-        <View style={[styles.rowStyle, {justifyContent: 'flex-start'}]}>
+      <View style={[styles.rowStyle,{flex:1}]}>
+        <View style={[styles.rowStyle, {flex:1,alignContent: 'space-between'}]}>
           <Text style={styles.labelStyle}>تاريخ الطلب :</Text>
           <Text style={styles.detailsTextStyle}>
             {date.format('LT')} {date.format('l')}
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   rowStyle: {
-    flexDirection: 'row-reverse',
+    flexDirection:  !I18nManager.isRTL ? 'row-reverse' : 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     marginVertical: 2,
@@ -97,13 +97,15 @@ const styles = StyleSheet.create({
     textAlignVertical: 'center',
     fontFamily: fonts.bold,
     fontSize: wp(3.4),
+    color:colors.secondryColor
   },
   detailsTextStyle: {
     fontFamily: fonts.regular,
     fontSize: wp(3.6),
+    color:colors.textColor
   },
   priceContainer: {
-    backgroundColor: '#DED6DA',
+    backgroundColor: colors.primaryColorBrighter,
     borderRadius: 10,
     paddingHorizontal: wp(3),
     paddingVertical: hp(1),

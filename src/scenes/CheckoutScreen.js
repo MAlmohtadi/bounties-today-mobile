@@ -6,6 +6,7 @@ import {
   ScrollView,
   View,
   Text,
+  I18nManager,
 } from 'react-native';
 import Dash from 'react-native-dash';
 import { Button, Icon, Input } from 'react-native-elements';
@@ -236,7 +237,7 @@ const CheckoutScreen = ({
           <Text style={styles.subTitle}>طريقة الدفع</Text>
           <View
             style={{
-              flexDirection: 'row',
+              flexDirection: !I18nManager.isRTL ? 'row-reverse' : 'row',
               justifyContent: 'space-between',
               marginVertical: 15,
             }}>
@@ -281,7 +282,7 @@ const CheckoutScreen = ({
         }
         <View
           style={{
-            flexDirection: 'row',
+            flexDirection: !I18nManager.isRTL ? 'row-reverse' : 'row',
             backgroundColor: 'white',
             alignItems: 'center',
             padding: hp(1),
@@ -298,7 +299,7 @@ const CheckoutScreen = ({
             }}
             style={styles.coupone}
           />
-          <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center' }}>
+          <View style={{ flex: 1, flexDirection:!I18nManager.isRTL ? 'row-reverse' : 'row', alignItems: 'center' }}>
             <Text style={styles.subTitle}> إضافة كوبون خصم</Text>
             <Icon
               type="material-community"

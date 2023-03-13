@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, Modal, Dimensions } from 'react-native';
+import { StyleSheet, View, Text, Modal, Dimensions, I18nManager } from 'react-native';
 import { Icon, Button } from 'react-native-elements';
 import {
   heightPercentageToDP as hp,
@@ -127,13 +127,13 @@ const Filter = ({
           />
           <View
             style={{
-              flexDirection: 'row',
+              flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row',
               justifyContent: 'space-between',
               marginHorizontal: wp(2),
               marginBottom: hp(1),
             }}>
-            <Text>{minPrice} JD</Text>
-            <Text>{maxPrice} JD</Text>
+            <Text style={styles.price}>{minPrice} JD</Text>
+            <Text style={styles.price}>{maxPrice} JD</Text>
           </View>
           <Button
             key="submit-sort"
@@ -186,6 +186,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: wp(4.5),
     fontFamily: fonts.bold,
+    color:colors.primaryColor
   },
   cancelTextStyle: {
     color: '#FD0D1B',
@@ -229,12 +230,14 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   rowContainer: {
+   flexDirection: !I18nManager.isRTL ? 'row-reverse' : 'row',
     alignItems: 'flex-end',
     marginTop: hp(3),
     marginHorizontal: 20,
   },
-  subTitle: { fontFamily: fonts.bold, fontSize: wp(4) },
-  subTitle2: { fontFamily: fonts.bold, fontSize: wp(3.5) },
+  subTitle: { fontFamily: fonts.bold,color:colors.primaryColor, fontSize: wp(4) },
+  subTitle2: { fontFamily: fonts.bold, color:colors.primaryColor,fontSize: wp(3.5) },
+  price:{ fontFamily: fonts.bold,color:colors.primaryColor}
 });
 
 const mapStateToProps = (state) => {

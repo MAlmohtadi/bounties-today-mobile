@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet,I18nManager} from 'react-native';
 import {connect} from 'react-redux';
 import {setActiveView} from '_actions/configActions';
 import SortIcon from '_icons/sort';
@@ -77,7 +77,7 @@ const SortAndView = ({
 const styles = StyleSheet.create({
   mainContainer: {justifyContent: 'center', marginVertical: 4},
   viewButtonContainer: {
-    flexDirection: 'row',
+    flexDirection:  !I18nManager.isRTL ? 'row-reverse' : 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
   },

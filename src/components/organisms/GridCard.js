@@ -195,7 +195,8 @@ const styles = StyleSheet.create({
   titleContainer: { marginHorizontal: 10 },
   itemName: {
     marginTop: Platform.OS === "ios" ? hp(1) : hp(0),
-    textAlign: 'right', fontFamily: fonts.bold, fontSize: wp(3.4)
+    textAlign: 'right', fontFamily: fonts.bold, fontSize: wp(3.4),
+    color:colors.textColor,
   },
   bottomContainer: {
     flex: 1,
@@ -217,6 +218,7 @@ const styles = StyleSheet.create({
     fontSize: wp(3.4),
     textAlignVertical: 'center',
     marginHorizontal: 2,
+    color:colors.textColor,
   },
   priceContainer: {
     flexDirection: 'row',
@@ -272,6 +274,7 @@ const styles = StyleSheet.create({
     fontSize: wp(3),
     fontFamily: fonts.bold,
     textAlign: 'right',
+    color:colors.textColor,
   },
 });
 

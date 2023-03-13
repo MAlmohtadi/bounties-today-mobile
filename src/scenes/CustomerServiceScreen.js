@@ -5,6 +5,7 @@ import {
   heightPercentageToDP,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
+import colors from '_utils/constants/Colors';
 import fonts from '_utils/constants/Fonts';
 
 const CustomerServiceScreen = () => {
@@ -44,6 +45,7 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     fontFamily: fonts.regular,
+    color:colors.textColor,
     fontSize: wp(5),
     textAlign: 'center',
     margin: heightPercentageToDP(2)

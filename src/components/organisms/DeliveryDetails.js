@@ -96,7 +96,7 @@ const DeliveryDetails = ({
 const styles = StyleSheet.create({
   buttonStyle: {
     borderRadius: 10,
-    backgroundColor: '#F7F7F7',
+    backgroundColor: '#FFFF',
     borderWidth: 1,
     borderColor: colors.primaryColor,
   },
@@ -121,10 +121,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   activeAddressContainer: {
-    backgroundColor: '#EFE7EB',
+    backgroundColor: colors.primaryColorBrighter,
   },
   textContainer: {flex: 1, justifyContent: 'center', alignItems: 'center'},
-  textAddress: {fontSize: wp(3.5), fontFamily: fonts.regular},
+  textAddress: {fontSize: wp(3.5), fontFamily: fonts.regular,color:colors.secondryColor},
 });
 
 export default DeliveryDetails;

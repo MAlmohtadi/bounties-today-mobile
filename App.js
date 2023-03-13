@@ -6,7 +6,8 @@ import { PersistGate } from 'redux-persist/integration/react';
 import CustomerDrawer from './src/navigations/CustomDrawer';
 
 import Notificaiton from './src/components/organisms/Notification';
-import { isNotificationSupported, getMessagingObject } from './NotificationManager';
+import { isNotificationSupported ,onMessage} from './NotificationManager';
+import messaging from '@react-native-firebase/messaging';
 
 const App = () => {
   const [notificaiton, setNotification] = useState(null);
@@ -15,12 +16,11 @@ const App = () => {
   useEffect(() => {
     const subscribeListeners = [];
     if (isNotificationSupported()) {
-      subscribeListeners.push(getMessagingObject().onMessage(async (remoteMessage) => {
-        console.log('A new FCM message arrived!', JSON.stringify(remoteMessage));
-        setNotification({ ...remoteMessage });
-        setIsVisible(true);
+      subscribeListeners.push(messaging().onMessage(async remoteMessage => {
+        Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
       }))
-      subscribeListeners.push(getMessagingObject().onNotificationOpenedApp(async remoteMessage => {
+
+      subscribeListeners.push(messaging().onNotificationOpenedApp(async remoteMessage => {
         console.log(
           'Notification caused app to open from background state:',
           remoteMessage.notification,
@@ -28,9 +28,9 @@ const App = () => {
         setNotification({ ...remoteMessage });
         setIsVisible(true);
       }))
-
-      getMessagingObject().getToken().then(token => console.log("TOKEN:", token))
-      getMessagingObject()
+      // getMessagingObject().getToken().then(token => console.log("TOKEN:", token))
+      messaging().getToken().then(token => console.log("TOKEN:", token))
+      messaging()
         .getInitialNotification()
         .then(remoteMessage => {
           if (remoteMessage) {

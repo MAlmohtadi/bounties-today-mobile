@@ -216,6 +216,7 @@ const styles = StyleSheet.create({
   itemName: {
     textAlign: 'right',
     fontFamily: fonts.bold,
+    color:colors.textColor,
     fontSize: wp(3.4),
   },
   bottomContainer: {
@@ -277,6 +278,7 @@ const styles = StyleSheet.create({
     fontSize: wp(3.4),
     textAlignVertical: 'center',
     marginHorizontal: 2,
+    color: colors.textColor
   },
   withOffer: {
     textDecorationLine: 'line-through',
@@ -294,6 +296,7 @@ const styles = StyleSheet.create({
     fontSize: wp(3),
     fontFamily: fonts.bold,
     textAlign: 'right',
+    color:colors.textColor
   },
   paddingButtons: {
     padding: wp(2),

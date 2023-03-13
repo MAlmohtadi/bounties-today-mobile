@@ -253,7 +253,7 @@ const styles = StyleSheet.create({
     color: '#FF0000',
   },
   totalPriceContainer: {
-    backgroundColor: '#DED6DA',
+    backgroundColor: colors.primaryColorBrighter,
     paddingHorizontal: wp(4),
     paddingVertical: hp(1),
     borderRadius: wp(2),
@@ -261,6 +261,7 @@ const styles = StyleSheet.create({
   totalPrice: {
     fontFamily: fonts.bold,
     fontSize: wp(3.8),
+    color: colors.secondryColor
   },
   bottomContainer: {
     marginVertical: 15,

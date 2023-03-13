@@ -19,8 +19,7 @@ module.exports = {
           _locales: './src/locales',
           _icons: './src/assets/icons',
           _images: './src/assets/images',
-          _actions: './src/store/actions',
-          _constants: './src/utils/constants',
+          _actions: './src/store/actions'
         },
       },
     ],

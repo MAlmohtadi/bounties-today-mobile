@@ -4,6 +4,7 @@ import {
   Text,
   StyleSheet,
   ScrollView,
+  I18nManager,
 } from 'react-native';
 import {
   heightPercentageToDP as hp,
@@ -64,57 +65,57 @@ const UserCouponScreen = ({
   return isUserCouponLoading && userId ? (<LoadingSpinner />) : (
     <View style={styles.mainContainer}>
       <View style={{ flex: 1, margin: 10 }}>
-      <ScrollView keyboardShouldPersistTaps="handled" style={{ flex: 1 }}>
-      <View >
-        <Fragment>
-        
-             {coupons.map((item) => (
+        <ScrollView keyboardShouldPersistTaps="handled" style={{ flex: 1 }}>
+          <View >
+            <Fragment>
 
-<View style={styles.container}>
-<View style={styles.rowStyle}>
-  <View style={[styles.rowStyle, {justifyContent: 'flex-start'}]}>
-    <Text style={styles.labelStyle}>تاريخ الاصدار : </Text>
-    <Text style={styles.detailsTextStyle}>
-      {item.issueDate}
-    </Text>
-  </View>
-  <View style={[styles.rowStyle, {justifyContent: 'flex-start'}]}>
-    <Text style={styles.labelStyle}>عدد النقاط: </Text>
-    <Text style={styles.detailsTextStyle}>
-      {item.onlinePoints + item.storePoints}
-    </Text>
-  </View>
-  
-</View>
-<View style={styles.rowStyle}>
+              {coupons.map((item) => (
 
-<View style={[styles.rowStyle, {justifyContent: 'flex-start'}]}>
-    <Text style={styles.labelStyle}>القيمة  : </Text>
-    <Text style={styles.labelStyle2}>
-      {item.amount} دينار
-    </Text>
-  </View>
+                <View style={styles.container}>
+                  <View style={styles.rowStyle}>
   <View style={[styles.rowStyle, {justifyContent: 'flex-start'}]}>
-    <Text style={styles.labelStyle}>الحالة : </Text>
-    <Text style={styles.detailsTextStyle}>
-      {item.status}
-    </Text>
-  </View>
-  
-</View>
-<View style={styles.rowStyle}>
+                      <Text style={styles.labelStyle}>تاريخ الاصدار : </Text>
+                      <Text style={styles.detailsTextStyle}>
+                        {item.issueDate}
+                      </Text>
+                    </View>
+  <View style={[styles.rowStyle, {justifyContent: 'flex-start'}]}>
+                      <Text style={styles.labelStyle}>عدد النقاط: </Text>
+                      <Text style={styles.detailsTextStyle}>
+                        {item.onlinePoints + item.storePoints}
+                      </Text>
+                    </View>
+
+                  </View>
+                  <View style={styles.rowStyle}>
 
 <View style={[styles.rowStyle, {justifyContent: 'flex-start'}]}>
-    <Text style={styles.labelStyle}>الكوبون  : </Text>
-    <Text style={[styles.labelStyle2, styles.priceContainer]}>
-      {item.code}
-    </Text>
-  </View>
-</View>
-</View>
-            ))}
-        </Fragment>
-        </View>
+                      <Text style={styles.labelStyle}>القيمة  : </Text>
+                      <Text style={styles.labelStyle2}>
+                        {item.amount} دينار
+                      </Text>
+                    </View>
+  <View style={[styles.rowStyle, {justifyContent: 'flex-start'}]}>
+                      <Text style={styles.labelStyle}>الحالة : </Text>
+                      <Text style={styles.detailsTextStyle}>
+                        {item.status}
+                      </Text>
+                    </View>
+
+                  </View>
+                  <View style={styles.rowStyle}>
+
+<View style={[styles.rowStyle, {justifyContent: 'flex-start'}]}>
+                      <Text style={styles.labelStyle}>الكوبون  : </Text>
+                      <Text style={[styles.labelStyle2, styles.priceContainer]}>
+                        {item.code}
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              ))}
+            </Fragment>
+          </View>
         </ScrollView>
       </View>
       <AlertMessage
@@ -158,7 +159,7 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   rowStyle: {
-    flexDirection: 'row-reverse',
+    flexDirection: !I18nManager.isRTL ? 'row-reverse' : 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     marginVertical: 2,
@@ -168,8 +169,8 @@ const styles = StyleSheet.create({
     fontFamily: fonts.bold,
     fontSize: wp(3.4),
     textAlign: 'right',
-    
-  }, 
+    color: colors.textColor
+  },
   labelStyle2: {
     textAlignVertical: 'center',
     fontFamily: fonts.bold,
@@ -177,15 +178,16 @@ const styles = StyleSheet.create({
     paddingRight: 35,
     paddingLeft: 35,
     textAlign: 'right',
-    marginRight:20
-    
+    marginRight: 20,
+    color: colors.textColor
   },
   detailsTextStyle: {
     fontFamily: fonts.regular,
     fontSize: wp(3.6),
+    color: colors.textColor
   },
   priceContainer: {
-    backgroundColor: '#DED6DA',
+    backgroundColor: colors.primaryColorBrighter,
     borderRadius: 10,
     paddingHorizontal: wp(3),
     paddingVertical: hp(1),
@@ -196,7 +198,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.bold,
   },
   buttonStyle: {
-    backgroundColor: colors.primaryColor,
+    backgroundColor: colors.primaryColorBrighter,
     borderRadius: wp(2),
     borderWidth: 1,
     borderColor: 'transparent',

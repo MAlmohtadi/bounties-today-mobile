@@ -102,7 +102,7 @@ const FavoriteScreen = ({
                   justifyContent: 'center',
                 }}>
                 <EmptyIconWithDescription
-                  iconComponent={<HeartIcon />}
+                  iconComponent={<HeartIcon fill={colors.primaryColor} />}
                   description="سلة المفضلة فارغة !"
                 />
               </View>

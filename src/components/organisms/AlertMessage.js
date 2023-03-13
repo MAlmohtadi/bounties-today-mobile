@@ -106,7 +106,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
   },
-  subTitle: {fontFamily: fonts.bold, fontSize: wp(4), textAlign: 'center'},
+  subTitle: {fontFamily: fonts.bold, fontSize: wp(4), textAlign: 'center',color:colors.textColor},
   buttonsRowContainer: {
     justifyContent: 'space-between',
     flexDirection: 'row',

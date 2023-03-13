@@ -191,13 +191,13 @@ const styles = StyleSheet.create({
   },
   leftSubContainer: {
     flex: 4,
-    flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row',
+    flexDirection: !I18nManager.isRTL ? 'row-reverse' : 'row',
     position: 'relative',
     justifyContent: 'space-around',
   },
   rightContainer: {
     flex: 4,
-    flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row',
+    flexDirection: !I18nManager.isRTL ? 'row-reverse' : 'row',
     position: 'relative',
     justifyContent: 'space-around',
   },
