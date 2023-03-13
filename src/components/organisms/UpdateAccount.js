@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ScrollView } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {View, Text, StyleSheet, ScrollView} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import { Button, Icon, Input } from 'react-native-elements';
-import { TouchableOpacity } from 'react-native';
-import { connect } from 'react-redux';
+import {Button, Icon, Input} from 'react-native-elements';
+import {TouchableOpacity} from 'react-native';
+import {connect} from 'react-redux';
 import AlertMessage from '_organisms/AlertMessage';
 
 import {
@@ -15,7 +15,7 @@ import {
   updateUser,
   deleteUser,
 } from '_actions/authActions';
-import { validateEmail, validatePhoneNumber } from '_utils/validation';
+import {validateEmail, validatePhoneNumber} from '_utils/validation';
 import fonts from '_utils/constants/Fonts';
 import colors from '_utils/constants/Colors';
 
@@ -59,13 +59,13 @@ const UpdateAccount = ({
   const [email, setEmail] = useState(emailOriginal);
   const [phone, setPhone] = useState(phoneOriginal);
   const [secondaryPhone, setSecondaryPhone] = useState(secondaryPhoneOriginal);
-  const [validtion, setValidation] = useState({ ...initialValidation });
+  const [validtion, setValidation] = useState({...initialValidation});
   const [isLoading, setIsLoading] = useState(false);
   const [deleteModel, setDeleteModel] = useState(false);
 
   const onSubmit = () => {
-    const validationCheck = { ...validtion };
-    setValidation({ ...initialValidation });
+    const validationCheck = {...validtion};
+    setValidation({...initialValidation});
     validationCheck.name.isError = !name || (name && !(name.trim().length > 0));
     validationCheck.phone.isError =
       !phone || (phone && !validatePhoneNumber(phone));
@@ -73,7 +73,7 @@ const UpdateAccount = ({
       secondaryPhone && !validatePhoneNumber(secondaryPhone);
     validationCheck.email.isError = email && !validateEmail(email);
 
-    setValidation({ ...validationCheck });
+    setValidation({...validationCheck});
     if (
       !validationCheck.name.isError &&
       !validationCheck.phone.isError &&
@@ -106,11 +106,11 @@ const UpdateAccount = ({
     isUserUpdated,
     setUserUpdated,
   ]);
- 
+
   return (
     <ScrollView
       keyboardShouldPersistTaps="handled"
-      style={{ flex: 1 }}
+      style={{flex: 1}}
       contentContainerStyle={styles.mainContainer}>
       <View>
         <Input
@@ -122,7 +122,7 @@ const UpdateAccount = ({
           errorMessage={
             validtion.name.isError ? validtion.name.errorMessage : ''
           }
-          errorStyle={{ textAlign: 'right' }}
+          errorStyle={{textAlign: 'right'}}
           renderErrorMessage={validtion.name.isError}
           value={name}
           onChangeText={setName}
@@ -136,7 +136,7 @@ const UpdateAccount = ({
           errorMessage={
             validtion.phone.isError ? validtion.phone.errorMessage : ''
           }
-          errorStyle={{ textAlign: 'right' }}
+          errorStyle={{textAlign: 'right'}}
           renderErrorMessage={validtion.phone.isError}
           value={phone}
           onChangeText={setPhone}
@@ -156,7 +156,7 @@ const UpdateAccount = ({
               ? validtion.secondaryPhone.errorMessage
               : ''
           }
-          errorStyle={{ textAlign: 'right' }}
+          errorStyle={{textAlign: 'right'}}
           renderErrorMessage={validtion.secondaryPhone.isError}
           value={secondaryPhone}
           keyboardType="numeric"
@@ -176,7 +176,7 @@ const UpdateAccount = ({
           errorMessage={
             validtion.email.isError ? validtion.email.errorMessage : ''
           }
-          errorStyle={{ textAlign: 'right' }}
+          errorStyle={{textAlign: 'right'}}
           renderErrorMessage={validtion.email.isError}
           textAlign="right"
         />
@@ -190,9 +190,12 @@ const UpdateAccount = ({
           loading={isLoading}
           type="solid"
           title="تعديل المعلومات"
-          titleStyle={[styles.buttonTitleStyle, { color: '#fff' }]}
-          buttonStyle={[styles.buttonStyle, { backgroundColor: colors.primaryColor }]}
-          containerStyle={{ marginTop: 10, borderRadius: wp(2) }}
+          titleStyle={[styles.buttonTitleStyle, {color: '#fff'}]}
+          buttonStyle={[
+            styles.buttonStyle,
+            {backgroundColor: colors.primaryColor},
+          ]}
+          containerStyle={{marginTop: 10, borderRadius: wp(2)}}
         />
       </View>
       <View style={styles.subContainer2}>
@@ -231,12 +234,12 @@ const UpdateAccount = ({
           visible={deleteModel}
           message={'هل أنت متآكد من إلغاء حسابك'}
           buttonText={'إلغاء'}
-          buttonAction={() =>
-            setDeleteModel(false)
-          }
+          buttonAction={() => setDeleteModel(false)}
           buttonText2={'نعم'}
-          buttonAction2={() => { deleteUser({ id }); setViewType('login');}
-          }
+          buttonAction2={() => {
+            deleteUser({id});
+            setViewType('login');
+          }}
         />
       )}
     </ScrollView>
@@ -247,20 +250,20 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     justifyContent: 'space-between',
   },
-  subContainer: { marginVertical: hp(3), alignItems: 'flex-end' },
+  subContainer: {marginVertical: hp(3), alignItems: 'flex-end'},
   subContainer2: {
     flexDirection: 'row',
     marginVertical: hp(3),
     justifyContent: 'space-between',
   },
-  titleStyle: { fontFamily: fonts.bold, fontSize: hp(2) },
+  titleStyle: {fontFamily: fonts.bold, fontSize: hp(2)},
   buttonStyle: {
     borderRadius: wp(2),
     borderWidth: 1,
     borderColor: colors.primaryColor,
     backgroundColor: '#fff',
   },
-  containerStyle: { paddingHorizontal: 0, marginBottom: 10 },
+  containerStyle: {paddingHorizontal: 0, marginBottom: 10},
   inputContainerStyle: {
     borderColor: colors.primaryColor,
     borderWidth: 1,
@@ -272,14 +275,18 @@ const styles = StyleSheet.create({
     marginHorizontal: wp(2),
     fontSize: hp(2.2),
   },
-  customText: { fontFamily: fonts.bold, color: colors.primaryColor, fontSize: hp(2) },
+  customText: {
+    fontFamily: fonts.bold,
+    color: colors.primaryColor,
+    fontSize: hp(2),
+  },
   buttonTitleStyle: {
     color: '#415F9B',
     fontSize: hp(2),
     fontFamily: fonts.bold,
   },
 });
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     authReducer: state.authReducer,
   };

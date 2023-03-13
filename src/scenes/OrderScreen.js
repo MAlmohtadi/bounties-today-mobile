@@ -7,7 +7,7 @@ import {
   setSelectedOrder,
   clearOrders,
 } from '_actions/orderActions';
-import {FlatList, View, RefreshControl,Text} from 'react-native';
+import {FlatList, View, RefreshControl, Text} from 'react-native';
 import {heightPercentageToDP as hp} from 'react-native-responsive-screen';
 import Pages from '../navigations/Pages';
 import AlertMessage from '_organisms/AlertMessage';
@@ -43,7 +43,7 @@ const OrderScreen = ({
 }) => {
   const [visibleAlert, setVisibleAlert] = useState(false);
   const [cancelVisibleAlert, setCancelVisibleAlert] = useState(false);
-  const [cancelData,setCancelData] = useState(false);
+  const [cancelData, setCancelData] = useState(false);
   const fetchOrders = () => {
     getUserOrders({
       ...pagesConfig[route.name],
@@ -90,7 +90,7 @@ const OrderScreen = ({
           onEndReachedThreshold={0.4}
           initialNumToRender={5}
           refreshing={isOrderLoading}
-          keyExtractor={(item)=>`${item.id}`}
+          keyExtractor={item => `${item.id}`}
           refreshControl={
             <RefreshControl
               refreshing={isOrderLoading}
@@ -106,7 +106,6 @@ const OrderScreen = ({
               onPressCancel={() => {
                 setCancelVisibleAlert(true);
                 setCancelData({isWholeSale, orderId: item.id, userId});
-
               }}
               onPressView={() => {
                 setSelectedOrder({orderId: item.id, ...item});
@@ -150,7 +149,7 @@ const OrderScreen = ({
     </View>
   );
 };
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     orderReducer: state.orderReducer,
     authReducer: state.authReducer,

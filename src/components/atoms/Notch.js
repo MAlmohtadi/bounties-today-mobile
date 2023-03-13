@@ -1,7 +1,7 @@
 import React, {memo} from 'react';
 import {View, StyleSheet} from 'react-native';
 
-const Notch = (props) => {
+const Notch = props => {
   return <View style={styles.root} {...props} />;
 };
 

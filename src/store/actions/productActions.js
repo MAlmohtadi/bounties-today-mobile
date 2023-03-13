@@ -10,15 +10,15 @@ import {
 } from './types';
 import {api} from '../../config/Api';
 import {END_POINTS, METHODS} from '_utils/services';
-export const getProducts = (data) => (dispatch) => {
+export const getProducts = data => dispatch => {
   api(END_POINTS.getProducts, data, METHODS.POST)
-    .then((res) => {
+    .then(res => {
       dispatch({
         type: GET_PRODUCTS,
         payload: res.data,
       });
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
       dispatch({
         type: SET_ALERT,
@@ -31,15 +31,15 @@ export const getProducts = (data) => (dispatch) => {
     });
 };
 
-export const loadMoreProducts = (data) => (dispatch) => {
+export const loadMoreProducts = data => dispatch => {
   api(END_POINTS.getProducts, data, METHODS.POST)
-    .then((res) => {
+    .then(res => {
       dispatch({
         type: GET_MORE_PRODUCTS,
         payload: res.data,
       });
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
       dispatch({
         type: SET_ALERT,
@@ -52,15 +52,15 @@ export const loadMoreProducts = (data) => (dispatch) => {
     });
 };
 
-export const getSearchProducts = (data) => (dispatch) => {
+export const getSearchProducts = data => dispatch => {
   api(END_POINTS.searchProducts, data, METHODS.POST)
-    .then((res) => {
+    .then(res => {
       dispatch({
         type: GET_SEARCH_PRODUCTS,
         payload: res.data,
       });
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
       dispatch({
         type: SET_ALERT,
@@ -72,15 +72,15 @@ export const getSearchProducts = (data) => (dispatch) => {
       });
     });
 };
-export const loadMoreSearchProducts = (data) => (dispatch) => {
+export const loadMoreSearchProducts = data => dispatch => {
   api(END_POINTS.searchProducts, data, METHODS.POST)
-    .then((res) => {
+    .then(res => {
       dispatch({
         type: GET_MORE_SEARCH_PRODUCTS,
         payload: res.data,
       });
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
       dispatch({
         type: SET_ALERT,
@@ -92,19 +92,19 @@ export const loadMoreSearchProducts = (data) => (dispatch) => {
       });
     });
 };
-export const updateSearchCriteria = (data) => (dispatch) => {
+export const updateSearchCriteria = data => dispatch => {
   dispatch({
     type: UPDATE_SEARCH_CRITERIA,
     payload: data,
   });
 };
 
-export const clearProduct = () => (dispatch) => {
+export const clearProduct = () => dispatch => {
   dispatch({
     type: CLEAR_PRODUCT,
   });
 };
-export const setLoadingProduct = () => (dispatch) => {
+export const setLoadingProduct = () => dispatch => {
   dispatch({
     type: PRODUCT_LOADING,
     payload: true,

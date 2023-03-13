@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, FlatList, RefreshControl } from 'react-native';
-import { connect } from 'react-redux';
+import React, {useEffect, useState} from 'react';
+import {View, StyleSheet, FlatList, RefreshControl} from 'react-native';
+import {connect} from 'react-redux';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import { useRoute } from '@react-navigation/native';
-import { addToCart, removeFromCart } from '_actions/cartActions';
-import { addToFavorite, removeFromFavorite } from '_actions/favoriteActions';
+import {useRoute} from '@react-navigation/native';
+import {addToCart, removeFromCart} from '_actions/cartActions';
+import {addToFavorite, removeFromFavorite} from '_actions/favoriteActions';
 import {
   clearOffer,
   getOfferProducts,
@@ -18,13 +18,13 @@ import LoadingSpinner from '_organisms/LoadingSpinner';
 import SortAndView from '_organisms/SortAndView';
 import GridCard from '_organisms/GridCard';
 import Card from '_organisms/Card';
-import { Text } from 'react-native';
+import {Text} from 'react-native';
 import fonts from '_utils/constants/Fonts';
 import colors from '_utils/constants/Colors';
 
 const OffersScreen = ({
   navigation,
-  homeReducer: { isWholeSale },
+  homeReducer: {isWholeSale},
   offerReducer: {
     products = [],
     productsRemainingCount,
@@ -34,7 +34,7 @@ const OffersScreen = ({
   },
   cartReducer,
   cartWholesaleReducer,
-  configReducer: { isGridView, sortType },
+  configReducer: {isGridView, sortType},
   getOfferProducts,
   clearOffer,
   addToCart,
@@ -43,9 +43,9 @@ const OffersScreen = ({
 }) => {
   const [showSort, setShowSort] = useState(false);
   const route = useRoute();
-  const { quantities = {} } = isWholeSale ? cartWholesaleReducer : cartReducer;
+  const {quantities = {}} = isWholeSale ? cartWholesaleReducer : cartReducer;
 
-  const fetchProducts = (nextPageNumber) => {
+  const fetchProducts = nextPageNumber => {
     getOfferProducts({
       isWholeSale,
       nextPageNumber,
@@ -83,8 +83,8 @@ const OffersScreen = ({
         key={`card-${index}`}
         product={item}
         quantity={quantities[`${item.id}`]}
-        addToCart={(item) => addToCart(item, isWholeSale)}
-        removeFromCart={(item) => removeFromCart(item, isWholeSale)}
+        addToCart={item => addToCart(item, isWholeSale)}
+        removeFromCart={item => removeFromCart(item, isWholeSale)}
         showFavoriteIcon={false}
       />
     ) : (
@@ -92,26 +92,29 @@ const OffersScreen = ({
         key={`grid-${index}`}
         product={item}
         quantity={quantities[`${item.id}`]}
-        addToCart={(item) => addToCart(item, isWholeSale)}
-        removeFromCart={(item) => removeFromCart(item, isWholeSale)}
+        addToCart={item => addToCart(item, isWholeSale)}
+        removeFromCart={item => removeFromCart(item, isWholeSale)}
         showFavoriteIcon={false}
       />
     );
 
   useEffect(() => {
-    const unsubscribe = [navigation.addListener('focus', () => {
-      fetchProducts(0);
-    }), navigation.addListener('blur', () => {
-      clearOffer();
-    })];
+    const unsubscribe = [
+      navigation.addListener('focus', () => {
+        fetchProducts(0);
+      }),
+      navigation.addListener('blur', () => {
+        clearOffer();
+      }),
+    ];
     return () => {
       unsubscribe.forEach(unSub => {
         unSub();
-      })
+      });
     };
   }, [navigation, isOfferLoading, isGridView]);
   const renderEmpty = () => (
-    <View style={{ flex: 1, alignItems: 'center', margin: 20 }}>
+    <View style={{flex: 1, alignItems: 'center', margin: 20}}>
       <Text
         style={{
           fontFamily: fonts.regular,
@@ -139,7 +142,7 @@ const OffersScreen = ({
             },
             !isGridView ? null : styles.gridViewScrollContainer,
           ]}
-          keyExtractor={(item) => `cards-${item.id}`}
+          keyExtractor={item => `cards-${item.id}`}
           ListEmptyComponent={renderEmpty()}
           data={isOfferLoading ? [] : products}
           onEndReachedThreshold={0.4}
@@ -148,7 +151,7 @@ const OffersScreen = ({
           ListFooterComponent={renderFooter}
           refreshControl={refreshControl()}
           onEndReached={onEndReached}
-          renderItem={({ item, index }) => renderCard(item, index)}
+          renderItem={({item, index}) => renderCard(item, index)}
         />
       </View>
       <Sort visible={showSort} toggleOverlay={() => setShowSort(!showSort)} />
@@ -186,7 +189,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     offerReducer: state.offerReducer,
     cartReducer: state.cartReducer,

@@ -52,7 +52,7 @@ const GoldenCardScreen = ({
     setShowBarcodeModal(!showBarcodeModal);
   };
   const convert = () => {
-    if((onlinePoints + storePoints) < 1000) {
+    if (onlinePoints + storePoints < 1000) {
       showInvalidPointsAlert();
     } else {
       loadLoyaltyScreen();
@@ -102,7 +102,6 @@ const GoldenCardScreen = ({
                   shadowRadius: 15,
                   elevation: 1050,
                 }}>
-              
                 <View style={styles.textDetailContainer}>
                   <Image style={[styles.maskImageStyle]} source={appLogo} />
                   <Text style={styles.regularText}>البطاقة الذهبية </Text>
@@ -160,19 +159,17 @@ const GoldenCardScreen = ({
                   <Text style={[styles.regularText2]}>سياسة الاستخدام:</Text>
                 </View>
                 <View style={styles.textDetailContainer}>
-                <Text style={[styles.regularText3]}>
-                  برنامج النقاط الذهبية من جبران
-                   </Text>
+                  <Text style={[styles.regularText3]}>
+                    برنامج النقاط الذهبية من جبران
+                  </Text>
+                </View>
+                {termsOfService.map(item => (
+                  <View style={styles.textDetailContainer}>
+                    <Text style={[styles.regularText3, {color: '#FF0000'}]}>
+                      {'\u2043 ' + item}
+                    </Text>
                   </View>
-                  {termsOfService.map((item) => (
-                       <View style={styles.textDetailContainer}>
-                       <Text style={[styles.regularText3, {color: '#FF0000'}]}>
-                       {`\u2043 ` + item}
-                       </Text>
-                       </View>
-                  ))
-}
-            
+                ))}
               </View>
 
               <Button

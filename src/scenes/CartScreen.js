@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, {Fragment, useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -6,12 +6,12 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-import { Button } from 'react-native-elements';
+import {Button} from 'react-native-elements';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import CartIcon from '_icons/cart_icon';
 import Card from '_organisms/Card';
 import EmptyIconWithDescription from '_organisms/EmptyIconWithDescription';
@@ -47,13 +47,13 @@ const CartScreen = ({
 }) => {
   const [visibleAlert, setVisibleAlert] = useState(false);
   const [errorMessage, setErrorMessage] = useState();
-  const { products = [], quantities = {} } = isWholeSale
+  const {products = [], quantities = {}} = isWholeSale
     ? cartWholesaleReducer
     : cartReducer;
   let totalPrice = 0;
   let quantity = 0;
   let offerQuantity;
-  products.map((product) => {
+  products.map(product => {
     if (product.isOffer) {
       quantity = quantities[`${product.id}`];
       offerQuantity = product.offerQuantity;
@@ -96,10 +96,14 @@ const CartScreen = ({
       {products.length === 0 ? (
         <Fragment>
           <View />
-          <View style={{ alignItems: 'center' }}>
+          <View style={{alignItems: 'center'}}>
             <EmptyIconWithDescription
               iconComponent={
-                <CartIcon width={wp(5)} style={{ aspectRatio: 1 }} fill={colors.primaryColor} />
+                <CartIcon
+                  width={wp(5)}
+                  style={{aspectRatio: 1}}
+                  fill={colors.primaryColor}
+                />
               }
               description="سلة المشتريات فارغة !"
             />
@@ -110,7 +114,7 @@ const CartScreen = ({
             }}
             type="clear"
             title="إكمال التسوق"
-            titleStyle={{ color: '#fff', fontFamily: fonts.bold }}
+            titleStyle={{color: '#fff', fontFamily: fonts.bold}}
             useForeground
             containerStyle={[
               styles.buttonStyle,
@@ -118,7 +122,7 @@ const CartScreen = ({
                 backgroundColor: colors.primaryColor,
                 marginHorizontal: wp(2),
                 marginBottom: 15,
-                flex: null
+                flex: null,
               },
             ]}
           />
@@ -131,7 +135,7 @@ const CartScreen = ({
               onPress={() => clearCart(isWholeSale)}>
               <TrushIcon
                 width={wp(4)}
-                style={{ marginRight: wp(2), aspectRatio: 1 }}
+                style={{marginRight: wp(2), aspectRatio: 1}}
               />
               <Text style={styles.clearTitle}>إفراغ السلة</Text>
             </TouchableOpacity>
@@ -146,7 +150,7 @@ const CartScreen = ({
             enabled
             showsVerticalScrollIndicator={false}
             contentContainerStyle={styles.menuViewScrollContainer}>
-            {products.map((item) => (
+            {products.map(item => (
               <Card
                 key={item.id}
                 product={item}
@@ -156,11 +160,11 @@ const CartScreen = ({
                     : cartReducer.quantities[`${item.id}`]
                 }
                 deleteFromCart={deleteProductFromCart}
-                addToCart={(item) => addToCart(item, isWholeSale)}
-                removeFromCart={(item) => removeFromCart(item, isWholeSale)}
+                addToCart={item => addToCart(item, isWholeSale)}
+                removeFromCart={item => removeFromCart(item, isWholeSale)}
               />
             ))}
-            <View style={{ height: hp(15) }} />
+            <View style={{height: hp(15)}} />
           </ScrollView>
           <View style={styles.bottomContainer}>
             <Button
@@ -168,16 +172,19 @@ const CartScreen = ({
               type="clear"
               useForeground
               title="تنفيذ الطلب"
-              titleStyle={{ color: '#fff', fontFamily: fonts.bold }}
-              containerStyle={[styles.buttonStyle, { backgroundColor: colors.primaryColor }]}
+              titleStyle={{color: '#fff', fontFamily: fonts.bold}}
+              containerStyle={[
+                styles.buttonStyle,
+                {backgroundColor: colors.primaryColor},
+              ]}
             />
-            <View style={{ width: 15 }} />
+            <View style={{width: 15}} />
             <Button
               onPress={() => navigation.goBack()}
               type="clear"
               useForeground
               title="إكمال التسوق"
-              titleStyle={{ color: colors.primaryColor, fontFamily: fonts.bold }}
+              titleStyle={{color: colors.primaryColor, fontFamily: fonts.bold}}
               containerStyle={styles.buttonStyle}
             />
           </View>
@@ -261,7 +268,7 @@ const styles = StyleSheet.create({
   totalPrice: {
     fontFamily: fonts.bold,
     fontSize: wp(3.8),
-    color: colors.secondryColor
+    color: colors.secondryColor,
   },
   bottomContainer: {
     marginVertical: 15,
@@ -270,7 +277,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     cartReducer: state.cartReducer,
     cartWholesaleReducer: state.cartWholesaleReducer,

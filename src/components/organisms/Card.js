@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -15,7 +15,7 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import { Icon } from 'react-native-elements';
+import {Icon} from 'react-native-elements';
 import ImageModal from 'react-native-image-modal';
 import defaultImage from '_images/defaultImage.png';
 import fonts from '_utils/constants/Fonts';
@@ -36,7 +36,7 @@ const Card = ({
   const isProductQuantityAvailable = () => {
     return product.quantityMultiplier * (quantity + 1) <= product.maxQuantity;
   };
-  const [imageUri, setImageUri] = useState({ uri: product.imageUrl });
+  const [imageUri, setImageUri] = useState({uri: product.imageUrl});
 
   return (
     <View style={styles.cardContainer}>
@@ -53,7 +53,7 @@ const Card = ({
                 name="plus"
                 color={isEditable ? '#fff' : colors.primaryColor}
                 size={wp(5)}
-                style={{ aspectRatio: 1 }}
+                style={{aspectRatio: 1}}
               />
             ) : (
               <Icon
@@ -61,7 +61,7 @@ const Card = ({
                 name="ban"
                 color={isEditable ? '#fff' : colors.primaryColor}
                 size={wp(5)}
-                style={{ aspectRatio: 1 }}
+                style={{aspectRatio: 1}}
               />
             )}
           </TouchableOpacity>
@@ -69,7 +69,7 @@ const Card = ({
           {!!quantity > 0 && (
             <View
               style={[
-                { alignItems: 'center', marginTop: wp(1) },
+                {alignItems: 'center', marginTop: wp(1)},
                 styles.paddingButtons,
               ]}>
               <Text style={[styles.quantity]}>{quantity}</Text>
@@ -84,7 +84,7 @@ const Card = ({
                 name="minus"
                 size={wp(5)}
                 color={isEditable ? '#fff' : colors.primaryColor}
-                style={{ aspectRatio: 1 }}
+                style={{aspectRatio: 1}}
               />
             </TouchableOpacity>
           )}
@@ -117,14 +117,15 @@ const Card = ({
         </View>
       </View>
       <View style={styles.imageContainer}>
-      <ImageModal
-         onError={()=> setImageUri(defaultImage) }
-         source={imageUri}
-         style={{
-           width: '100%',
-           aspectRatio: 1,
-         }}
-         resizeMode="contain"/>
+        <ImageModal
+          onError={() => setImageUri(defaultImage)}
+          source={imageUri}
+          style={{
+            width: '100%',
+            aspectRatio: 1,
+          }}
+          resizeMode="contain"
+        />
       </View>
       {showStockStatus && !product.isStockAvailable && (
         <View style={styles.overlayShadow}>
@@ -135,7 +136,7 @@ const Card = ({
       )}
       {product.isOffer ? (
         <View style={styles.wholesaleIcon}>
-          <PercentageIcon height={wp(3)} style={{ aspectRatio: 1 }} />
+          <PercentageIcon height={wp(3)} style={{aspectRatio: 1}} />
         </View>
       ) : (
         <View />
@@ -145,11 +146,11 @@ const Card = ({
           style={styles.favoriteIcon}
           onPress={() => onClickFavoriteIcon(product.id)}>
           {product.isFavorite ? (
-            <HeartActive height={wp(6)} style={{ aspectRatio: 1 }} />
+            <HeartActive height={wp(6)} style={{aspectRatio: 1}} />
           ) : (
             <FavoriteIcon
               height={wp(6)}
-              style={{ aspectRatio: 1 }}
+              style={{aspectRatio: 1}}
               fill={'#85a83d'}
             />
           )}
@@ -159,7 +160,7 @@ const Card = ({
         <TouchableOpacity
           style={styles.favoriteIcon}
           onPress={() => onClickTrushIcon(product.id)}>
-          <TrushIcon height={wp(5)} style={{ aspectRatio: 1 }} />
+          <TrushIcon height={wp(5)} style={{aspectRatio: 1}} />
         </TouchableOpacity>
       )}
     </View>
@@ -216,7 +217,7 @@ const styles = StyleSheet.create({
   itemName: {
     textAlign: 'right',
     fontFamily: fonts.bold,
-    color:colors.textColor,
+    color: colors.textColor,
     fontSize: wp(3.4),
   },
   bottomContainer: {
@@ -258,8 +259,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: wp(2),
     paddingVertical: hp(1),
-    marginHorizontal:wp(1),
-    marginVertical:hp(2)
+    marginHorizontal: wp(1),
+    marginVertical: hp(2),
   },
   overlayText: {
     color: '#FFFFFF',
@@ -278,7 +279,7 @@ const styles = StyleSheet.create({
     fontSize: wp(3.4),
     textAlignVertical: 'center',
     marginHorizontal: 2,
-    color: colors.textColor
+    color: colors.textColor,
   },
   withOffer: {
     textDecorationLine: 'line-through',
@@ -296,7 +297,7 @@ const styles = StyleSheet.create({
     fontSize: wp(3),
     fontFamily: fonts.bold,
     textAlign: 'right',
-    color:colors.textColor
+    color: colors.textColor,
   },
   paddingButtons: {
     padding: wp(2),

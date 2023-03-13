@@ -1,19 +1,19 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, {Fragment, useState, useEffect} from 'react';
 import {
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
   ScrollView,
-  FlatList
+  FlatList,
 } from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import EmptyIconWithDescription from '_organisms/EmptyIconWithDescription';
-import { addToCart, removeFromCart } from '_actions/cartActions';
+import {addToCart, removeFromCart} from '_actions/cartActions';
 import {
   clearFavorite,
   removeFromFavorite,
@@ -37,53 +37,54 @@ const FavoriteScreen = ({
   clearFavoriteScreen,
   removeFromFavorite,
   getFavoriteProducts,
-  homeReducer: { isWholeSale },
-  authReducer: { id: userId },
+  homeReducer: {isWholeSale},
+  authReducer: {id: userId},
   cartReducer,
   cartWholesaleReducer,
-  favoriteReducer: { products = [], isUpdated, isLoading },
+  favoriteReducer: {products = [], isUpdated, isLoading},
 }) => {
   const [visibleAlert, setVisibleAlert] = useState(false);
-  const { quantities = {} } = isWholeSale ? cartWholesaleReducer : cartReducer;
+  const {quantities = {}} = isWholeSale ? cartWholesaleReducer : cartReducer;
 
   useEffect(() => {
-    const unsubscribe = [navigation.addListener('focus', () => {
-      if (!userId) {
-        setVisibleAlert(true);
-      } else {
-        getFavoriteProducts({ userId, isWholeSale });
-      }
-    }), navigation.addListener('blur', () => {
-      clearFavoriteScreen();
-    })];
+    const unsubscribe = [
+      navigation.addListener('focus', () => {
+        if (!userId) {
+          setVisibleAlert(true);
+        } else {
+          getFavoriteProducts({userId, isWholeSale});
+        }
+      }),
+      navigation.addListener('blur', () => {
+        clearFavoriteScreen();
+      }),
+    ];
 
     return () => {
       unsubscribe.forEach(unSub => {
         unSub();
-      })
+      });
     };
-  }, [
-    isUpdated,
-    isWholeSale,
-    navigation,
-    userId,
-    isLoading
-  ]);
-  return isLoading && userId ? (<LoadingSpinner />) : (
+  }, [isUpdated, isWholeSale, navigation, userId, isLoading]);
+  return isLoading && userId ? (
+    <LoadingSpinner />
+  ) : (
     <View style={styles.mainContainer}>
-      <View style={{ flex: 1, margin: 10 }}>
+      <View style={{flex: 1, margin: 10}}>
         <Fragment>
-          {products.length > 0 && <View style={styles.topContainer}>
-            <TouchableOpacity
-              style={styles.clearButton}
-              onPress={() => clearFavorite({ userId, isWholeSale })}>
-              <TrushIcon
-                width={wp(4)}
-                style={{ marginRight: wp(2), aspectRatio: 1 }}
-              />
-              <Text style={styles.clearTitle}>حذف المفضلة</Text>
-            </TouchableOpacity>
-          </View>}
+          {products.length > 0 && (
+            <View style={styles.topContainer}>
+              <TouchableOpacity
+                style={styles.clearButton}
+                onPress={() => clearFavorite({userId, isWholeSale})}>
+                <TrushIcon
+                  width={wp(4)}
+                  style={{marginRight: wp(2), aspectRatio: 1}}
+                />
+                <Text style={styles.clearTitle}>حذف المفضلة</Text>
+              </TouchableOpacity>
+            </View>
+          )}
           <FlatList
             contentContainerStyle={{
               paddingTop: hp(1),
@@ -93,33 +94,35 @@ const FavoriteScreen = ({
             }}
             showsVerticalScrollIndicator={false}
             data={products}
-            ListEmptyComponent={() => (<Fragment>
-              <View />
-              <View
-                style={{
-                  flex: 1,
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}>
-                <EmptyIconWithDescription
-                  iconComponent={<HeartIcon fill={colors.primaryColor} />}
-                  description="سلة المفضلة فارغة !"
-                />
-              </View>
-            </Fragment>)}
+            ListEmptyComponent={() => (
+              <Fragment>
+                <View />
+                <View
+                  style={{
+                    flex: 1,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}>
+                  <EmptyIconWithDescription
+                    iconComponent={<HeartIcon fill={colors.primaryColor} />}
+                    description="سلة المفضلة فارغة !"
+                  />
+                </View>
+              </Fragment>
+            )}
             onEndReachedThreshold={0.4}
-            keyExtractor={(item) => `${item.id}`}
-            renderItem={({ item, index }) => (
+            keyExtractor={item => `${item.id}`}
+            renderItem={({item, index}) => (
               <Card
                 key={item.id}
                 product={item}
                 quantity={quantities[`${item.id}`]}
                 showTrushIcon
-                onClickTrushIcon={(productId) =>
-                  removeFromFavorite({ productId, userId, isWholeSale })
+                onClickTrushIcon={productId =>
+                  removeFromFavorite({productId, userId, isWholeSale})
                 }
-                addToCart={(item) => addToCart(item, isWholeSale)}
-                removeFromCart={(item) => removeFromCart(item, isWholeSale)}
+                addToCart={item => addToCart(item, isWholeSale)}
+                removeFromCart={item => removeFromCart(item, isWholeSale)}
               />
             )}
           />
@@ -215,7 +218,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     cartReducer: state.cartReducer,
     cartWholesaleReducer: state.cartWholesaleReducer,

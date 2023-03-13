@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   StyleSheet,
@@ -16,10 +16,10 @@ import WholesaleIcon from '_icons/wholesale';
 import DiscountIcon from '_icons/discount';
 import CartIcon from '_icons/cart';
 import Pages from '../../navigations/Pages';
-import { connect } from 'react-redux';
-import { updateWholeSale } from '_actions/homeActions';
-import { clearCart } from '_actions/cartActions';
-import { useNavigation } from '@react-navigation/native';
+import {connect} from 'react-redux';
+import {updateWholeSale} from '_actions/homeActions';
+import {clearCart} from '_actions/cartActions';
+import {useNavigation} from '@react-navigation/native';
 import AlertMessage from '_organisms/AlertMessage';
 import Grocery from '_icons/grocery';
 import CheckList from '_icons/checklist';
@@ -30,25 +30,24 @@ import colors from '_utils/constants/Colors';
 const BottomMenu = ({
   homeReducer: {
     isWholeSale,
-    adminSettingsResponse: { wholeSaleEnabled,offersEnabled },
+    adminSettingsResponse: {wholeSaleEnabled, offersEnabled},
   },
   cartReducer,
   cartWholesaleReducer,
-  authReducer: { id: userId },
-  navigationReducer: { routeName },
+  authReducer: {id: userId},
+  navigationReducer: {routeName},
   updateWholeSale,
 }) => {
-  const { products = [] } = isWholeSale ? cartWholesaleReducer : cartReducer;
+  const {products = []} = isWholeSale ? cartWholesaleReducer : cartReducer;
   const navigation = useNavigation();
   const [visibleAlert, setVisibleAlert] = useState(false);
 
   const changeSaleFlag = () => {
-    navigation.reset({ index: 0, routes: [{ name: Pages.SplashScreen.route }] });
+    navigation.reset({index: 0, routes: [{name: Pages.SplashScreen.route}]});
 
     updateWholeSale(!isWholeSale);
-
   };
-  return (!Pages[`${routeName}`].bottomMenueVisible ? null :
+  return !Pages[`${routeName}`].bottomMenueVisible ? null : (
     <View style={styles.containerStyle}>
       <View style={styles.leftSubContainer}>
         <TouchableOpacity
@@ -56,9 +55,15 @@ const BottomMenu = ({
             navigation.navigate(Pages.Home.route);
           }}>
           <View style={styles.iconContainer}>
-            <HomeIcon width={wp(8)} height={hp(3)} fill={routeName.toLowerCase().includes('home')
-                ? colors.secondryColor
-                : '#FFF'} />
+            <HomeIcon
+              width={wp(8)}
+              height={hp(3)}
+              fill={
+                routeName.toLowerCase().includes('home')
+                  ? colors.secondryColor
+                  : '#FFF'
+              }
+            />
             <Text
               style={[
                 styles.iconTitle,
@@ -68,24 +73,34 @@ const BottomMenu = ({
             </Text>
           </View>
         </TouchableOpacity>
-       {offersEnabled&& <TouchableOpacity
-          onPress={() => navigation.navigate(Pages.Offer.route)}>
-          <View style={styles.iconContainer}>
-            <DiscountIcon width={wp(8)} height={hp(3)} fill={routeName === Pages.Offer.route ? colors.secondryColor: '#ffff'}/>
-            <Text
-              style={[
-                styles.iconTitle,
-                routeName === Pages.Offer.route ? styles.activeIcon : null,
-              ]}>
-              {Pages.Offer.title}
-            </Text>
-          </View>
-        </TouchableOpacity>}
+        {offersEnabled && (
+          <TouchableOpacity
+            onPress={() => navigation.navigate(Pages.Offer.route)}>
+            <View style={styles.iconContainer}>
+              <DiscountIcon
+                width={wp(8)}
+                height={hp(3)}
+                fill={
+                  routeName === Pages.Offer.route
+                    ? colors.secondryColor
+                    : '#ffff'
+                }
+              />
+              <Text
+                style={[
+                  styles.iconTitle,
+                  routeName === Pages.Offer.route ? styles.activeIcon : null,
+                ]}>
+                {Pages.Offer.title}
+              </Text>
+            </View>
+          </TouchableOpacity>
+        )}
       </View>
       <View style={styles.middleSubContainer}>
         <View style={styles.halfCircleContainer}>
-          <View style={{ height: wp(15), backgroundColor: 'transparent' }} />
-          <View style={{ height: wp(15), backgroundColor: '#F7F7F7' }} />
+          <View style={{height: wp(15), backgroundColor: 'transparent'}} />
+          <View style={{height: wp(15), backgroundColor: '#F7F7F7'}} />
         </View>
         <TouchableOpacity
           style={styles.cartButton}
@@ -102,13 +117,19 @@ const BottomMenu = ({
         <TouchableOpacity
           onPress={() => navigation.navigate(Pages.Category.route)}>
           <View style={styles.iconContainer}>
-            <Grocery width={wp(8)} height={hp(3)} fill={routeName === Pages.Category.route ? colors.secondryColor : '#ffff'} />
+            <Grocery
+              width={wp(8)}
+              height={hp(3)}
+              fill={
+                routeName === Pages.Category.route
+                  ? colors.secondryColor
+                  : '#ffff'
+              }
+            />
             <Text
               style={[
                 styles.iconTitle,
-                routeName === Pages.Category.route
-                  ? styles.activeIcon
-                  : null,
+                routeName === Pages.Category.route ? styles.activeIcon : null,
               ]}>
               {Pages.Category.title}
             </Text>
@@ -120,7 +141,11 @@ const BottomMenu = ({
               changeSaleFlag();
             }}>
             <View style={styles.iconContainer}>
-              <WholesaleIcon width={wp(8)} height={hp(3)} fill={colors.secondryColor} />
+              <WholesaleIcon
+                width={wp(8)}
+                height={hp(3)}
+                fill={colors.secondryColor}
+              />
               <Text style={[styles.iconTitle]}>
                 {isWholeSale ? 'البيع بالتجزئة' : 'البيع بالجملة'}
               </Text>
@@ -136,9 +161,15 @@ const BottomMenu = ({
               }
             }}>
             <View style={[styles.iconContainer]}>
-              <CheckList width={wp(8)} height={hp(3)} fill={routeName.toLowerCase().includes('order')
-                ? colors.secondryColor
-                : '#FFF'} />
+              <CheckList
+                width={wp(8)}
+                height={hp(3)}
+                fill={
+                  routeName.toLowerCase().includes('order')
+                    ? colors.secondryColor
+                    : '#FFF'
+                }
+              />
               <Text
                 style={[
                   styles.iconTitle,
@@ -265,7 +296,7 @@ const styles = StyleSheet.create({
     width: '30%',
   },
 });
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     homeReducer: state.homeReducer,
     cartReducer: state.cartReducer,
@@ -278,5 +309,4 @@ const mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   updateWholeSale,
   clearCart,
-
 })(BottomMenu);

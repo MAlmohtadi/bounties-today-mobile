@@ -58,12 +58,12 @@ const DeliveryModal = ({
   const [visibleValidationAlert, setVisibleValidationAlert] = useState(false);
   const [validationMessage, setValidationMessage] = useState();
 
-  const getSelectedDateInfo = (id) => {
-    return deliveryInfo.find((value) => value.id === id);
+  const getSelectedDateInfo = id => {
+    return deliveryInfo.find(value => value.id === id);
   };
   const getDatePeriods = () => {
     return selectedDate && deliveryInfo.length
-      ? deliveryInfo.find((value) => value.id === selectedDate).periods
+      ? deliveryInfo.find(value => value.id === selectedDate).periods
       : [];
   };
 
@@ -139,7 +139,7 @@ const DeliveryModal = ({
           </View>
           <HorizontalButtons
             data={deliveryInfo}
-            onSelect={(value) => {
+            onSelect={value => {
               setSelectedDate(value);
             }}
             selected={selectedDate}
@@ -276,7 +276,7 @@ const styles = StyleSheet.create({
     // paddingHorizontal: wp(10),
     // paddingVertical: hp(2),
     borderWidth: 1,
-    marginHorizontal: 5
+    marginHorizontal: 5,
   },
   buttonStyleActive: {
     backgroundColor: colors.primaryColor,
@@ -312,7 +312,11 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     fontSize: wp(3.5),
   },
-  priceText: {fontFamily: fonts.bold, color: colors.primaryColor, fontSize: wp(4.5)},
+  priceText: {
+    fontFamily: fonts.bold,
+    color: colors.primaryColor,
+    fontSize: wp(4.5),
+  },
   periodsRowContainer: {
     flex: 1,
     flexDirection: 'row',
@@ -322,7 +326,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     checkoutReducer: state.checkoutReducer,
     homeReducer: state.homeReducer,

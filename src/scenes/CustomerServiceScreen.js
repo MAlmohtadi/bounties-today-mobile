@@ -1,6 +1,6 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
-import { Icon } from 'react-native-elements';
+import {View, Text, StyleSheet} from 'react-native';
+import {Icon} from 'react-native-elements';
 import {
   heightPercentageToDP,
   widthPercentageToDP as wp,
@@ -12,11 +12,12 @@ const CustomerServiceScreen = () => {
   return (
     <View style={styles.mainContainer}>
       <View style={styles.rowContainer}>
-        <Text style={styles.textStyle}>لاي ملاحظات او اقتراحات يرجى التواصل معنا عن طريق الايميل:</Text>
+        <Text style={styles.textStyle}>
+          لاي ملاحظات او اقتراحات يرجى التواصل معنا عن طريق الايميل:
+        </Text>
         <Text style={styles.textStyle}>info@bountiestodayjo.com</Text>
         <Text style={styles.textStyle}>0781000035</Text>
       </View>
-
     </View>
   );
 };
@@ -45,11 +46,10 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     fontFamily: fonts.regular,
-    color:colors.textColor,
+    color: colors.textColor,
     fontSize: wp(5),
     textAlign: 'center',
-    margin: heightPercentageToDP(2)
+    margin: heightPercentageToDP(2),
   },
-
 });
 export default CustomerServiceScreen;

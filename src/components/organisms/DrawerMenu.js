@@ -1,13 +1,19 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, I18nManager } from 'react-native';
+import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  I18nManager,
+} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import { Divider, Icon } from 'react-native-elements';
+import {Divider, Icon} from 'react-native-elements';
 import Pages from '../../navigations/Pages';
-import { connect } from 'react-redux';
-import { logoutUser } from '_actions/authActions';
+import {connect} from 'react-redux';
+import {logoutUser} from '_actions/authActions';
 import CheckList from '_icons/checklist';
 import FavoriteIcon from '_icons/favorite.svg';
 import LoyaltyIcon from '_icons/loyalty-card.svg';
@@ -21,15 +27,15 @@ import colors from '_utils/constants/Colors';
 
 const DrawerMenu = ({
   navigation,
-  authReducer: { id, name, phone },
+  authReducer: {id, name, phone},
   homeReducer: {
     isWholeSale,
-    adminSettingsResponse: { goldenEnabled },
+    adminSettingsResponse: {goldenEnabled},
   },
   logoutUser,
 }) => {
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{flex: 1}}>
       <View style={styles.headerContainer}>
         <Icon
           type="ionicon"
@@ -79,14 +85,20 @@ const DrawerMenu = ({
         </View>
         <FavoriteIcon width={wp(6)} height={hp(3)} fill={colors.primaryColor} />
       </TouchableOpacity>
-      {goldenEnabled&&<TouchableOpacity
-        style={styles.lableAndTextContainer}
-        onPress={() => navigation.navigate(Pages.GoldenCard.route)}>
-        <View style={styles.textContainer}>
-          <Text style={styles.textStyle}>البطاقة الذهبية</Text>
-        </View>
-        <LoyaltyIcon width={wp(6)} height={hp(3)} fill={colors.primaryColor} />
-      </TouchableOpacity>}
+      {goldenEnabled && (
+        <TouchableOpacity
+          style={styles.lableAndTextContainer}
+          onPress={() => navigation.navigate(Pages.GoldenCard.route)}>
+          <View style={styles.textContainer}>
+            <Text style={styles.textStyle}>البطاقة الذهبية</Text>
+          </View>
+          <LoyaltyIcon
+            width={wp(6)}
+            height={hp(3)}
+            fill={colors.primaryColor}
+          />
+        </TouchableOpacity>
+      )}
       <TouchableOpacity
         style={styles.lableAndTextContainer}
         onPress={() => navigation.navigate(Pages.UserCoupon.route)}>
@@ -110,8 +122,11 @@ const DrawerMenu = ({
         <View style={styles.textContainer}>
           <Text style={styles.textStyle}>خدمة العملاء</Text>
         </View>
-        <CustomerServiceIcon width={wp(6)} height={hp(3)} fill={colors.primaryColor} />
-
+        <CustomerServiceIcon
+          width={wp(6)}
+          height={hp(3)}
+          fill={colors.primaryColor}
+        />
       </TouchableOpacity>
       {id && (
         <TouchableOpacity
@@ -129,7 +144,7 @@ const DrawerMenu = ({
 const styles = StyleSheet.create({
   headerContainer: {
     marginTop: hp(6),
-    alignItems: I18nManager.isRTL ? 'flex-start':'flex-end',
+    alignItems: I18nManager.isRTL ? 'flex-start' : 'flex-end',
   },
   lableAndTextContainer: {
     flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row',
@@ -137,9 +152,18 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     margin: hp(2),
   },
-  iconStyle: { marginHorizontal: 5, aspectRatio: 1 },
-  textContainer: { flex: 1, alignItems:I18nManager.isRTL ? 'flex-start':'flex-end', justifyContent: 'center', marginHorizontal: 10 },
-  textStyle: { fontFamily: fonts.bold, color: colors.primaryColor, fontSize: hp(2) },
+  iconStyle: {marginHorizontal: 5, aspectRatio: 1},
+  textContainer: {
+    flex: 1,
+    alignItems: I18nManager.isRTL ? 'flex-start' : 'flex-end',
+    justifyContent: 'center',
+    marginHorizontal: 10,
+  },
+  textStyle: {
+    fontFamily: fonts.bold,
+    color: colors.primaryColor,
+    fontSize: hp(2),
+  },
   deviderStyle: {
     backgroundColor: colors.primaryColor,
     height: 1.5,
@@ -152,11 +176,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     authReducer: state.authReducer,
     homeReducer: state.homeReducer,
   };
 };
 
-export default connect(mapStateToProps, { logoutUser })(DrawerMenu);
+export default connect(mapStateToProps, {logoutUser})(DrawerMenu);

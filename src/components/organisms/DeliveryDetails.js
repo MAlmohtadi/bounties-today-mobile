@@ -124,7 +124,11 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primaryColorBrighter,
   },
   textContainer: {flex: 1, justifyContent: 'center', alignItems: 'center'},
-  textAddress: {fontSize: wp(3.5), fontFamily: fonts.regular,color:colors.secondryColor},
+  textAddress: {
+    fontSize: wp(3.5),
+    fontFamily: fonts.regular,
+    color: colors.secondryColor,
+  },
 });
 
 export default DeliveryDetails;

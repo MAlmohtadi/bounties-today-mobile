@@ -15,7 +15,10 @@ const OrderTabs = ({navigation}) => {
       tabBarOptions={{
         activeTintColor: colors.primaryColor,
         inactiveTintColor: '#8f8f8f',
-        indicatorStyle: {borderBottomWidth: 4, borderColor: colors.primaryColor},
+        indicatorStyle: {
+          borderBottomWidth: 4,
+          borderColor: colors.primaryColor,
+        },
         labelStyle: {fontFamily: fonts.bold},
       }}>
       <Tab.Screen

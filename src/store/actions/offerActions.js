@@ -7,13 +7,13 @@ import {
 } from './types';
 import {api} from '../../config/Api';
 import {END_POINTS, METHODS} from '_utils/services';
-export const getOfferProducts = (data) => (dispatch) => {
+export const getOfferProducts = data => dispatch => {
   dispatch({
     type: OFFER_LOADING,
     payload: true,
   });
   api(END_POINTS.getOfferProdcuts, data, METHODS.POST)
-    .then((res) => {
+    .then(res => {
       dispatch({
         type: GET_OFFER_PRODUCTS,
         payload: res.data,
@@ -23,7 +23,7 @@ export const getOfferProducts = (data) => (dispatch) => {
         payload: false,
       });
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
 
       dispatch({
@@ -37,15 +37,15 @@ export const getOfferProducts = (data) => (dispatch) => {
     });
 };
 
-export const loadMoreOfferProducts = (data) => (dispatch) => {
+export const loadMoreOfferProducts = data => dispatch => {
   api(END_POINTS.getOfferProdcuts, data, METHODS.POST)
-    .then((res) => {
+    .then(res => {
       dispatch({
         type: GET_MORE_OFFER_PRODUCTS,
         payload: res.data,
       });
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
 
       dispatch({
@@ -54,7 +54,7 @@ export const loadMoreOfferProducts = (data) => (dispatch) => {
       });
     });
 };
-export const clearOffer = () => (dispatch) => {
+export const clearOffer = () => dispatch => {
   dispatch({
     type: CLEAR_OFFER,
   });

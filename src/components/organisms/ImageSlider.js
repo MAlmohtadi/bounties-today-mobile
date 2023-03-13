@@ -1,22 +1,30 @@
-import React, { useState } from 'react';
-import { View, StyleSheet, ImageBackground, TouchableOpacity, TouchableHighlight } from 'react-native';
+import React, {useState} from 'react';
+import {
+  View,
+  StyleSheet,
+  ImageBackground,
+  TouchableOpacity,
+  TouchableHighlight,
+} from 'react-native';
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
-import { SwiperFlatList } from 'react-native-swiper-flatlist';
+import {SwiperFlatList} from 'react-native-swiper-flatlist';
 import Dots from './Dots';
-import defaultImage from '_images/defaultImage.png'
+import defaultImage from '_images/defaultImage.png';
 import colors from '_utils/constants/Colors';
 
 const renderImage = (item, onPressImage) => {
   if (item.isClickable) {
     return (
-      <TouchableHighlight underlayColor={'#fff'} onPress={() => onPressImage(item)}>
+      <TouchableHighlight
+        underlayColor={'#fff'}
+        onPress={() => onPressImage(item)}>
         <ImageBackground
           key={item.id}
           defaultSource={defaultImage}
-          source={{ uri: item.imageUrl }}
+          source={{uri: item.imageUrl}}
           resizeMode="cover"
           style={styles.child}
         />
@@ -27,13 +35,13 @@ const renderImage = (item, onPressImage) => {
     <ImageBackground
       key={item.id}
       defaultSource={defaultImage}
-      source={{ uri: item.imageUrl }}
+      source={{uri: item.imageUrl}}
       resizeMode="cover"
       style={styles.child}
     />
   );
 };
-const ImageSlider = ({ banners = [], onPressImage }) => {
+const ImageSlider = ({banners = [], onPressImage}) => {
   const [active, setActive] = useState(0);
   return (
     <View style={styles.mainContainer}>
@@ -42,10 +50,10 @@ const ImageSlider = ({ banners = [], onPressImage }) => {
           autoplay
           autoplayDelay={3}
           autoplayLoop
-          onChangeIndex={(item) => setActive(item.index)}
+          onChangeIndex={item => setActive(item.index)}
           renderAll
           data={banners}
-          renderItem={({ item }) => renderImage(item, onPressImage)}
+          renderItem={({item}) => renderImage(item, onPressImage)}
         />
       </View>
       <Dots

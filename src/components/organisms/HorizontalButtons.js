@@ -1,10 +1,10 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { View, StyleSheet, FlatList,I18nManager } from 'react-native';
+import React, {useRef, useEffect, useState} from 'react';
+import {View, StyleSheet, FlatList, I18nManager} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import { Button } from 'react-native-elements';
+import {Button} from 'react-native-elements';
 import colors from '_utils/constants/Colors';
 import fonts from '_utils/constants/Fonts';
 
@@ -15,22 +15,28 @@ const HorizontalButtons = ({
   displayField = 'name',
 }) => {
   const scrollRef = useRef();
-  const [initialScrollIndex, setInitialScrollIndex] = useState(data.findIndex((item) => item.id === selected));
+  const [initialScrollIndex, setInitialScrollIndex] = useState(
+    data.findIndex(item => item.id === selected),
+  );
   useEffect(() => {
-    scrollToSelectedItem()
-  }, [selected, initialScrollIndex, scrollRef])
+    scrollToSelectedItem();
+  }, [selected, initialScrollIndex, scrollRef]);
   const scrollToSelectedItem = () => {
-    if (!initialScrollIndex || !data[initialScrollIndex] || data[initialScrollIndex].id !== selected) {
-      setInitialScrollIndex(data.findIndex((item) => item.id === selected));
+    if (
+      !initialScrollIndex ||
+      !data[initialScrollIndex] ||
+      data[initialScrollIndex].id !== selected
+    ) {
+      setInitialScrollIndex(data.findIndex(item => item.id === selected));
     } else if (scrollRef && scrollRef.current) {
       setTimeout(() => {
         scrollRef.current.scrollToIndex({
           animated: true,
-          index: initialScrollIndex
-        })
-      }, 100)
+          index: initialScrollIndex,
+        });
+      }, 100);
     }
-  }
+  };
   return (
     <View
       style={{
@@ -47,8 +53,8 @@ const HorizontalButtons = ({
         centerContent
         onScrollToIndexFailed={() => setInitialScrollIndex()}
         data={data}
-        keyExtractor={(item) => `${item.id}`}
-        renderItem={({ item }) => (
+        keyExtractor={item => `${item.id}`}
+        renderItem={({item}) => (
           <Button
             key={item.id}
             title={item[`${displayField}`]}
@@ -72,7 +78,7 @@ const HorizontalButtons = ({
 };
 const styles = StyleSheet.create({
   innerScrollContent: {
-    flexDirection:  !I18nManager.isRTL ? 'row-reverse' : 'row',
+    flexDirection: !I18nManager.isRTL ? 'row-reverse' : 'row',
   },
   buttonTitleStyle: {
     fontFamily: fonts.regular,
@@ -87,7 +93,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     borderColor: colors.primaryColor,
     borderWidth: 1,
-    marginHorizontal: 5
+    marginHorizontal: 5,
   },
   buttonStyleActive: {
     backgroundColor: colors.primaryColor,

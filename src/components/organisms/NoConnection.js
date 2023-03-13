@@ -26,8 +26,7 @@ const NoConnection = ({alertReducer: {error}}) => {
         <View />
         <View style={styles.center}>
           <NetworkIssue fill={'#000'} />
-          <Text
-            style={{fontFamily: fonts.bold, marginTop: 10, fontSize: 20}}>
+          <Text style={{fontFamily: fonts.bold, marginTop: 10, fontSize: 20}}>
             لا يوجد اتصال بالإنترنت
           </Text>
           <Text
@@ -53,7 +52,7 @@ const NoConnection = ({alertReducer: {error}}) => {
               marginHorizontal: wp(2),
               marginBottom: 15,
               borderRadius: 10,
-              borderRadius: wp(2)
+              borderRadius: wp(2),
             },
           ]}
         />
@@ -87,7 +86,7 @@ const styles = StyleSheet.create({
     margin: hp(4),
   },
 });
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     alertReducer: state.alertReducer,
   };

@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, Alert } from 'react-native';
-import { connect } from 'react-redux';
+import React, {useEffect, useState} from 'react';
+import {View, StyleSheet, Alert} from 'react-native';
+import {connect} from 'react-redux';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import MapView, { MarkerAnimated } from 'react-native-maps';
-import { updateCheckoutDetails,getDeliveryInfo} from '_actions/checkoutActions';
-import { Button } from 'react-native-elements';
+import MapView, {MarkerAnimated} from 'react-native-maps';
+import {updateCheckoutDetails, getDeliveryInfo} from '_actions/checkoutActions';
+import {Button} from 'react-native-elements';
 import Geolocation from '@react-native-community/geolocation';
 import colors from '_utils/constants/Colors';
 import fonts from '_utils/constants/Fonts';
 
-const MapScreen = ({ navigation, updateCheckoutDetails,getDeliveryInfo }) => {
+const MapScreen = ({navigation, updateCheckoutDetails, getDeliveryInfo}) => {
   const initialRegion = {
     latitude: 31.963086,
     longitude: 35.920176,
@@ -23,9 +23,8 @@ const MapScreen = ({ navigation, updateCheckoutDetails,getDeliveryInfo }) => {
   const errorMessage = 'لم يتم السماح بتحديد الموقع الحالي';
   const [selectedLocation, setSelectedLocation] = useState(null);
   useEffect(() => {
-    
     Geolocation.getCurrentPosition(
-      (position) => {
+      position => {
         setRegion({
           ...initialRegion,
           latitude: position.coords.latitude,
@@ -36,11 +35,11 @@ const MapScreen = ({ navigation, updateCheckoutDetails,getDeliveryInfo }) => {
           longitude: position.coords.longitude,
         });
       },
-      (error) => {
-        console.log( error);
+      error => {
+        console.log(error);
         Alert.alert('الموقع الحالي', errorMessage);
       },
-      { enableHighAccuracy: false, timeout: 3000 },
+      {enableHighAccuracy: false, timeout: 3000},
     );
   }, []);
   // Alert.alert('Info 2', JSON.stringify(selectedLocation))
@@ -56,16 +55,16 @@ const MapScreen = ({ navigation, updateCheckoutDetails,getDeliveryInfo }) => {
         }}
         initialRegion={initialRegion}
         region={region}
-        onTouchEnd={(e) => setSelectedLocation(e.nativeEvent.coordinate)}
-        onPress={(event) => {
+        onTouchEnd={e => setSelectedLocation(e.nativeEvent.coordinate)}
+        onPress={event => {
           setSelectedLocation(event.nativeEvent.coordinate);
         }}>
         {selectedLocation && (
           <MarkerAnimated
             draggable
-            coordinate={{ ...selectedLocation }}
+            coordinate={{...selectedLocation}}
             title={'title'}
-            onDragEnd={(e) => setSelectedLocation(e.nativeEvent.coordinate)}
+            onDragEnd={e => setSelectedLocation(e.nativeEvent.coordinate)}
             description={'description'}
           />
         )}
@@ -74,24 +73,26 @@ const MapScreen = ({ navigation, updateCheckoutDetails,getDeliveryInfo }) => {
         <Button
           onPress={() => {
             getDeliveryInfo({
-              lat:selectedLocation.latitude,
+              lat: selectedLocation.latitude,
               lng: selectedLocation.longitude,
             });
-            
+
             navigation.goBack();
           }}
           raised
           useForeground
           type="clear"
           title="تأكيد عنوان التوصيل"
-          titleStyle={{ color: '#fff', fontFamily: fonts.bold }}
-          containerStyle={[styles.buttonContainerStyle, styles.buttonStyle,
-          {
-            backgroundColor: colors.primaryColor,
-            marginHorizontal: wp(2),
-            marginBottom: hp(2),
-          }]}
-
+          titleStyle={{color: '#fff', fontFamily: fonts.bold}}
+          containerStyle={[
+            styles.buttonContainerStyle,
+            styles.buttonStyle,
+            {
+              backgroundColor: colors.primaryColor,
+              marginHorizontal: wp(2),
+              marginBottom: hp(2),
+            },
+          ]}
         />
       )}
     </View>
@@ -117,10 +118,13 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     offerReducer: state.offerReducer,
   };
 };
 
-export default connect(mapStateToProps, { updateCheckoutDetails, getDeliveryInfo })(MapScreen);
+export default connect(mapStateToProps, {
+  updateCheckoutDetails,
+  getDeliveryInfo,
+})(MapScreen);

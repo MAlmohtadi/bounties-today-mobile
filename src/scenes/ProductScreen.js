@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   View,
   StyleSheet,
@@ -8,7 +8,7 @@ import {
   Text,
   Keyboard,
 } from 'react-native';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -19,12 +19,10 @@ import {
   loadMoreSearchProducts,
   getSearchProducts,
   setLoadingProduct,
-  clearProduct
+  clearProduct,
 } from '_actions/productActions';
-import {
-  setSelectedCategory,
-} from '_actions/homeActions';
-import { addToCart, removeFromCart } from '_actions/cartActions';
+import {setSelectedCategory} from '_actions/homeActions';
+import {addToCart, removeFromCart} from '_actions/cartActions';
 import {
   addToFavorite,
   removeFromFavorite,
@@ -42,11 +40,11 @@ const ProductScreen = ({
   navigation,
   homeReducer: {
     isWholeSale,
-    selectedCategory: { id: categoryId, subCategories = [], subCategoryId },
+    selectedCategory: {id: categoryId, subCategories = [], subCategoryId},
   },
-  authReducer: { id: userId },
-  favoriteReducer: { isUpdated },
-  configReducer: { isGridView, sortType },
+  authReducer: {id: userId},
+  favoriteReducer: {isUpdated},
+  configReducer: {isGridView, sortType},
   productReducer: {
     products = [],
     productsRemainingCount,
@@ -71,10 +69,10 @@ const ProductScreen = ({
   loadMoreProducts,
   removeFromCart,
   setLoadingProduct,
-  setSelectedCategory
+  setSelectedCategory,
 }) => {
   const [showSort, setShowSort] = useState(false);
-  const { quantities = {} } = isWholeSale ? cartWholesaleReducer : cartReducer;
+  const {quantities = {}} = isWholeSale ? cartWholesaleReducer : cartReducer;
 
   const toggleOverlay = () => {
     setShowSort(!showSort);
@@ -82,7 +80,7 @@ const ProductScreen = ({
   const isSearchMode = () => {
     return isFilterEnabled || (textToSearch && textToSearch.length > 0);
   };
-  const fetchProducts = (nextPageNumber) => {
+  const fetchProducts = nextPageNumber => {
     if (textToSearch || isFilterEnabled) {
       getSearchProducts({
         categoryId: searchedCategory ? searchedCategory.id : null,
@@ -112,7 +110,7 @@ const ProductScreen = ({
       return null;
     }
     return (
-      <View style={{ flex: 1, justifyContent: 'center' }}>
+      <View style={{flex: 1, justifyContent: 'center'}}>
         <ActivityIndicator size="large" color={colors.primaryColor} />
       </View>
     );
@@ -146,25 +144,25 @@ const ProductScreen = ({
           nextPageNumber: nextPageNumber,
           pageSize,
           sort: sortType,
-          subCategoryId:subCategoryId || subCategories[0].id,
+          subCategoryId: subCategoryId || subCategories[0].id,
           userId: userId ? userId : 0,
         });
       }
     }
   };
-  const renderCards = (item) =>
+  const renderCards = item =>
     !isGridView ? (
       <Card
         key={`card-${item.id}`}
         product={item}
         quantity={quantities[`${item.id}`]}
-        addToCart={(item) => addToCart(item, isWholeSale)}
-        removeFromCart={(item) => removeFromCart(item, isWholeSale)}
+        addToCart={item => addToCart(item, isWholeSale)}
+        removeFromCart={item => removeFromCart(item, isWholeSale)}
         showFavoriteIcon={userId !== null}
-        onClickFavoriteIcon={(productId) => {
+        onClickFavoriteIcon={productId => {
           item.isFavorite
-            ? removeFromFavorite({ productId, userId, isWholeSale })
-            : addToFavorite({ productId, userId, isWholeSale });
+            ? removeFromFavorite({productId, userId, isWholeSale})
+            : addToFavorite({productId, userId, isWholeSale});
           toggleFavoriteFlag();
         }}
       />
@@ -173,13 +171,13 @@ const ProductScreen = ({
         key={`grid-${item.id}`}
         product={item}
         quantity={quantities[`${item.id}`]}
-        addToCart={(item) => addToCart(item, isWholeSale)}
-        removeFromCart={(item) => removeFromCart(item, isWholeSale)}
+        addToCart={item => addToCart(item, isWholeSale)}
+        removeFromCart={item => removeFromCart(item, isWholeSale)}
         showFavoriteIcon={userId !== null}
-        onClickFavoriteIcon={(productId) => {
+        onClickFavoriteIcon={productId => {
           item.isFavorite
-            ? removeFromFavorite({ productId, userId, isWholeSale })
-            : addToFavorite({ productId, userId, isWholeSale });
+            ? removeFromFavorite({productId, userId, isWholeSale})
+            : addToFavorite({productId, userId, isWholeSale});
           toggleFavoriteFlag();
         }}
       />
@@ -201,11 +199,10 @@ const ProductScreen = ({
     navigation,
     isProductLoading,
     isGridView,
-    sortType
-    
+    sortType,
   ]);
   const renderEmpty = () => (
-    <View style={{ flex: 1, alignItems: 'center', margin: 20 }}>
+    <View style={{flex: 1, alignItems: 'center', margin: 20}}>
       <Text
         style={{
           fontFamily: fonts.regular,
@@ -224,7 +221,7 @@ const ProductScreen = ({
           <HorizontalButtons
             data={subCategories}
             selected={subCategoryId || subCategories[0].id}
-            onSelect={(value) => {
+            onSelect={value => {
               setSelectedCategory({
                 id: categoryId,
                 subCategoryId: value,
@@ -240,11 +237,11 @@ const ProductScreen = ({
         />
         <FlatList
           onScrollBeginDrag={() => Keyboard.dismiss()}
-          key={!isGridView ? 'grid': 'single'}
+          key={!isGridView ? 'grid' : 'single'}
           numColumns={!isGridView ? 1 : 2}
           showsVerticalScrollIndicator={false}
           refreshing={isProductLoading}
-          keyExtractor={(item) => `${item.id}`}
+          keyExtractor={item => `${item.id}`}
           ListEmptyComponent={renderEmpty()}
           contentContainerStyle={[
             {
@@ -261,7 +258,7 @@ const ProductScreen = ({
           ListFooterComponent={renderFooter}
           refreshControl={refreshControl}
           onEndReached={onEndReached}
-          renderItem={({ item, index }) => renderCards(item, index)}
+          renderItem={({item, index}) => renderCards(item, index)}
         />
       </View>
       <Sort visible={showSort} toggleOverlay={toggleOverlay} />
@@ -285,7 +282,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     productReducer: state.productReducer,
     cartReducer: state.cartReducer,
@@ -309,5 +306,5 @@ export default connect(mapStateToProps, {
   getSearchProducts,
   setLoadingProduct,
   clearProduct,
-  setSelectedCategory
+  setSelectedCategory,
 })(ProductScreen);

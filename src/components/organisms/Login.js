@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   View,
   Text,
@@ -10,17 +10,20 @@ import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import { Button, Icon, Input } from 'react-native-elements';
-import { loginUser, setUserUpdated } from '_actions/authActions';
-import { appleAuth, AppleButton } from '@invertase/react-native-apple-authentication';
+import {Button, Icon, Input} from 'react-native-elements';
+import {loginUser, setUserUpdated} from '_actions/authActions';
+import {
+  appleAuth,
+  AppleButton,
+} from '@invertase/react-native-apple-authentication';
 
 import {
   GraphRequest,
   GraphRequestManager,
   LoginManager,
 } from 'react-native-fbsdk-next';
-import { connect } from 'react-redux';
-import { validatePhoneNumber } from '_utils/validation';
+import {connect} from 'react-redux';
+import {validatePhoneNumber} from '_utils/validation';
 import AlertMessage from '_organisms/AlertMessage';
 import fonts from '_utils/constants/Fonts';
 import colors from '_utils/constants/Colors';
@@ -33,13 +36,13 @@ const initialValidation = {
 const Login = ({
   setViewType,
   loginUser,
-  authReducer: { id: userId },
-  alertReducer: { error },
+  authReducer: {id: userId},
+  alertReducer: {error},
   setUserUpdated,
 }) => {
   const [isLoginVisible, setIsLoginVisible] = useState(false);
   const [phone, setPhone] = useState();
-  const [validtion, setValidation] = useState({ ...initialValidation });
+  const [validtion, setValidation] = useState({...initialValidation});
   const [isLoading, setIsLoading] = useState(false);
   const [feedbackMessageVisible, setFeedbackMessageVisible] = useState(false);
   const loginCallback = (error, result) => {
@@ -47,7 +50,7 @@ const Login = ({
       console.log('Error fetching data: ' + error.toString());
     } else {
       console.log('Success fetching data: ' + result.toString());
-      loginUser({ facebookId: result.id });
+      loginUser({facebookId: result.id});
     }
   };
   useEffect(() => {
@@ -62,7 +65,7 @@ const Login = ({
       setIsLoading(false);
     }
   }, [userId, error, setUserUpdated]);
-  const loginFacebook = (type) => {
+  const loginFacebook = type => {
     // Attempt a login using the Facebook login dialog asking for default permissions.
     LoginManager.logInWithPermissions(['public_profile']).then(
       function (result) {
@@ -71,7 +74,7 @@ const Login = ({
         } else {
           console.log(
             'Login success with permissions: ' +
-            result.grantedPermissions.toString(),
+              result.grantedPermissions.toString(),
           );
           new GraphRequestManager()
             .addRequest(infoRequest(loginCallback))
@@ -87,40 +90,37 @@ const Login = ({
     // Make a request to apple.
     const appleAuthRequestResponse = await appleAuth.performRequest({
       requestedOperation: appleAuth.Operation.LOGIN,
-      requestedScopes: [
-        appleAuth.Scope.EMAIL,
-        appleAuth.Scope.FULL_NAME
-      ],
+      requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
     });
 
     // // Get the credential for the user.
     const credentialState = await appleAuth.getCredentialStateForUser(
-      appleAuthRequestResponse.user
+      appleAuthRequestResponse.user,
     );
 
     // // If the Auth is authorized, we call our API and pass the authorization code.
     if (credentialState === appleAuth.State.AUTHORIZED) {
-      loginUser({ appleId: appleAuthRequestResponse.user })
+      loginUser({appleId: appleAuthRequestResponse.user});
     }
   };
-  const infoRequest = (callback) =>
+  const infoRequest = callback =>
     new GraphRequest('/me?fields=email,name', null, callback);
   const onSubmit = () => {
-    const validationCheck = { ...validtion };
-    setValidation({ ...initialValidation });
+    const validationCheck = {...validtion};
+    setValidation({...initialValidation});
     validationCheck.phone.isError =
       !phone || (phone && !validatePhoneNumber(phone));
 
-    setValidation({ ...validationCheck });
+    setValidation({...validationCheck});
     if (!validationCheck.phone.isError) {
       setIsLoading(true);
-      loginUser({ phone });
+      loginUser({phone});
     }
   };
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 0}
-      style={{ flex: 1 }}>
+      style={{flex: 1}}>
       <Button
         raised
         onPress={() => {
@@ -133,11 +133,11 @@ const Login = ({
             type="font-awesome"
             name="facebook-official"
             size={wp(4)}
-            style={{ aspectRatio: 1, marginHorizontal: wp(2) }}
+            style={{aspectRatio: 1, marginHorizontal: wp(2)}}
             color="#415F9B"
           />
         }
-        titleStyle={[styles.buttonTitleStyle, { fontSize: hp(1.8) }]}
+        titleStyle={[styles.buttonTitleStyle, {fontSize: hp(1.8)}]}
         useForeground
         containerStyle={[
           styles.buttonStyle,
@@ -148,7 +148,7 @@ const Login = ({
           },
         ]}
       />
-      {Platform.OS === 'ios' &&
+      {Platform.OS === 'ios' && (
         <AppleButton
           buttonStyle={AppleButton.Style.WHITE_OUTLINE}
           buttonType={AppleButton.Type.SIGN_IN}
@@ -159,7 +159,8 @@ const Login = ({
             height: hp(5), // You must specify a height
           }}
           onPress={() => onAppleButtonPress()}
-        />}
+        />
+      )}
       {!isLoginVisible && (
         <Button
           raised
@@ -168,11 +169,11 @@ const Login = ({
           }}
           type="clear"
           title="تسجيل باستخدام رقم الهاتف"
-          titleStyle={[styles.buttonTitleStyle, { color: colors.primaryColor }]}
+          titleStyle={[styles.buttonTitleStyle, {color: colors.primaryColor}]}
           useForeground
           containerStyle={[
             styles.buttonStyle,
-            { marginTop: 5, backgroundColor: '#fff' },
+            {marginTop: 5, backgroundColor: '#fff'},
           ]}
         />
       )}
@@ -182,14 +183,14 @@ const Login = ({
           placeholder="رقم الهاتف"
           keyboardType="numeric"
           returnKeyType="done"
-          onChangeText={(value) => setPhone(value)}
+          onChangeText={value => setPhone(value)}
           inputStyle={styles.inputTextStyle}
           containerStyle={styles.containerStyle}
           inputContainerStyle={styles.inputContainerStyle}
           errorMessage={
             validtion.phone.isError ? validtion.phone.errorMessage : ''
           }
-          errorStyle={{ textAlign: 'right' }}
+          errorStyle={{textAlign: 'right'}}
           renderErrorMessage={validtion.phone.isError}
           textAlign="right"
         />
@@ -199,18 +200,25 @@ const Login = ({
           raised
           onPress={() => {
             if (!isLoading) {
-              onSubmit({ phone });
+              onSubmit({phone});
             }
           }}
           loading={isLoading}
           type="clear"
           title="تسجيل الدخول"
-          titleStyle={[styles.buttonTitleStyle, { color: '#fff' }]}
+          titleStyle={[styles.buttonTitleStyle, {color: '#fff'}]}
           useForeground
-          containerStyle={[styles.buttonStyle, { backgroundColor: colors.primaryColor, marginTop: 5, borderRadius: wp(2) }]}
+          containerStyle={[
+            styles.buttonStyle,
+            {
+              backgroundColor: colors.primaryColor,
+              marginTop: 5,
+              borderRadius: wp(2),
+            },
+          ]}
         />
       )}
-      <View style={{ marginTop: 10, alignItems: 'flex-start' }}>
+      <View style={{marginTop: 10, alignItems: 'flex-start'}}>
         <Text
           style={styles.customText}
           onPress={() => {
@@ -235,7 +243,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
-  titleStyle: { fontFamily: fonts.bold, fontSize: 15 },
+  titleStyle: {fontFamily: fonts.bold, fontSize: 15},
   buttonStyle: {
     borderRadius: wp(2),
     borderWidth: 1,
@@ -247,7 +255,7 @@ const styles = StyleSheet.create({
     color: '#FF0000',
     fontSize: hp(2),
   },
-  containerStyle: { paddingHorizontal: 0, marginVertical: 10 },
+  containerStyle: {paddingHorizontal: 0, marginVertical: 10},
   inputContainerStyle: {
     borderColor: colors.primaryColor,
     borderWidth: 1,
@@ -265,7 +273,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.bold,
   },
 });
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     authReducer: state.authReducer,
 

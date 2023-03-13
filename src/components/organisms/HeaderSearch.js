@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, TextInput, I18nManager } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {View, StyleSheet, TextInput, I18nManager} from 'react-native';
 import SearchIcon from '_icons/Search.svg';
-import { Icon, Button } from 'react-native-elements';
+import {Icon, Button} from 'react-native-elements';
 import Filter from '_organisms/Filter';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import { updateSearchCriteria } from '_actions/productActions';
-import { connect } from 'react-redux';
+import {TouchableOpacity} from 'react-native-gesture-handler';
+import {updateSearchCriteria} from '_actions/productActions';
+import {connect} from 'react-redux';
 import Pages from '../../navigations/Pages';
 import AlertMessage from '_organisms/AlertMessage';
 
-import { useRoute } from '@react-navigation/core';
+import {useRoute} from '@react-navigation/core';
 import colors from '_utils/constants/Colors';
 import fonts from '_utils/constants/Fonts';
 
 const HeaderSearch = ({
   navigation,
   // insets,
-  productReducer: { textToSearch },
+  productReducer: {textToSearch},
   updateSearchCriteria,
 }) => {
   const [showFilterButton, setShowFilterButton] = useState(false);
@@ -28,12 +28,12 @@ const HeaderSearch = ({
 
   const confirm = () => {
     if (!textValue || textValue.length < 2) {
-      setFeedbackMessageVisible(true)
+      setFeedbackMessageVisible(true);
     } else {
       if (route.name !== Pages.Product.route) {
         navigation.navigate(Pages.Product.route);
       }
-      updateSearchCriteria({ textToSearch: textValue });
+      updateSearchCriteria({textToSearch: textValue});
     }
   };
   useEffect(() => {
@@ -46,15 +46,32 @@ const HeaderSearch = ({
         // { paddingTop: insets.top - 10, marginBottom: 5 },
       ]}>
       <View style={styles.searchContainer}>
-        {!showFilterButton ? ( !I18nManager.isRTL ? <SearchIcon />:null) : <Button title='إبحث' raised
-          buttonStyle={styles.searchButtonStyle}
-          containerStyle={styles.searchContainerStyle} onPress={() => { confirm(); }} />}
+        {!showFilterButton ? (
+          !I18nManager.isRTL ? (
+            <SearchIcon />
+          ) : null
+        ) : (
+          <Button
+            title="إبحث"
+            raised
+            buttonStyle={styles.searchButtonStyle}
+            containerStyle={styles.searchContainerStyle}
+            onPress={() => {
+              confirm();
+            }}
+          />
+        )}
         <TextInput
           style={[
             styles.inputContainerStyle,
-            { textAlign: 'center', fontSize: 16, fontFamily: fonts.bold,color:colors.textColor },
+            {
+              textAlign: 'center',
+              fontSize: 16,
+              fontFamily: fonts.bold,
+              color: colors.textColor,
+            },
           ]}
-          onChangeText={(value) => setTextValue(value)}
+          onChangeText={value => setTextValue(value)}
           value={textValue}
           placeholder="ابحث عن المنتج"
           placeholderTextColor={colors.primaryColor}
@@ -64,7 +81,11 @@ const HeaderSearch = ({
           clearButtonMode="always"
           // onPressOut={() => setShowFilterButton(false)}
         />
-        {!showFilterButton ? ( I18nManager.isRTL ? <SearchIcon />:null) : (
+        {!showFilterButton ? (
+          I18nManager.isRTL ? (
+            <SearchIcon />
+          ) : null
+        ) : (
           <TouchableOpacity
             style={styles.iconContainer}
             onPress={() => setFilterVisible(!filterVisible)}>
@@ -73,7 +94,7 @@ const HeaderSearch = ({
               name="options-outline"
               style
               containerStyle={styles.iconContainerStyle}
-              onPress={() => { }}
+              onPress={() => {}}
               color="#fff"
             />
           </TouchableOpacity>
@@ -109,7 +130,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
     justifyContent: 'space-between',
     alignItems: 'center',
-    flexDirection: I18nManager.isRTL ? 'row-reverse':'row',
+    flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row',
     paddingHorizontal: 10,
     borderBottomLeftRadius: 25,
     borderBottomRightRadius: 25,
@@ -184,10 +205,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     productReducer: state.productReducer,
   };
 };
 
-export default connect(mapStateToProps, { updateSearchCriteria })(HeaderSearch);
+export default connect(mapStateToProps, {updateSearchCriteria})(HeaderSearch);

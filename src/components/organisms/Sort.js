@@ -93,7 +93,6 @@ const Sort = ({
               // containerStyle={{marginVertical: 5, borderRadius: 9}}
             />
           </View>
-         
         </View>
       </View>
     </Modal>
@@ -181,7 +180,7 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
 });
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     configReducer: state.configReducer,
   };

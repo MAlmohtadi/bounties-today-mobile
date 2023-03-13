@@ -5,7 +5,7 @@ import colors from '_utils/constants/Colors';
 const LoadingSpinner = ({style}) => {
   return (
     <View style={[{flex: 1, justifyContent: 'center'}, style]}>
-      <ActivityIndicator size="large" color={colors.primaryColor }/>
+      <ActivityIndicator size="large" color={colors.primaryColor} />
     </View>
   );
 };

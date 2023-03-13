@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     authReducer: state.authReducer,
   };

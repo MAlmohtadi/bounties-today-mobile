@@ -65,7 +65,8 @@ const CreateAccount = ({
   const [validtion, setValidation] = useState({...initialValidation});
   const [isLoading, setIsLoading] = useState(false);
   const [feedbackMessageVisible, setFeedbackMessageVisible] = useState(false);
-  const [appleSignupCompletionVisiblity, setAppleSignupCompletionVisiblity] = useState(false);
+  const [appleSignupCompletionVisiblity, setAppleSignupCompletionVisiblity] =
+    useState(false);
 
   const onSubmit = () => {
     const validationCheck = {...validtion};
@@ -110,7 +111,7 @@ const CreateAccount = ({
   ]);
   //Create response callback.
 
-  const loginFacebook = (type) => {
+  const loginFacebook = type => {
     // Attempt a login using the Facebook login dialog asking for default permissions.
     LoginManager.logInWithPermissions(['public_profile']).then(
       function (result) {
@@ -132,7 +133,7 @@ const CreateAccount = ({
       },
     );
   };
-  const infoRequest = (callback) =>
+  const infoRequest = callback =>
     new GraphRequest('/me?fields=email,name', null, callback);
   const createAccountCallback = (error, result) => {
     if (error) {
@@ -152,8 +153,8 @@ const CreateAccount = ({
         requestedOperation: appleAuth.Operation.LOGIN,
         requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME],
       })
-      .then((res) => {
-        console.log("dedeede", {res})
+      .then(res => {
+        console.log('dedeede', {res});
         setAppleId(res.user);
         const {
           familyName,
@@ -322,7 +323,10 @@ const CreateAccount = ({
         type="solid"
         title="تأكيد المعلومات"
         titleStyle={[styles.buttonTitleStyle, {color: '#fff'}]}
-        buttonStyle={[styles.buttonStyle, {backgroundColor: colors.primaryColor}]}
+        buttonStyle={[
+          styles.buttonStyle,
+          {backgroundColor: colors.primaryColor},
+        ]}
         containerStyle={{
           marginTop: 10,
           borderRadius: wp(2),
@@ -347,7 +351,7 @@ const CreateAccount = ({
           setFeedbackMessageVisible(false);
         }}
       />
-       <AlertMessage
+      <AlertMessage
         visible={appleSignupCompletionVisiblity}
         message={'لاكمال التسجيل يرجى ادخال رقم الهاتف و الاسم'}
         buttonText="موافق"
@@ -396,7 +400,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     authReducer: state.authReducer,
     alertReducer: state.alertReducer,

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, StyleSheet,I18nManager} from 'react-native';
+import {View, StyleSheet, I18nManager} from 'react-native';
 import {connect} from 'react-redux';
 import {setActiveView} from '_actions/configActions';
 import SortIcon from '_icons/sort';
@@ -25,9 +25,17 @@ const SortAndView = ({
             onPress={() => setActiveView(true)}
             icon={
               isGridView ? (
-                <GridViewActive width={wp(5)} style={{aspectRatio: 1}} fill={colors.primaryColor} />
+                <GridViewActive
+                  width={wp(5)}
+                  style={{aspectRatio: 1}}
+                  fill={colors.primaryColor}
+                />
               ) : (
-                <GridViewInactive width={wp(5)} style={{aspectRatio: 1}} fill={colors.primaryColor} />
+                <GridViewInactive
+                  width={wp(5)}
+                  style={{aspectRatio: 1}}
+                  fill={colors.primaryColor}
+                />
               )
             }
             type="clear"
@@ -40,9 +48,17 @@ const SortAndView = ({
           <Button
             icon={
               !isGridView ? (
-                <MenuIcon width={wp(5)} style={{aspectRatio: 1}} fill={colors.primaryColor}/>
+                <MenuIcon
+                  width={wp(5)}
+                  style={{aspectRatio: 1}}
+                  fill={colors.primaryColor}
+                />
               ) : (
-                <MenuActiveIcon width={wp(5)} style={{aspectRatio: 1}} fill={colors.primaryColor} />
+                <MenuActiveIcon
+                  width={wp(5)}
+                  style={{aspectRatio: 1}}
+                  fill={colors.primaryColor}
+                />
               )
             }
             onPress={() => setActiveView(false)}
@@ -57,9 +73,17 @@ const SortAndView = ({
         <Button
           icon={
             !sortType ? (
-              <SortIcon width={wp(5)} style={{aspectRatio: 1}} fill={colors.primaryColor} />
+              <SortIcon
+                width={wp(5)}
+                style={{aspectRatio: 1}}
+                fill={colors.primaryColor}
+              />
             ) : (
-              <SortActiveIcon width={wp(5)} style={{aspectRatio: 1}} fill={colors.primaryColor} />
+              <SortActiveIcon
+                width={wp(5)}
+                style={{aspectRatio: 1}}
+                fill={colors.primaryColor}
+              />
             )
           }
           onPress={() => setShowSort(true)}
@@ -77,7 +101,7 @@ const SortAndView = ({
 const styles = StyleSheet.create({
   mainContainer: {justifyContent: 'center', marginVertical: 4},
   viewButtonContainer: {
-    flexDirection:  !I18nManager.isRTL ? 'row-reverse' : 'row',
+    flexDirection: !I18nManager.isRTL ? 'row-reverse' : 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
@@ -113,7 +137,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: wp(1.5),
   },
 });
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     configReducer: state.configReducer,
   };

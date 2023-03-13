@@ -1,7 +1,7 @@
 module.exports = {
   presets: ['module:metro-react-native-babel-preset'],
-  
-  plugins: [  
+
+  plugins: [
     [
       'module-resolver',
       {
@@ -19,7 +19,7 @@ module.exports = {
           _locales: './src/locales',
           _icons: './src/assets/icons',
           _images: './src/assets/images',
-          _actions: './src/store/actions'
+          _actions: './src/store/actions',
         },
       },
     ],

@@ -154,7 +154,7 @@ export default class Dots extends Component {
       <View style={styles.container}>
         <ScrollView
           keyboardShouldPersistTaps="handled"
-          ref={(el) => {
+          ref={el => {
             this.scrollRef = el;
           }}
           style={{width: width < scrollWidth ? width : scrollWidth}}
@@ -170,7 +170,7 @@ export default class Dots extends Component {
           horizontal={true}
           scrollEnabled={false}
           showsHorizontalScrollIndicator={false}>
-          {list.map((i) => {
+          {list.map(i => {
             return (
               <View
                 key={i}

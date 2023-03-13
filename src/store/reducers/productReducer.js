@@ -15,7 +15,7 @@ const initialState = {
   nextPageNumber: 0,
   productsRemainingCount: 0,
   pageSize: 10,
-  textToSearch: "",
+  textToSearch: '',
   maxPrice: null,
   minPrice: null,
   isFilterEnabled: false,
@@ -27,7 +27,7 @@ export default (state = initialState, action) => {
   let products;
   switch (action.type) {
     case ADD_TO_FAVORITE:
-      products = state.products.map((product) => {
+      products = state.products.map(product => {
         if (product.id === action.payload.productId) {
           product.isFavorite = true;
         }
@@ -35,7 +35,7 @@ export default (state = initialState, action) => {
       });
       return {...state, products};
     case REMOVE_FROM_FAVORITE:
-      products = state.products.map((product) => {
+      products = state.products.map(product => {
         if (product.id === action.payload.productId) {
           product.isFavorite = false;
         }

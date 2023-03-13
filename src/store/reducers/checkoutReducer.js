@@ -5,7 +5,7 @@ import {
   GET_COUPON_BY_CODE,
   CLEAR_CHECKOUT,
   CLEAR_COUPON,
-  GET_DELIVERY_INFO
+  GET_DELIVERY_INFO,
 } from '_actions/types';
 
 const initialState = {
@@ -13,7 +13,7 @@ const initialState = {
   deliveryDate: null,
   deliveryPeriod: null,
   deliveryPrice: 0,
-  branchId:0,
+  branchId: 0,
   typeOfPayment: 1,
   notes: '',
   couponCode: null,
@@ -24,7 +24,7 @@ const initialState = {
     discountAmount: null,
     isPercentage: null,
     minOrderPrice: null,
-    validate: false
+    validate: false,
   },
   orderSubmitted: false,
 };
@@ -32,18 +32,22 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case SUBMIT_ORDER:
-      return { ...state, orderSubmitted: true };
+      return {...state, orderSubmitted: true};
     case UPDATE_CHECKOUT_DETAILS:
     case GET_DELIVERY_INFO:
-      return { ...state, ...action.payload };
+      return {...state, ...action.payload};
     case GET_CHECKOUT_INFO:
-      return { ...state, deliveryInfo: [...action.payload.deliveryInfo] };
+      return {...state, deliveryInfo: [...action.payload.deliveryInfo]};
     case GET_COUPON_BY_CODE:
-      return { ...state, couponInfo: { ...action.payload, validate: true } };
+      return {...state, couponInfo: {...action.payload, validate: true}};
     case CLEAR_COUPON:
-      return { ...state, couponInfo: { ...initialState.couponInfo }, couponCode: null };
+      return {
+        ...state,
+        couponInfo: {...initialState.couponInfo},
+        couponCode: null,
+      };
     case CLEAR_CHECKOUT:
-      return { ...state, ...initialState };
+      return {...state, ...initialState};
     default:
       return state;
   }

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { connect } from 'react-redux';
+import React, {useEffect, useState} from 'react';
+import {connect} from 'react-redux';
 import OrderCard from '_organisms/OrderCard';
 import {
   cancelOrder,
@@ -10,13 +10,13 @@ import {
   clearOrdersProducts,
   getOrderProducts,
 } from '_actions/orderActions';
-import { FlatList, View } from 'react-native';
+import {FlatList, View} from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP,
 } from 'react-native-responsive-screen';
 import Card from '_organisms/Card';
-import { Button } from 'react-native-elements';
+import {Button} from 'react-native-elements';
 import LoadingSpinner from '_organisms/LoadingSpinner';
 import AlertMessage from '_organisms/AlertMessage';
 import fonts from '_utils/constants/Fonts';
@@ -37,10 +37,10 @@ const EditOrderScreen = ({
       isCancelled,
       orderDate,
       statusId,
-      couponInfo = {}
+      couponInfo = {},
     },
   },
-  authReducer: { id: userId },
+  authReducer: {id: userId},
   homeReducer: {
     isWholeSale,
     adminSettingsResponse: {
@@ -57,19 +57,19 @@ const EditOrderScreen = ({
   clearOrdersProducts,
   confirmUpdateOrderProducts,
   getOrderProducts,
-
 }) => {
   const [visibleAlert, setVisibleAlert] = useState(false);
   const [visibleAlert2, setVisibleAlert2] = useState(false);
   const [errorMessage, setErrorMessage] = useState();
   const [isUpdatedSuccessful, setIsUpdatedSuccessful] = useState(false);
-  const { minOrderPrice, isPercentage, percentage, discountAmount } = couponInfo || {}
+  const {minOrderPrice, isPercentage, percentage, discountAmount} =
+    couponInfo || {};
   let totalPrice = 0;
   let quantity = 0;
   let offerQuantity = 0;
   let totalPriceEligibleForDiscount = 0;
   let totalPriceNotEligibleForDiscount = 0;
-  orderedProducts.map((product) => {
+  orderedProducts.map(product => {
     if (product.isOffer) {
       quantity = product.quantity;
       offerQuantity = product.offerQuantity;
@@ -81,24 +81,35 @@ const EditOrderScreen = ({
         quantity -= offerQuantity;
       }
       if (quantity > 0) {
-        totalPriceEligibleForDiscount  += product.price * quantity;
+        totalPriceEligibleForDiscount += product.price * quantity;
       }
     } else {
       totalPriceEligibleForDiscount += product.price * product.quantity;
     }
   });
   // totalPrice = Number(totalPrice).toFixed(2);
-  totalPriceEligibleForDiscount = Number(totalPriceEligibleForDiscount.toFixed(2));
-  totalPriceNotEligibleForDiscount = Number(totalPriceNotEligibleForDiscount.toFixed(2));
+  totalPriceEligibleForDiscount = Number(
+    totalPriceEligibleForDiscount.toFixed(2),
+  );
+  totalPriceNotEligibleForDiscount = Number(
+    totalPriceNotEligibleForDiscount.toFixed(2),
+  );
 
   const getTotalAmount = () => {
-    return (deliveryPrice + totalPriceNotEligibleForDiscount+ totalPriceEligibleForDiscount - getDiscountAmount()).toFixed(2);
+    return (
+      deliveryPrice +
+      totalPriceNotEligibleForDiscount +
+      totalPriceEligibleForDiscount -
+      getDiscountAmount()
+    ).toFixed(2);
   };
 
   const getDiscountAmount = () => {
     if (minOrderPrice && totalPriceEligibleForDiscount >= minOrderPrice) {
       return (
-        isPercentage ? totalPriceEligibleForDiscount * (percentage / 100) : discountAmount
+        isPercentage
+          ? totalPriceEligibleForDiscount * (percentage / 100)
+          : discountAmount
       ).toFixed(2);
     }
     return 0;
@@ -126,36 +137,38 @@ const EditOrderScreen = ({
       orderId,
       orderedProducts: orderedProducts,
       totalPrice: getTotalAmount(),
-      couponDiscount: getDiscountAmount()
+      couponDiscount: getDiscountAmount(),
     });
     setIsUpdatedSuccessful(true);
   };
   useEffect(() => {
-
-    const unsubscribe = [navigation.addListener('focus', () => {
-      if (orderId && isOrderProductLoading) {
-        getOrderProducts({
-          orderId,
-          userId,
-        });
-      }
-    }), navigation.addListener('blur', () => {
-      clearOrdersProducts();
-    })]
+    const unsubscribe = [
+      navigation.addListener('focus', () => {
+        if (orderId && isOrderProductLoading) {
+          getOrderProducts({
+            orderId,
+            userId,
+          });
+        }
+      }),
+      navigation.addListener('blur', () => {
+        clearOrdersProducts();
+      }),
+    ];
 
     if (isCancelled) {
       clearOrdersProducts();
       navigation.goBack();
     }
     if (!isUpdated && isUpdatedSuccessful) {
-      setErrorMessage("تم تعديل طلبك بنجاح")
-      setVisibleAlert2(true)
-      setIsUpdatedSuccessful(false)
+      setErrorMessage('تم تعديل طلبك بنجاح');
+      setVisibleAlert2(true);
+      setIsUpdatedSuccessful(false);
     }
     return () => {
       unsubscribe.forEach(unSub => {
         unSub();
-      })
+      });
     };
   }, [
     navigation,
@@ -163,12 +176,12 @@ const EditOrderScreen = ({
     isOrderProductLoading,
     isCancelled,
     userId,
-    isUpdated
+    isUpdated,
   ]);
   return isOrderProductLoading ? (
     <LoadingSpinner />
   ) : (
-    <View style={{ flex: 1, position: 'relative', backgroundColor: '#F7F7F7' }}>
+    <View style={{flex: 1, position: 'relative', backgroundColor: '#F7F7F7'}}>
       <OrderCard
         editable={false}
         order={{
@@ -183,7 +196,7 @@ const EditOrderScreen = ({
         onPressCancel={() => {
           setVisibleAlert(true);
         }}
-        onPressView={() => { }}
+        onPressView={() => {}}
       />
 
       <FlatList
@@ -193,11 +206,11 @@ const EditOrderScreen = ({
           paddingHorizontal: 10,
         }}
         showsVerticalScrollIndicator={false}
-        contentContainerStyle={[{ paddingBottom: hp(15), paddingHorizontal: 2 }]}
+        contentContainerStyle={[{paddingBottom: hp(15), paddingHorizontal: 2}]}
         data={orderedProducts.filter(product => !product.isCancelled)}
         onEndReachedThreshold={0.4}
-        keyExtractor={(item) => `${item.id}`}
-        renderItem={({ item, index }) => (
+        keyExtractor={item => `${item.id}`}
+        renderItem={({item, index}) => (
           <Card
             key={`card-${item.id}`}
             product={item}
@@ -214,14 +227,13 @@ const EditOrderScreen = ({
       {isUpdated && (
         <Button
           onPress={() => {
-            onSubmitUpdate()
+            onSubmitUpdate();
           }}
           raised
           type="clear"
           title="تأكيد"
-          titleStyle={{ color: '#fff', fontFamily: fonts.bold }}
+          titleStyle={{color: '#fff', fontFamily: fonts.bold}}
           containerStyle={{
-
             position: 'absolute',
             bottom: widthPercentageToDP(32),
             left: widthPercentageToDP(30),
@@ -239,7 +251,7 @@ const EditOrderScreen = ({
         buttonText="نعم"
         buttonText2="لا"
         buttonAction={() => {
-          cancelOrder({ isWholeSale, orderId, userId });
+          cancelOrder({isWholeSale, orderId, userId});
           setVisibleAlert(false);
         }}
         buttonAction2={() => {
@@ -257,7 +269,7 @@ const EditOrderScreen = ({
     </View>
   );
 };
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     orderReducer: state.orderReducer,
     authReducer: state.authReducer,

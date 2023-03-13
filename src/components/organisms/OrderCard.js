@@ -1,6 +1,6 @@
 import moment from 'moment';
 import React from 'react';
-import {View, Text, StyleSheet,I18nManager} from 'react-native';
+import {View, Text, StyleSheet, I18nManager} from 'react-native';
 import {Button} from 'react-native-elements';
 import {
   heightPercentageToDP as hp,
@@ -26,8 +26,9 @@ const OrderCard = ({
   const date = moment(orderDate);
   return (
     <View style={styles.container}>
-      <View style={[styles.rowStyle,{flex:1}]}>
-        <View style={[styles.rowStyle, {flex:1,alignContent: 'space-between'}]}>
+      <View style={[styles.rowStyle, {flex: 1}]}>
+        <View
+          style={[styles.rowStyle, {flex: 1, alignContent: 'space-between'}]}>
           <Text style={styles.labelStyle}>تاريخ الطلب :</Text>
           <Text style={styles.detailsTextStyle}>
             {date.format('LT')} {date.format('l')}
@@ -61,7 +62,10 @@ const OrderCard = ({
               title={'إلغاء الطلب'}
               useForeground
               titleStyle={[styles.buttonTitleStyle, {color: '#fff'}]}
-              containerStyle={[styles.buttonStyle, {backgroundColor: '#FF0000'}]}
+              containerStyle={[
+                styles.buttonStyle,
+                {backgroundColor: '#FF0000'},
+              ]}
             />
           )}
         </View>
@@ -88,7 +92,7 @@ const styles = StyleSheet.create({
     elevation: 4,
   },
   rowStyle: {
-    flexDirection:  !I18nManager.isRTL ? 'row-reverse' : 'row',
+    flexDirection: !I18nManager.isRTL ? 'row-reverse' : 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     marginVertical: 2,
@@ -97,12 +101,12 @@ const styles = StyleSheet.create({
     textAlignVertical: 'center',
     fontFamily: fonts.bold,
     fontSize: wp(3.4),
-    color:colors.secondryColor
+    color: colors.secondryColor,
   },
   detailsTextStyle: {
     fontFamily: fonts.regular,
     fontSize: wp(3.6),
-    color:colors.textColor
+    color: colors.textColor,
   },
   priceContainer: {
     backgroundColor: colors.primaryColorBrighter,
@@ -120,7 +124,8 @@ const styles = StyleSheet.create({
     borderRadius: wp(2),
     borderWidth: 1,
     borderColor: 'transparent',
-    borderRadius: wp(2), marginHorizontal: wp(1)
+    borderRadius: wp(2),
+    marginHorizontal: wp(1),
   },
 });
 

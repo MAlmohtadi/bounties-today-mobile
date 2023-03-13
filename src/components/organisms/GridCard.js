@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, {useState} from 'react';
 import {
   StyleSheet,
   View,
@@ -16,7 +16,7 @@ import {
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
 import ImageModal from 'react-native-image-modal';
-import { Icon } from 'react-native-elements';
+import {Icon} from 'react-native-elements';
 import defaultImage from '_images/defaultImage.png';
 import colors from '_utils/constants/Colors';
 import fonts from '_utils/constants/Fonts';
@@ -31,7 +31,7 @@ const GridCard = ({
   isEditable = true,
   quantity = 0,
 }) => {
-  const [imageUri, setImageUri] = useState({ uri: product.imageUrl });
+  const [imageUri, setImageUri] = useState({uri: product.imageUrl});
 
   const isProductQuantityAvailable = () => {
     return product.quantityMultiplier * (quantity + 1) <= product.maxQuantity;
@@ -40,13 +40,14 @@ const GridCard = ({
     <View style={styles.cardContainer}>
       <View style={styles.imageContainer}>
         <ImageModal
-         onError={()=> setImageUri(defaultImage) }
-         source={imageUri}
-         style={{
-           width: '100%',
-           aspectRatio: 1,
-         }}
-         resizeMode="contain"/>
+          onError={() => setImageUri(defaultImage)}
+          source={imageUri}
+          style={{
+            width: '100%',
+            aspectRatio: 1,
+          }}
+          resizeMode="contain"
+        />
       </View>
       <View style={styles.titleContainer}>
         <Text numberOfLines={2} ellipsizeMode="tail" style={styles.itemName}>
@@ -69,7 +70,7 @@ const GridCard = ({
                 name="minus"
                 color={isEditable ? '#fff' : colors.primaryColor}
                 size={wp(5)}
-                style={{ aspectRatio: 1 }}
+                style={{aspectRatio: 1}}
               />
             </TouchableOpacity>
           )}
@@ -85,7 +86,7 @@ const GridCard = ({
                 name="plus"
                 color={isEditable ? '#fff' : colors.primaryColor}
                 size={wp(5)}
-                style={{ aspectRatio: 1 }}
+                style={{aspectRatio: 1}}
               />
             ) : (
               <Icon
@@ -93,7 +94,7 @@ const GridCard = ({
                 name="ban"
                 color={isEditable ? '#fff' : colors.primaryColor}
                 size={wp(5)}
-                style={{ aspectRatio: 1 }}
+                style={{aspectRatio: 1}}
               />
             )}
           </TouchableOpacity>
@@ -122,7 +123,7 @@ const GridCard = ({
       )}
       {product.isOffer ? (
         <View style={styles.wholesaleIcon}>
-          <PercentageIcon height={wp(3)} style={{ aspectRatio: 1 }} />
+          <PercentageIcon height={wp(3)} style={{aspectRatio: 1}} />
         </View>
       ) : (
         <View />
@@ -132,12 +133,12 @@ const GridCard = ({
           style={styles.favoriteIcon}
           onPress={() => onClickFavoriteIcon(product.id)}>
           {product.isFavorite ? (
-            <HeartActive height={wp(6)} style={{ aspectRatio: 1 }} />
+            <HeartActive height={wp(6)} style={{aspectRatio: 1}} />
           ) : (
             <FavoriteIcon
               fill={'#85a83d'}
               height={wp(6)}
-              style={{ aspectRatio: 1 }}
+              style={{aspectRatio: 1}}
             />
           )}
         </TouchableOpacity>
@@ -192,11 +193,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  titleContainer: { marginHorizontal: 10 },
+  titleContainer: {marginHorizontal: 10},
   itemName: {
-    marginTop: Platform.OS === "ios" ? hp(1) : hp(0),
-    textAlign: 'right', fontFamily: fonts.bold, fontSize: wp(3.4),
-    color:colors.textColor,
+    marginTop: Platform.OS === 'ios' ? hp(1) : hp(0),
+    textAlign: 'right',
+    fontFamily: fonts.bold,
+    fontSize: wp(3.4),
+    color: colors.textColor,
   },
   bottomContainer: {
     flex: 1,
@@ -218,7 +221,7 @@ const styles = StyleSheet.create({
     fontSize: wp(3.4),
     textAlignVertical: 'center',
     marginHorizontal: 2,
-    color:colors.textColor,
+    color: colors.textColor,
   },
   priceContainer: {
     flexDirection: 'row',
@@ -274,7 +277,7 @@ const styles = StyleSheet.create({
     fontSize: wp(3),
     fontFamily: fonts.bold,
     textAlign: 'right',
-    color:colors.textColor,
+    color: colors.textColor,
   },
 });
 

@@ -75,7 +75,7 @@ export default (state = initialState, action) => {
           ...state.order,
           orderedProducts: [
             ...state.order.orderedProducts.filter(
-              (item) => item.id !== action.payload.id,
+              item => item.id !== action.payload.id,
             ),
           ],
 
@@ -83,7 +83,7 @@ export default (state = initialState, action) => {
         },
       };
     case ADD_ITEM_PRODUCT:
-      products = state.order.orderedProducts.map((item) => {
+      products = state.order.orderedProducts.map(item => {
         if (item.id === action.payload.id) {
           item.quantity = item.quantity + 1;
         }
@@ -98,7 +98,7 @@ export default (state = initialState, action) => {
         },
       };
     case REMOVE_ITEM_PRODUCT:
-      products = state.order.orderedProducts.map((item) => {
+      products = state.order.orderedProducts.map(item => {
         if (item.id === action.payload.id) {
           item.quantity = item.quantity - 1;
         }

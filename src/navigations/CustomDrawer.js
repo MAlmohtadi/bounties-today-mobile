@@ -60,7 +60,7 @@ const CustomDrawer = ({
             gestureEnabled: true,
           }}
           // drawerType='front'
-          drawerContent={(props) => <DrawerMenu {...props} />}
+          drawerContent={props => <DrawerMenu {...props} />}
           // drawerStyle={{width: widthPercentageToDP(50)}}
           drawerPosition="right">
           <Drawer.Screen name="MainScreen" component={MainStack} />
@@ -80,7 +80,7 @@ const CustomDrawer = ({
     </SafeAreaProvider>
   );
 };
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     alertReducer: state.alertReducer,
   };

@@ -8,15 +8,15 @@ import {
 import {api} from '../../config/Api';
 import {END_POINTS, METHODS} from '_utils/services';
 
-export const getHomeInfo = (isWholeSale) => (dispatch) => {
+export const getHomeInfo = isWholeSale => dispatch => {
   api(END_POINTS.getHomeInfo + isWholeSale, null, METHODS.GET)
-    .then((res) => {
+    .then(res => {
       dispatch({
         type: FETCH_DATA_HOME_SCREEN,
         payload: res.data,
       });
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err);
       dispatch({
         type: SET_ALERT,
@@ -24,19 +24,19 @@ export const getHomeInfo = (isWholeSale) => (dispatch) => {
       });
     });
 };
-export const updateWholeSale = (flag) => (dispatch) => {
+export const updateWholeSale = flag => dispatch => {
   dispatch({
     type: UPDATE_WHOLE_SALE,
     payload: flag,
   });
 };
-export const setSelectedCategory = (data) => (dispatch) => {
+export const setSelectedCategory = data => dispatch => {
   dispatch({
     type: SET_SELECTED_CATEGORY,
     payload: data,
   });
 };
-export const appHasLoadedUpdate = (flag) => (dispatch) => {
+export const appHasLoadedUpdate = flag => dispatch => {
   dispatch({
     type: APP_HAS_LOADED,
     payload: flag,

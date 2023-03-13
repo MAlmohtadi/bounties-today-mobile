@@ -13,7 +13,7 @@ const Pages = {
     route: 'Favorite',
     title: 'المفضلة',
     bottomMenueVisible: true,
-  }, 
+  },
   GoldenCard: {
     route: 'GoldenCard',
     title: 'البطاقة الذهبية',

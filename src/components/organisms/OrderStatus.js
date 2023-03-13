@@ -1,5 +1,5 @@
 import React from 'react';
-import { I18nManager, StyleSheet} from 'react-native';
+import {I18nManager, StyleSheet} from 'react-native';
 import {View, Text} from 'react-native';
 import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import {Divider} from 'react-native-elements';
@@ -82,7 +82,7 @@ const OrderStatus = ({statusType = 0}) => {
 };
 const styles = StyleSheet.create({
   container: {
-    flexDirection:  !I18nManager.isRTL ? 'row-reverse' : 'row',
+    flexDirection: !I18nManager.isRTL ? 'row-reverse' : 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     alignContent: 'center',

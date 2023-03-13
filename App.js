@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Platform,Alert } from 'react-native';
-import { store, persistor } from './src/store/configureStore';
-import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
+import React, {useEffect, useState} from 'react';
+import {Platform, Alert} from 'react-native';
+import {store, persistor} from './src/store/configureStore';
+import {Provider} from 'react-redux';
+import {PersistGate} from 'redux-persist/integration/react';
 import CustomerDrawer from './src/navigations/CustomDrawer';
 
 import Notificaiton from './src/components/organisms/Notification';
-import { isNotificationSupported ,onMessage} from './NotificationManager';
+import {isNotificationSupported, onMessage} from './NotificationManager';
 import messaging from '@react-native-firebase/messaging';
 
 const App = () => {
@@ -16,22 +16,31 @@ const App = () => {
   useEffect(() => {
     const subscribeListeners = [];
     if (isNotificationSupported()) {
-      subscribeListeners.push(messaging().onMessage(async remoteMessage => {
-        console.log('A new FCM message arrived!', JSON.stringify(remoteMessage));
-        setNotification({ ...remoteMessage });
-        setIsVisible(true);
-      }))
+      subscribeListeners.push(
+        messaging().onMessage(async remoteMessage => {
+          console.log(
+            'A new FCM message arrived!',
+            JSON.stringify(remoteMessage),
+          );
+          setNotification({...remoteMessage});
+          setIsVisible(true);
+        }),
+      );
 
-      subscribeListeners.push(messaging().onNotificationOpenedApp(async remoteMessage => {
-        console.log(
-          'Notification caused app to open from background state:',
-          remoteMessage.notification,
-        );
-        setNotification({ ...remoteMessage });
-        setIsVisible(true);
-      }))
+      subscribeListeners.push(
+        messaging().onNotificationOpenedApp(async remoteMessage => {
+          console.log(
+            'Notification caused app to open from background state:',
+            remoteMessage.notification,
+          );
+          setNotification({...remoteMessage});
+          setIsVisible(true);
+        }),
+      );
       // getMessagingObject().getToken().then(token => console.log("TOKEN:", token))
-      messaging().getToken().then(token => console.log("TOKEN:", token))
+      messaging()
+        .getToken()
+        .then(token => console.log('TOKEN:', token));
       messaging()
         .getInitialNotification()
         .then(remoteMessage => {
@@ -40,24 +49,24 @@ const App = () => {
               'Notification caused app to open from quit state:',
               remoteMessage.notification,
             );
-            setNotification({ ...remoteMessage });// e.g. "Settings"
+            setNotification({...remoteMessage}); // e.g. "Settings"
             setIsVisible(true);
           }
-        }).catch(e => {
-          setIsVisible(false)
         })
+        .catch(e => {
+          setIsVisible(false);
+        });
     }
     return () => {
       subscribeListeners.forEach(unSub => {
         unSub();
-      })
+      });
     };
-
   }, []);
 
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor} >
+      <PersistGate loading={null} persistor={persistor}>
         <CustomerDrawer />
         <Notificaiton
           visible={isVisible}

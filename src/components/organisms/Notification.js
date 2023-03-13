@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
     color: colors.primaryColor,
   },
   buttonStyle: {
-    flex:1,
+    flex: 1,
     borderRadius: 9,
     backgroundColor: 'transparent',
     borderColor: 'transparent',
@@ -105,13 +105,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
   },
-  title: {fontFamily: fonts.bold, fontSize: wp(4), textAlign: 'right', color:colors.primaryColor},
+  title: {
+    fontFamily: fonts.bold,
+    fontSize: wp(4),
+    textAlign: 'right',
+    color: colors.primaryColor,
+  },
 
   subTitle: {
     fontFamily: fonts.regular,
     fontSize: wp(3),
     textAlign: 'right',
-    color:colors.textColor
+    color: colors.textColor,
   },
   buttonsRowContainer: {
     justifyContent: 'space-between',

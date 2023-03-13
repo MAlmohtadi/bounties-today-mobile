@@ -1,11 +1,18 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Text, Modal, Dimensions, I18nManager } from 'react-native';
-import { Icon, Button } from 'react-native-elements';
+import React, {useState} from 'react';
+import {
+  StyleSheet,
+  View,
+  Text,
+  Modal,
+  Dimensions,
+  I18nManager,
+} from 'react-native';
+import {Icon, Button} from 'react-native-elements';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import Notch from '_atoms/Notch';
 import Rail from '_atoms/Rail';
 import Thumb from '_atoms/Thumb';
@@ -13,9 +20,9 @@ import Label from '_atoms/Label';
 import RailSelected from '_atoms/RailSelected';
 import HorizontalButtons from '_organisms/HorizontalButtons';
 import SliderPrice from '_organisms/SliderPrice';
-import { updateSearchCriteria } from '_actions/productActions';
-import { setSelectedCategory } from '_actions/homeActions';
-import { useRoute } from '@react-navigation/core';
+import {updateSearchCriteria} from '_actions/productActions';
+import {setSelectedCategory} from '_actions/homeActions';
+import {useRoute} from '@react-navigation/core';
 import Pages from '../../navigations/Pages';
 import fonts from '_utils/constants/Fonts';
 import colors from '_utils/constants/Colors';
@@ -24,8 +31,8 @@ const Filter = ({
   navigation,
   visible,
   toggleOverlay,
-  productReducer: { minPrice: selectedMinPrice, maxPrice: selectedMaxPrice },
-  homeReducer: { selectedCategory, categories = [] },
+  productReducer: {minPrice: selectedMinPrice, maxPrice: selectedMaxPrice},
+  homeReducer: {selectedCategory, categories = []},
   updateSearchCriteria,
   textToSearch,
   setSelectedCategory,
@@ -43,8 +50,8 @@ const Filter = ({
     setMaxPrice(high);
   };
 
-  const getSelectedCategoryData = (id) => {
-    return categories.find((item) => item.id === id);
+  const getSelectedCategoryData = id => {
+    return categories.find(item => item.id === id);
   };
   const confirm = () => {
     updateSearchCriteria({
@@ -85,14 +92,14 @@ const Filter = ({
                   isFilterEnabled: false,
                 });
 
-                toggleOverlay()
+                toggleOverlay();
               }}
             />
             <Text style={styles.modalTitle}>فلتر</Text>
             <Icon
               name="close"
               size={wp(4)}
-              style={{ aspectRatio: 1 }}
+              style={{aspectRatio: 1}}
               containerStyle={styles.closeContainerStyle}
               onPress={() => {
                 toggleOverlay();
@@ -114,7 +121,7 @@ const Filter = ({
             <Text style={styles.subTitle2}>نطاق السعر</Text>
           </View>
           <SliderPrice
-            style={{ margin: hp(2) }}
+            style={{margin: hp(2)}}
             min={0}
             max={100}
             step={1}
@@ -186,7 +193,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: wp(4.5),
     fontFamily: fonts.bold,
-    color:colors.primaryColor
+    color: colors.primaryColor,
   },
   cancelTextStyle: {
     color: '#FD0D1B',
@@ -230,17 +237,25 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   rowContainer: {
-   flexDirection: !I18nManager.isRTL ? 'row-reverse' : 'row',
+    flexDirection: !I18nManager.isRTL ? 'row-reverse' : 'row',
     alignItems: 'flex-end',
     marginTop: hp(3),
     marginHorizontal: 20,
   },
-  subTitle: { fontFamily: fonts.bold,color:colors.primaryColor, fontSize: wp(4) },
-  subTitle2: { fontFamily: fonts.bold, color:colors.primaryColor,fontSize: wp(3.5) },
-  price:{ fontFamily: fonts.bold,color:colors.primaryColor}
+  subTitle: {
+    fontFamily: fonts.bold,
+    color: colors.primaryColor,
+    fontSize: wp(4),
+  },
+  subTitle2: {
+    fontFamily: fonts.bold,
+    color: colors.primaryColor,
+    fontSize: wp(3.5),
+  },
+  price: {fontFamily: fonts.bold, color: colors.primaryColor},
 });
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     homeReducer: state.homeReducer,
     productReducer: state.productReducer,

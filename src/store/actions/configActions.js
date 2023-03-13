@@ -5,13 +5,13 @@ import {
   SET_SORT_TYPE,
 } from './types';
 
-export const setActiveView = (viewType) => (dispatch) => {
+export const setActiveView = viewType => dispatch => {
   dispatch({
     type: SET_ACTIVE_VIEW,
     payload: viewType,
   });
 };
-export const setSortTypeConfig = (viewType) => (dispatch) => {
+export const setSortTypeConfig = viewType => dispatch => {
   dispatch({
     type: SET_SORT_TYPE,
     payload: viewType,

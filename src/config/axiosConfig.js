@@ -10,7 +10,7 @@ const AxiosUtil = axios.create({
 // instance.defaults.headers.common['Authorization'] = 'AUTH TOKEN FROM INSTANCE';
 
 // Also add/ configure interceptors && all the other cool stuff
-const setAuthToken = (token) => {
+const setAuthToken = token => {
   if (token) {
     AxiosUtil.defaults.headers.common.Authorization = token;
   } else {

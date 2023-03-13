@@ -32,7 +32,7 @@ export default (state = initialState, action) => {
         : 0;
       quantity === 0 &&
         (productsUpdated = state.products.filter(
-          (product) => product.id !== action.payload.id,
+          product => product.id !== action.payload.id,
         ));
       return {
         ...state,
@@ -42,7 +42,7 @@ export default (state = initialState, action) => {
       };
     case DELETE_PRODUCT_FROM_CART:
       productsUpdated = state.products.filter(
-        (product) => product.id !== action.payload.id,
+        product => product.id !== action.payload.id,
       );
 
       quantity = 0;

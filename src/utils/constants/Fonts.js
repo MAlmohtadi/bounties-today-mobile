@@ -1,9 +1,7 @@
-
-
 export const fonts = {
-    bold: 'Tajawal-Bold',
-    regular: 'Tajawal-Regular',
-    medium: 'Tajawal-Medium'
-}
+  bold: 'Tajawal-Bold',
+  regular: 'Tajawal-Regular',
+  medium: 'Tajawal-Medium',
+};
 
 export default fonts;

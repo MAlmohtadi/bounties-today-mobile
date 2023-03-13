@@ -6,12 +6,7 @@ import React, {
   useMemo,
   useRef,
 } from 'react';
-import {
-  Animated,
-  PanResponder,
-  View,
-  StyleSheet,
-} from 'react-native';
+import {Animated, PanResponder, View, StyleSheet} from 'react-native';
 import PropTypes from 'prop-types';
 import FollowerContainer from './LabelContainer';
 
@@ -44,8 +39,8 @@ const useLowHigh = (lowProp, highProp, min, max, step) => {
   // Always update values of refs so pan responder will have updated values
   Object.assign(inPropsRef.current, {low, high, min, max, step});
 
-  const setLow = (value) => (inPropsRef.current.low = value);
-  const setHigh = (value) => (inPropsRef.current.high = value);
+  const setLow = value => (inPropsRef.current.low = value);
+  const setHigh = value => (inPropsRef.current.high = value);
   return {inPropsRef, inPropsRefPrev, setLow, setHigh};
 };
 
@@ -169,7 +164,7 @@ const useSelectedRail = (
  * @param floating
  * @returns {{onLayout: ((function({nativeEvent: *}): void)|undefined), style: [*, {top}]}}
  */
-const useLabelContainerProps = (floating) => {
+const useLabelContainerProps = floating => {
   const [labelContainerHeight, setLabelContainerHeight] = useState(0);
   const onLayout = useCallback(({nativeEvent}) => {
     const {
@@ -392,7 +387,7 @@ const Slider = ({
             disableRange || isLowCloser(downX, lowPosition, highPosition);
           gestureStateRef.current.isLow = isLow;
 
-          const handlePositionChange = (positionInView) => {
+          const handlePositionChange = positionInView => {
             const {low, high, min, max, step} = inPropsRef.current;
             const minValue = isLow ? min : low;
             const maxValue = isLow ? high : max;

@@ -47,12 +47,7 @@ const OrderDetailScreen = ({
       });
     }
     return unsubscribe;
-  }, [
-    navigation,
-    orderId,
-    isOrderProductLoading,
-    userId,
-  ]);
+  }, [navigation, orderId, isOrderProductLoading, userId]);
   return isOrderProductLoading ? (
     <LoadingSpinner />
   ) : (
@@ -82,7 +77,7 @@ const OrderDetailScreen = ({
         contentContainerStyle={[{paddingBottom: hp(15)}]}
         data={orderedProducts}
         onEndReachedThreshold={0.4}
-        keyExtractor={(item)=>`${item.id}`}
+        keyExtractor={item => `${item.id}`}
         renderItem={({item, index}) => (
           <Card
             key={`card-${item.id}`}
@@ -97,7 +92,7 @@ const OrderDetailScreen = ({
     </View>
   );
 };
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     orderReducer: state.orderReducer,
     authReducer: state.authReducer,

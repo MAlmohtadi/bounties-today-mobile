@@ -9,15 +9,15 @@ import {
 } from './types';
 import {api} from '../../config/Api';
 import {END_POINTS, METHODS} from '_utils/services';
-export const addToFavorite = (data) => (dispatch) => {
+export const addToFavorite = data => dispatch => {
   api(END_POINTS.addFavorite, data, METHODS.POST)
-    .then((res) => {
+    .then(res => {
       dispatch({
         type: ADD_TO_FAVORITE,
         payload: data,
       });
     })
-    .catch((err) => {
+    .catch(err => {
       console.error(err);
 
       dispatch({
@@ -27,15 +27,15 @@ export const addToFavorite = (data) => (dispatch) => {
     });
 };
 
-export const removeFromFavorite = (data) => (dispatch) => {
+export const removeFromFavorite = data => dispatch => {
   api(END_POINTS.deleteFavorite, data, METHODS.POST)
-    .then((res) => {
+    .then(res => {
       dispatch({
         type: REMOVE_FROM_FAVORITE,
         payload: data,
       });
     })
-    .catch((err) => {
+    .catch(err => {
       console.error(err);
 
       dispatch({
@@ -45,15 +45,15 @@ export const removeFromFavorite = (data) => (dispatch) => {
     });
 };
 
-export const clearFavorite = (data) => (dispatch) => {
+export const clearFavorite = data => dispatch => {
   api(END_POINTS.deleteAllFavorite, data, METHODS.POST)
-    .then((res) => {
+    .then(res => {
       dispatch({
         type: CLEAR_FAVORITE,
         payload: data,
       });
     })
-    .catch((err) => {
+    .catch(err => {
       console.error(err);
       dispatch({
         type: SET_ALERT,
@@ -62,15 +62,15 @@ export const clearFavorite = (data) => (dispatch) => {
     });
 };
 
-export const getFavoriteProducts = (data) => (dispatch) => {
+export const getFavoriteProducts = data => dispatch => {
   api(END_POINTS.getFavoriteProducts, data, METHODS.POST)
-    .then((res) => {
+    .then(res => {
       dispatch({
         type: GET_FAVORITE_PRODUCTS,
         payload: res.data,
       });
     })
-    .catch((err) => {
+    .catch(err => {
       console.error(err);
 
       dispatch({
@@ -79,13 +79,13 @@ export const getFavoriteProducts = (data) => (dispatch) => {
       });
     });
 };
-export const toggleFavoriteFlag = () => (dispatch) => {
+export const toggleFavoriteFlag = () => dispatch => {
   dispatch({
     type: TOGGLE_FAVORITE_FLAG,
   });
 };
 
-export const clearFavoriteScreen = () => (dispatch) => {
+export const clearFavoriteScreen = () => dispatch => {
   dispatch({
     type: FAVORITE_UNSUBSCRIBE,
   });

@@ -8,8 +8,8 @@ export const guidelineBaseHeight = 896;
 const widthRatio = width / guidelineBaseWidth;
 const heightRatio = height / guidelineBaseHeight;
 
-const scale = (size) => widthRatio * size;
-const verticalScale = (size) => heightRatio * size;
+const scale = size => widthRatio * size;
+const verticalScale = size => heightRatio * size;
 
 const defaultModerateFactor = width > guidelineBaseWidth ? 0.5 : 1.25;
 

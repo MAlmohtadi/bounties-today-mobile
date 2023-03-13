@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   StyleSheet,
   TouchableOpacity,
@@ -9,12 +9,12 @@ import {
   I18nManager,
 } from 'react-native';
 import Dash from 'react-native-dash';
-import { Button, Icon, Input } from 'react-native-elements';
+import {Button, Icon, Input} from 'react-native-elements';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
 } from 'react-native-responsive-screen';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import DeliveryDetails from '_organisms/DeliveryDetails';
 import {
   submitOrder,
@@ -22,9 +22,9 @@ import {
   getCheckoutInfo,
   getCouponByCode,
   clearCheckout,
-  clearCoupon
+  clearCoupon,
 } from '_actions/checkoutActions';
-import { clearCart } from '_actions/cartActions';
+import {clearCart} from '_actions/cartActions';
 
 import Pages from '../navigations/Pages';
 import AccountModal from '_organisms/AccountModal';
@@ -39,7 +39,7 @@ const CheckoutScreen = ({
   getCheckoutInfo,
   getCouponByCode,
   clearCoupon,
-  authReducer: { id: userId },
+  authReducer: {id: userId},
   homeReducer: {
     deliveryTerms,
     isWholeSale,
@@ -62,7 +62,13 @@ const CheckoutScreen = ({
     branchId,
     deliveryInfo,
     orderSubmitted,
-    couponInfo: { minOrderPrice, isPercentage, percentage, discountAmount, validate } ,
+    couponInfo: {
+      minOrderPrice,
+      isPercentage,
+      percentage,
+      discountAmount,
+      validate,
+    },
   },
   cartReducer,
   cartWholesaleReducer,
@@ -72,7 +78,7 @@ const CheckoutScreen = ({
   const [visibleValidationAlert, setVisibleValidationAlert] = useState(false);
   const [validationMessage, setValidationMessage] = useState();
 
-  const { products = [], quantities = {} } = isWholeSale
+  const {products = [], quantities = {}} = isWholeSale
     ? cartWholesaleReducer
     : cartReducer;
   const [isLoading, setIsLoading] = useState(false);
@@ -85,7 +91,7 @@ const CheckoutScreen = ({
   let orderedProducts = [];
   let quantity = 0;
   let offerQuantity = 0;
-  products.map((product) => {
+  products.map(product => {
     if (product.isOffer) {
       quantity = quantities[`${product.id}`];
       offerQuantity = product.offerQuantity;
@@ -97,10 +103,11 @@ const CheckoutScreen = ({
         quantity -= offerQuantity;
       }
       if (quantity > 0) {
-        totalPriceEligibleForDiscount  += product.price * quantity;
-     }
+        totalPriceEligibleForDiscount += product.price * quantity;
+      }
     } else {
-      totalPriceEligibleForDiscount += product.price * quantities[`${product.id}`];
+      totalPriceEligibleForDiscount +=
+        product.price * quantities[`${product.id}`];
     }
     orderedProducts.push({
       ...product,
@@ -109,26 +116,39 @@ const CheckoutScreen = ({
       quantity: quantities[`${product.id}`],
     });
   });
-  totalPriceEligibleForDiscount = Number(totalPriceEligibleForDiscount.toFixed(2));
-  totalPriceNotEligibleForDiscount== Number(totalPriceNotEligibleForDiscount.toFixed(2));
+  totalPriceEligibleForDiscount = Number(
+    totalPriceEligibleForDiscount.toFixed(2),
+  );
+  totalPriceNotEligibleForDiscount ==
+    Number(totalPriceNotEligibleForDiscount.toFixed(2));
   const getTotalAmount = () => {
-    return (deliveryPrice +totalPriceNotEligibleForDiscount+ totalPriceEligibleForDiscount - getDiscountAmount()).toFixed(2);
+    return (
+      deliveryPrice +
+      totalPriceNotEligibleForDiscount +
+      totalPriceEligibleForDiscount -
+      getDiscountAmount()
+    ).toFixed(2);
   };
 
   const getDiscountAmount = () => {
     if (minOrderPrice && totalPriceEligibleForDiscount >= minOrderPrice) {
       return (
-        isPercentage ? totalPriceEligibleForDiscount * (percentage / 100) : discountAmount
+        isPercentage
+          ? totalPriceEligibleForDiscount * (percentage / 100)
+          : discountAmount
       ).toFixed(2);
     }
     return 0;
   };
   useEffect(() => {
-    const unsubscribe = [navigation.addListener('focus', () => {
-      getCheckoutInfo();
-    }), navigation.addListener('blur', () => {
-      clearCheckout();
-    })]
+    const unsubscribe = [
+      navigation.addListener('focus', () => {
+        getCheckoutInfo();
+      }),
+      navigation.addListener('blur', () => {
+        clearCheckout();
+      }),
+    ];
     if (userId) {
       setVisible(false);
     }
@@ -139,26 +159,28 @@ const CheckoutScreen = ({
       setIsLoading(false);
     }
     if (validate && totalPriceEligibleForDiscount < minOrderPrice) {
-      setValidationMessage(`الحد الأدنى لإستخدام كوبون الخصم للمنتجات بدون عروض هو : ${minOrderPrice}`);
+      setValidationMessage(
+        `الحد الأدنى لإستخدام كوبون الخصم للمنتجات بدون عروض هو : ${minOrderPrice}`,
+      );
       setVisibleValidationAlert(true);
     }
     return () => {
       unsubscribe.forEach(unSub => {
         unSub();
-      })
+      });
     };
   }, [userId, orderSubmitted, validate]);
-  const clearBeforeNavigation = (routes) => {
+  const clearBeforeNavigation = routes => {
     // clearCheckout();
     clearCart(isWholeSale);
     // setIsLoading(false);
-    navigation.reset({ index: 0, routes: [...routes] });
+    navigation.reset({index: 0, routes: [...routes]});
     // setVisibleAlert(false);
   };
   const onSubmit = () => {
     if (!isLoading) {
       let message = 'يجب اختيار التالي:';
-      if ((!chooseDeliveryEnabled && location) ||  ( deliveryPrice && location)) {
+      if ((!chooseDeliveryEnabled && location) || (deliveryPrice && location)) {
         if (!userId) {
           toggleOverlay();
           return;
@@ -177,7 +199,7 @@ const CheckoutScreen = ({
           totalPrice: getTotalAmount(),
           typeOfPayment,
           userId,
-          couponDiscount:getDiscountAmount()
+          couponDiscount: getDiscountAmount(),
         });
       } else {
         message = location ? message : message + '\n\n - عنوان التوصيل';
@@ -195,9 +217,9 @@ const CheckoutScreen = ({
     }
   };
   return (
-    <View style={{ flex: 1 }}>
-      <ScrollView keyboardShouldPersistTaps="handled" style={{ flex: 1 }}>
-        <View style={{ margin: hp(1.5), marginBottom: 5 }}>
+    <View style={{flex: 1}}>
+      <ScrollView keyboardShouldPersistTaps="handled" style={{flex: 1}}>
+        <View style={{margin: hp(1.5), marginBottom: 5}}>
           <DeliveryDetails
             navigateToMapScreen={() => {
               navigation.navigate(Pages.Map.route);
@@ -205,80 +227,84 @@ const CheckoutScreen = ({
             deliveryInfo={deliveryInfo}
             deliveryPeriod={deliveryPeriod}
             locationName={location}
-            onSelectDate={(deliveryDate) =>
-              updateCheckoutDetails({ deliveryDate })
-            }
+            onSelectDate={deliveryDate => updateCheckoutDetails({deliveryDate})}
             onSelectPeriod={(deliveryPeriod, deliveryPrice) =>
-              updateCheckoutDetails({ deliveryPeriod, deliveryPrice })
+              updateCheckoutDetails({deliveryPeriod, deliveryPrice})
             }
             chooseDeliveryEnabled={chooseDeliveryEnabled}
           />
         </View>
-        <View style={{ backgroundColor: 'white', marginRight: hp(1.5), marginLeft: hp(1.5) }}>
-        <Text style={[styles.subTitle, {color:'red'}]}>
-        {deliveryTerms} 
-        </Text>
-          </View>
-        <View style={{ backgroundColor: 'white' }}>
+        <View
+          style={{
+            backgroundColor: 'white',
+            marginRight: hp(1.5),
+            marginLeft: hp(1.5),
+          }}>
+          <Text style={[styles.subTitle, {color: 'red'}]}>{deliveryTerms}</Text>
+        </View>
+        <View style={{backgroundColor: 'white'}}>
           <Input
             value={notes}
-            onChangeText={(value) => updateCheckoutDetails({ notes: value })}
+            onChangeText={value => updateCheckoutDetails({notes: value})}
             multiline
             placeholder="إضافة ملاحظة"
             textAlign="right"
-            containerStyle={{ paddingHorizontal: 0, marginVertical: 0 }}
-            inputContainerStyle={{ borderBottomWidth: 0 }}
+            containerStyle={{paddingHorizontal: 0, marginVertical: 0}}
+            inputContainerStyle={{borderBottomWidth: 0}}
             errorMessage={false}
             renderErrorMessage={null}
             inputStyle={styles.commentBox}
           />
         </View>
-        {<View style={{ margin: hp(1.5) }}>
-          <Text style={styles.subTitle}>طريقة الدفع</Text>
-          <View
-            style={{
-              flexDirection: !I18nManager.isRTL ? 'row-reverse' : 'row',
-              justifyContent: 'space-between',
-              marginVertical: 15,
-            }}>
-            {(visaOnDeliveryEnabled === null || visaOnDeliveryEnabled) && (<TouchableOpacity
-              onPress={() => updateCheckoutDetails({ typeOfPayment: 2 })}
-              style={[
-                styles.paymentButton,
-                typeOfPayment === 2 ? styles.activePaymentButton : null,
-              ]}>
-              <Text
+        {
+          <View style={{margin: hp(1.5)}}>
+            <Text style={styles.subTitle}>طريقة الدفع</Text>
+            <View
+              style={{
+                flexDirection: !I18nManager.isRTL ? 'row-reverse' : 'row',
+                justifyContent: 'space-between',
+                marginVertical: 15,
+              }}>
+              {(visaOnDeliveryEnabled === null || visaOnDeliveryEnabled) && (
+                <TouchableOpacity
+                  onPress={() => updateCheckoutDetails({typeOfPayment: 2})}
+                  style={[
+                    styles.paymentButton,
+                    typeOfPayment === 2 ? styles.activePaymentButton : null,
+                  ]}>
+                  <Text
+                    style={[
+                      styles.paymentText,
+                      typeOfPayment === 2 ? {color: '#FFF'} : null,
+                    ]}>
+                    {' '}
+                    دفع فيزا عند الإستلام
+                  </Text>
+                  <Icon name="payment" color={typeOfPayment === 2 && '#FFF'} />
+                </TouchableOpacity>
+              )}
+              <TouchableOpacity
+                onPress={() => updateCheckoutDetails({typeOfPayment: 1})}
                 style={[
-                  styles.paymentText,
-                  typeOfPayment === 2 ? { color: '#FFF' } : null,
+                  styles.paymentButton,
+                  typeOfPayment === 1 ? styles.activePaymentButton : null,
                 ]}>
-                {' '}
-                دفع فيزا عند الإستلام
-              </Text>
-              <Icon name="payment" color={typeOfPayment === 2 && '#FFF'} />
-            </TouchableOpacity>)}
-            <TouchableOpacity
-              onPress={() => updateCheckoutDetails({ typeOfPayment: 1 })}
-              style={[
-                styles.paymentButton,
-                typeOfPayment === 1 ? styles.activePaymentButton : null,
-              ]}>
-              <Text
-                style={[
-                  styles.paymentText,
-                  typeOfPayment === 1 ? { color: '#FFF' } : null,
-                ]}>
-                {' '}
-                دفع نقداً عند الإستلام
-              </Text>
-              <Icon
-                type="material"
-                name="payments"
-                color={typeOfPayment === 1 && '#FFF'}
-              />
-            </TouchableOpacity>
+                <Text
+                  style={[
+                    styles.paymentText,
+                    typeOfPayment === 1 ? {color: '#FFF'} : null,
+                  ]}>
+                  {' '}
+                  دفع نقداً عند الإستلام
+                </Text>
+                <Icon
+                  type="material"
+                  name="payments"
+                  color={typeOfPayment === 1 && '#FFF'}
+                />
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
         }
         <View
           style={{
@@ -289,17 +315,22 @@ const CheckoutScreen = ({
           }}>
           <TextInput
             value={couponCode}
-            onChangeText={(value) => updateCheckoutDetails({ couponCode: value })}
+            onChangeText={value => updateCheckoutDetails({couponCode: value})}
             placeholder="كود الخصم"
             textAlign="center"
             textAlignVertical="center"
             enablesReturnKeyAutomatically
             onEndEditing={() => {
-              getCouponByCode({ code: couponCode, userId });
+              getCouponByCode({code: couponCode, userId});
             }}
             style={styles.coupone}
           />
-          <View style={{ flex: 1, flexDirection:I18nManager.isRTL ? 'row-reverse' : 'row', alignItems: 'center' }}>
+          <View
+            style={{
+              flex: 1,
+              flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row',
+              alignItems: 'center',
+            }}>
             <Text style={styles.subTitle}> إضافة كوبون خصم</Text>
             <Icon
               type="material-community"
@@ -318,7 +349,10 @@ const CheckoutScreen = ({
           }}>
           <Text style={styles.subTitle}>ملخص الدفع</Text>
           <View style={styles.textDetailContainer}>
-            <Text style={styles.priceText}>{totalPriceEligibleForDiscount + totalPriceNotEligibleForDiscount} JD</Text>
+            <Text style={styles.priceText}>
+              {totalPriceEligibleForDiscount + totalPriceNotEligibleForDiscount}{' '}
+              JD
+            </Text>
             <Text style={styles.regularText}>المجموع</Text>
           </View>
           <View style={styles.textDetailContainer}>
@@ -326,10 +360,10 @@ const CheckoutScreen = ({
             <Text style={styles.regularText}>رسوم التوصيل</Text>
           </View>
           <View style={styles.textDetailContainer}>
-            <Text style={[styles.priceText, { color: '#FF0000' }]}>
+            <Text style={[styles.priceText, {color: '#FF0000'}]}>
               {getDiscountAmount()} JD
             </Text>
-            <Text style={[styles.regularText, { color: '#FF0000' }]}>
+            <Text style={[styles.regularText, {color: '#FF0000'}]}>
               كوبون الخصم
             </Text>
           </View>
@@ -337,7 +371,7 @@ const CheckoutScreen = ({
             dashGap={6}
             dashColor="#707070"
             dashLength={6}
-            style={{ flex: 1, height: 1, marginVertical: 5 }}
+            style={{flex: 1, height: 1, marginVertical: 5}}
           />
           <View style={styles.textDetailContainer}>
             <Text style={styles.priceText}>{getTotalAmount()} JD</Text>
@@ -351,7 +385,7 @@ const CheckoutScreen = ({
         type="clear"
         title="تأكيد"
         useForeground
-        titleStyle={{ color: '#fff', fontFamily: fonts.bold }}
+        titleStyle={{color: '#fff', fontFamily: fonts.bold}}
         containerStyle={[
           styles.submitButtonStyle,
           {
@@ -366,7 +400,10 @@ const CheckoutScreen = ({
         visible={visibleValidationAlert}
         message={validationMessage}
         buttonText="تم"
-        buttonAction={() => { clearCoupon(); setVisibleValidationAlert(false) }}
+        buttonAction={() => {
+          clearCoupon();
+          setVisibleValidationAlert(false);
+        }}
       />
       <AlertMessage
         visible={visibleAlert}
@@ -375,11 +412,11 @@ const CheckoutScreen = ({
         buttonText2="الرئيسية"
         buttonAction={() =>
           clearBeforeNavigation([
-            { name: Pages.Home.route },
-            { name: Pages.Order.route },
+            {name: Pages.Home.route},
+            {name: Pages.Order.route},
           ])
         }
-        buttonAction2={() => clearBeforeNavigation([{ name: Pages.Home.route }])}
+        buttonAction2={() => clearBeforeNavigation([{name: Pages.Home.route}])}
       />
     </View>
   );
@@ -398,8 +435,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primaryColor,
     borderWidth: 1,
   },
-  buttonTitleStyle: { color: colors.primaryColor, fontFamily: fonts.bold },
-  buttonActiveTitleStyle: { color: '#FFF' },
+  buttonTitleStyle: {color: colors.primaryColor, fontFamily: fonts.bold},
+  buttonActiveTitleStyle: {color: '#FFF'},
   addressContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -411,8 +448,8 @@ const styles = StyleSheet.create({
   activeAddressContainer: {
     backgroundColor: '#EFE7EB',
   },
-  textContainer: { flex: 1, justifyContent: 'center', alignItems: 'center' },
-  textAddress: { fontSize: wp(3), fontFamily: fonts.regular },
+  textContainer: {flex: 1, justifyContent: 'center', alignItems: 'center'},
+  textAddress: {fontSize: wp(3), fontFamily: fonts.regular},
   commentBox: {
     padding: wp(1),
     height: hp(10),
@@ -438,8 +475,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: hp(1),
   },
-  activePaymentButton: { backgroundColor: colors.primaryColor, borderRadius: 10 },
-  paymentText: { fontFamily: fonts.medium, color: '#000', fontSize: wp(3) },
+  activePaymentButton: {backgroundColor: colors.primaryColor, borderRadius: 10},
+  paymentText: {fontFamily: fonts.medium, color: '#000', fontSize: wp(3)},
   regularText: {
     fontFamily: fonts.regular,
     color: '#000',
@@ -476,7 +513,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 15,
   },
 });
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     cartReducer: state.cartReducer,
     cartWholesaleReducer: state.cartWholesaleReducer,
@@ -493,5 +530,5 @@ export default connect(mapStateToProps, {
   getCouponByCode,
   clearCheckout,
   clearCart,
-  clearCoupon
+  clearCoupon,
 })(CheckoutScreen);

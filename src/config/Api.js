@@ -18,14 +18,14 @@ async function api(path, data, method) {
     },
     ...(data && {data: JSON.stringify(data)}),
   };
-  console.log( "hooooooooooo:"+baseUrl + path); 
-  return NetInfo.fetch().then((state) => {
+  console.log('hooooooooooo:' + baseUrl + path);
+  return NetInfo.fetch().then(state => {
     if (state.isConnected) {
       return Axios(options)
-        .then((response) => {
+        .then(response => {
           return response;
         })
-        .catch((error) => {
+        .catch(error => {
           if (Axios.isCancel(error)) {
             console.log(error); // API CANCELED
           } else if (error.response) {

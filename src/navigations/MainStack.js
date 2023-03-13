@@ -39,19 +39,19 @@ const MainStack = ({navigation, route}) => {
         initialRouteName={Pages.Home.route}
         screenOptions={{
           animationEnabled: true,
-          headerMode:"screen",
+          headerMode: 'screen',
           animationTypeForReplace: 'pop',
           cardStyle: {backgroundColor: '#fff'},
         }}>
         <Stack.Screen
           name={Pages.Home.route}
           component={Home}
-          options={{header: (props) => <HeaderSearch {...props} />}}
+          options={{header: props => <HeaderSearch {...props} />}}
         />
         <Stack.Screen
           name={Pages.Product.route}
           component={ProductScreen}
-          options={{header: (props) => <HeaderSearch {...props} />}}
+          options={{header: props => <HeaderSearch {...props} />}}
         />
         <Stack.Screen
           name={Pages.Cart.route}

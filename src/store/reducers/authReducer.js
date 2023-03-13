@@ -12,7 +12,7 @@ const initialState = {
   email: null,
   name: null,
   phone: null,
-  facebookId:null,
+  facebookId: null,
   appleId: null,
   secondaryPhone: null,
   isUserUpdated: false,

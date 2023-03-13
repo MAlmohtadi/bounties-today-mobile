@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     borderRadius: 20,
     margin: 20,
-    overflow:'hidden'
+    overflow: 'hidden',
     // paddingVertical: hp(2),
   },
   buttonTitleStyle: {
@@ -106,7 +106,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 20,
   },
-  subTitle: {fontFamily: fonts.bold, fontSize: wp(4), textAlign: 'center',color:colors.textColor},
+  subTitle: {
+    fontFamily: fonts.bold,
+    fontSize: wp(4),
+    textAlign: 'center',
+    color: colors.textColor,
+  },
   buttonsRowContainer: {
     justifyContent: 'space-between',
     flexDirection: 'row',

@@ -1,9 +1,9 @@
-export const validateEmail = (email) => {
+export const validateEmail = email => {
   const re =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(String(email).toLowerCase());
 };
-export const validatePhoneNumber = (phone) => {
+export const validatePhoneNumber = phone => {
   if (phone.startsWith('07') && phone.length === 10) {
     return true;
   } else {
