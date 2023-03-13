@@ -3,10 +3,7 @@ import {View, StyleSheet, Keyboard} from 'react-native';
 import ImageSlider from '_organisms/ImageSlider';
 import Category from '_organisms/Category';
 import {ScrollView} from 'react-native-gesture-handler';
-import {
-  heightPercentageToDP as hp,
-  widthPercentageToDP as wp,
-} from 'react-native-responsive-screen';
+import {widthPercentageToDP as wp} from 'react-native-responsive-screen';
 import {connect} from 'react-redux';
 import {getHomeInfo, setSelectedCategory} from '_actions/homeActions';
 import {updateSearchCriteria} from '_actions/productActions';
