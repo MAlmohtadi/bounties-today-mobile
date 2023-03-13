@@ -129,7 +129,7 @@ const DrawerMenu = ({
 const styles = StyleSheet.create({
   headerContainer: {
     marginTop: hp(6),
-    alignItems:I18nManager.isRTL ? 'flex-start':'flex-end',
+    alignItems: I18nManager.isRTL ? 'flex-start':'flex-end',
   },
   lableAndTextContainer: {
     flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row',

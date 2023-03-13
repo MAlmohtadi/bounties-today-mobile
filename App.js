@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Platform } from 'react-native';
+import { Platform,Alert } from 'react-native';
 import { store, persistor } from './src/store/configureStore';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -17,7 +17,9 @@ const App = () => {
     const subscribeListeners = [];
     if (isNotificationSupported()) {
       subscribeListeners.push(messaging().onMessage(async remoteMessage => {
-        Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+        console.log('A new FCM message arrived!', JSON.stringify(remoteMessage));
+        setNotification({ ...remoteMessage });
+        setIsVisible(true);
       }))
 
       subscribeListeners.push(messaging().onNotificationOpenedApp(async remoteMessage => {

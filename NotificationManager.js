@@ -1,4 +1,4 @@
-import { Platform } from 'react-native';
+import { Platform,Alert } from 'react-native';
 import messaging from '@react-native-firebase/messaging';
 
 export const isNotificationSupported = () => {
