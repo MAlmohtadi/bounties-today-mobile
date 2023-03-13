@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, TouchableOpacity, I18nManager } from 'react-native';
 import {
   heightPercentageToDP as hp,
   widthPercentageToDP as wp,
@@ -129,16 +129,16 @@ const DrawerMenu = ({
 const styles = StyleSheet.create({
   headerContainer: {
     marginTop: hp(6),
-    alignItems: 'flex-end',
+    alignItems:I18nManager.isRTL ? 'flex-start':'flex-end',
   },
   lableAndTextContainer: {
-    flexDirection: 'row',
+    flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row',
     alignItems: 'center',
     justifyContent: 'center',
     margin: hp(2),
   },
   iconStyle: { marginHorizontal: 5, aspectRatio: 1 },
-  textContainer: { flex: 1, alignItems: 'flex-end', justifyContent: 'center', marginHorizontal: 10 },
+  textContainer: { flex: 1, alignItems:I18nManager.isRTL ? 'flex-start':'flex-end', justifyContent: 'center', marginHorizontal: 10 },
   textStyle: { fontFamily: fonts.bold, color: colors.primaryColor, fontSize: hp(2) },
   deviderStyle: {
     backgroundColor: colors.primaryColor,

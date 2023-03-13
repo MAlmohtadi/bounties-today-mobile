@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, StyleSheet, TextInput } from 'react-native';
+import { View, StyleSheet, TextInput, I18nManager } from 'react-native';
 import SearchIcon from '_icons/Search.svg';
 import { Icon, Button } from 'react-native-elements';
 import Filter from '_organisms/Filter';
@@ -46,7 +46,7 @@ const HeaderSearch = ({
         // { paddingTop: insets.top - 10, marginBottom: 5 },
       ]}>
       <View style={styles.searchContainer}>
-        {!showFilterButton ? <SearchIcon /> : <Button title='إبحث' raised
+        {!showFilterButton ? ( !I18nManager.isRTL ? <SearchIcon />:null) : <Button title='إبحث' raised
           buttonStyle={styles.searchButtonStyle}
           containerStyle={styles.searchContainerStyle} onPress={() => { confirm(); }} />}
         <TextInput
@@ -64,7 +64,7 @@ const HeaderSearch = ({
           clearButtonMode="always"
           // onPressOut={() => setShowFilterButton(false)}
         />
-        {showFilterButton && (
+        {!showFilterButton ? ( I18nManager.isRTL ? <SearchIcon />:null) : (
           <TouchableOpacity
             style={styles.iconContainer}
             onPress={() => setFilterVisible(!filterVisible)}>
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
     justifyContent: 'space-between',
     alignItems: 'center',
-    flexDirection: 'row',
+    flexDirection: I18nManager.isRTL ? 'row-reverse':'row',
     paddingHorizontal: 10,
     borderBottomLeftRadius: 25,
     borderBottomRightRadius: 25,

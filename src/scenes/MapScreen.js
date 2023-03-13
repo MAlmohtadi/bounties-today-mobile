@@ -37,6 +37,7 @@ const MapScreen = ({ navigation, updateCheckoutDetails,getDeliveryInfo }) => {
         });
       },
       (error) => {
+        console.log( error);
         Alert.alert('الموقع الحالي', errorMessage);
       },
       { enableHighAccuracy: false, timeout: 3000 },

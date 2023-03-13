@@ -282,7 +282,7 @@ const CheckoutScreen = ({
         }
         <View
           style={{
-            flexDirection: !I18nManager.isRTL ? 'row-reverse' : 'row',
+            flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row',
             backgroundColor: 'white',
             alignItems: 'center',
             padding: hp(1),
@@ -299,7 +299,7 @@ const CheckoutScreen = ({
             }}
             style={styles.coupone}
           />
-          <View style={{ flex: 1, flexDirection:!I18nManager.isRTL ? 'row-reverse' : 'row', alignItems: 'center' }}>
+          <View style={{ flex: 1, flexDirection:I18nManager.isRTL ? 'row-reverse' : 'row', alignItems: 'center' }}>
             <Text style={styles.subTitle}> إضافة كوبون خصم</Text>
             <Icon
               type="material-community"
