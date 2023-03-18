@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Bounties Today</string>
-    <string name="facebook_app_id">178116954972517</string>
-    <string name="fb_login_protocol_scheme">fb178116954972517</string>
-    <string name="facebook_client_token">d640a7733316e1e805eeebe4193ae7fc</string>
+    <string name="app_name">Khayrat Alyoum</string>
+    <string name="facebook_app_id">597763111957532</string>
+    <string name="fb_login_protocol_scheme">fb597763111957532</string>
+    <string name="facebook_client_token">1a4b8b3aaf92289b465b933915bb0de1</string>
 </resources>

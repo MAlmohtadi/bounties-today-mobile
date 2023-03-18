@@ -1,37 +1,45 @@
 {
   "project_info": {
-    "project_number": "751901636318",
-    "project_id": "bounties-today",
-    "storage_bucket": "bounties-today.appspot.com"
+    "project_number": "680938651993",
+    "project_id": "khayrat-alyoum",
+    "storage_bucket": "khayrat-alyoum.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:751901636318:android:0b2451ebb6598579deb44f",
+        "mobilesdk_app_id": "1:680938651993:android:84e1f70316ae2e75204c48",
         "android_client_info": {
           "package_name": "com.bountiestoday"
         }
       },
       "oauth_client": [
         {
-          "client_id": "751901636318-om70gdlsg82tn934f92dv2ea6o8gbpuj.apps.googleusercontent.com",
+          "client_id": "680938651993-in7a9b8ragemdkbg03l57rnt799kqrt5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bountiestoday",
+            "certificate_hash": "134cdd1bb0537e89a6d38009d5004405781649f0"
+          }
+        },
+        {
+          "client_id": "680938651993-p2ikgk3iq0lqsad7b99usdutkjt6cnsj.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyB-JCT2Hf4P7PsdBoOsOaxyuzEC44JQepM"
+          "current_key": "AIzaSyA7RosJjk9dnEraumdXDuAi_uD1XlLK-G0"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "751901636318-om70gdlsg82tn934f92dv2ea6o8gbpuj.apps.googleusercontent.com",
+              "client_id": "680938651993-p2ikgk3iq0lqsad7b99usdutkjt6cnsj.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "751901636318-2jkln9vp9hdmtffuv6v2g8jce783c1hs.apps.googleusercontent.com",
+              "client_id": "680938651993-1j9v33vugrbseskspfchjpm84o79at8o.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "com.bountiestoday"

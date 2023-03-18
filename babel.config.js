@@ -3,6 +3,11 @@ module.exports = {
 
   plugins: [
     [
+      'react-native-reanimated/plugin', {
+          relativeSourceLocation: true,
+      },
+    ],
+    [
       'module-resolver',
       {
         root: ['./src'],
