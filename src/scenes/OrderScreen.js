@@ -56,9 +56,10 @@ const OrderScreen = ({
     const unsubscribe = navigation.addListener('focus', () => {
       if (!userId && isOrderLoading && route.name === Pages.AllOrder.route) {
         setVisibleAlert(true);
-      } else {
-        clearOrders();
-      }
+      } 
+      // else {
+      //   clearOrders();
+      // }
     });
 
     if (userId && isOrderLoading) {

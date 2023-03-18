@@ -19,8 +19,8 @@ const SortAndView = ({
 }) => {
   return (
     <View style={styles.mainContainer}>
-      <View style={styles.viewButtonContainer}>
-        <View style={styles.viewButtonContainer}>
+      <View style={[styles.viewButtonContainer]}>
+        <View style={[styles.viewButtonContainer,{flexDirection:'row'}]}>
           <Button
             onPress={() => setActiveView(true)}
             icon={

@@ -4,7 +4,7 @@ import {errorMessage} from '_utils/errorMessages';
 
 let source = null;
 // let baseUrl = 'http://10.0.2.2:8080';
-let baseUrl = 'http://jubranapi.us-east-1.elasticbeanstalk.com';
+let baseUrl = 'http://bountiestoday.us-east-1.elasticbeanstalk.com';
 
 async function api(path, data, method) {
   source = Axios.CancelToken.source();
