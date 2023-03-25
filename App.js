@@ -38,9 +38,9 @@ const App = () => {
         }),
       );
       // getMessagingObject().getToken().then(token => console.log("TOKEN:", token))
-      messaging()
-        .getToken()
-        .then(token => console.log('TOKEN:', token));
+      // messaging()
+      //   .getToken()
+      //   .then(token => console.log('TOKEN:', token));
       messaging()
         .getInitialNotification()
         .then(remoteMessage => {

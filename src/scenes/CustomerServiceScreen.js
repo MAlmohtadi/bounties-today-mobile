@@ -15,7 +15,7 @@ const CustomerServiceScreen = () => {
         <Text style={styles.textStyle}>
           لاي ملاحظات او اقتراحات يرجى التواصل معنا عن طريق الايميل:
         </Text>
-        <Text style={styles.textStyle}>info@bountiestodayjo.com</Text>
+        <Text style={styles.textStyle}>info@khayratelyoum.com</Text>
         <Text style={styles.textStyle}>0781000035</Text>
       </View>
     </View>

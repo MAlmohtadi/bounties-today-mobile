@@ -99,14 +99,14 @@ const DrawerMenu = ({
           />
         </TouchableOpacity>
       )}
-      <TouchableOpacity
+       {goldenEnabled && (<TouchableOpacity
         style={styles.lableAndTextContainer}
         onPress={() => navigation.navigate(Pages.UserCoupon.route)}>
         <View style={styles.textContainer}>
           <Text style={styles.textStyle}>الكوبونات </Text>
         </View>
         <CouponIcon width={wp(6)} height={hp(3)} fill={colors.primaryColor} />
-      </TouchableOpacity>
+      </TouchableOpacity>  )}
       <TouchableOpacity
         style={styles.lableAndTextContainer}
         onPress={() => navigation.navigate(Pages.Order.route)}>
