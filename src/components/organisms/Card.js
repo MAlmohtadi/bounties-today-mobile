@@ -34,7 +34,7 @@ const Card = ({
   quantity = 0,
 }) => {
   const isProductQuantityAvailable = () => {
-    return product.quantityMultiplier * (quantity + 1) <= product.maxQuantity;
+    return product.quantityMultiplier * (quantity + product.counterStepValue || 1) <= product.maxQuantity;
   };
   const [imageUri, setImageUri] = useState({uri: product.imageUrl});
 
