@@ -221,7 +221,7 @@ const styles = StyleSheet.create({
     fontSize: wp(3.4),
   },
   bottomContainer: {
-    flex: 2,
+    flex: 3,
     alignItems: 'flex-start',
     justifyContent: 'flex-end',
   },

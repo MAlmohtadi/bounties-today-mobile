@@ -36,10 +36,14 @@ const calcuateAddQuantity = (quantities, product) => {
 export default (state = initialState, action) => {
   let quantity;
   let productsUpdated = state.products;
+  let quantityComparer = 1;
   switch (action.type) {
     case ADD_TO_CART:
       quantity = calcuateAddQuantity(state.quantities, action.payload);
-      quantity === 1 && productsUpdated.push(action.payload);
+      if (action.payload.counterStartValue && action.payload.countStepValue) {
+        quantityComparer = action.payload.counterStartValue
+      }
+      quantity === quantityComparer && productsUpdated.push(action.payload);
       return {
         ...state,
         products: [...productsUpdated],
