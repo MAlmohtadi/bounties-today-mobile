@@ -16,7 +16,7 @@ const calcuateRemoveQuantity = (quantities, product) => {
    return quantities[product.id] &&
    quantities[product.id] - product.countStepValue >=
       product.counterStartValue
-      ? quantities[product.id] - product.countStepValue
+      ? parseFloat((quantities[product.id] - product.countStepValue).toFixed(10))
       : 0 ;
   } else {
     return quantities[product.id] ? quantities[product.id] - 1 : 0;
@@ -26,7 +26,7 @@ const calcuateRemoveQuantity = (quantities, product) => {
 const calcuateAddQuantity = (quantities, product) => {
   if (product.counterStartValue && product.countStepValue) {
    return quantities[product.id]
-      ? quantities[product.id] + product.countStepValue
+      ? parseFloat((quantities[product.id] + product.countStepValue).toFixed(10))
       : product.counterStartValue ;
   } else {
     return quantities[product.id] ? quantities[product.id] + 1 : 1;
