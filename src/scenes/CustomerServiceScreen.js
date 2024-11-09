@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {Icon} from 'react-native-elements';
+import {connect} from 'react-redux';
 import {
   heightPercentageToDP,
   widthPercentageToDP as wp,
@@ -8,15 +9,19 @@ import {
 import colors from '_utils/constants/Colors';
 import fonts from '_utils/constants/Fonts';
 
-const CustomerServiceScreen = () => {
+const CustomerServiceScreen = ({
+  homeReducer: {
+    contactInfo
+  }
+}) => {
   return (
     <View style={styles.mainContainer}>
       <View style={styles.rowContainer}>
         <Text style={styles.textStyle}>
-          لاي ملاحظات او اقتراحات يرجى التواصل معنا عن طريق الايميل:
+         {contactInfo.description}
         </Text>
-        <Text style={styles.textStyle}>info@khayratelyoum.com</Text>
-        <Text style={styles.textStyle}>0781000035</Text>
+        <Text style={styles.textStyle}>{contactInfo.email}</Text>
+        <Text style={styles.textStyle}>{contactInfo.phone}</Text>
       </View>
     </View>
   );
@@ -52,4 +57,11 @@ const styles = StyleSheet.create({
     margin: heightPercentageToDP(2),
   },
 });
-export default CustomerServiceScreen;
+//export default CustomerServiceScreen;
+const mapStateToProps = state => {
+  return {
+    homeReducer: state.homeReducer,
+  };
+};
+
+export default connect(mapStateToProps)(CustomerServiceScreen);
