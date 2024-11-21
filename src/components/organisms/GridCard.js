@@ -34,7 +34,7 @@ const GridCard = ({
   const [imageUri, setImageUri] = useState({uri: product.imageUrl});
 
   const isProductQuantityAvailable = () => {
-    return product.quantityMultiplier * (quantity + 1) <= product.maxQuantity;
+    return product.quantityMultiplier * (quantity + product.counterStepValue || 1) <= product.maxQuantity;
   };
   return (
     <View style={styles.cardContainer}>

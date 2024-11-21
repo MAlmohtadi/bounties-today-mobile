@@ -13,6 +13,7 @@ const initialState = {
   selectedCategory: {},
   appIsLoading: true,
   deliveryTerms: null,
+  contactInfo: {},
 };
 
 export default (state = initialState, action) => {

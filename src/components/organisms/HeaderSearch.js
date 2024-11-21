@@ -90,8 +90,10 @@ const HeaderSearch = ({
             style={styles.iconContainer}
             onPress={() => setFilterVisible(!filterVisible)}>
             <Icon
-              type="ionicon"
-              name="options-outline"
+           //   type="ionicon"
+           type="material-community"
+         //  name="options-outline"
+           name="filter-outline"
               style
               containerStyle={styles.iconContainerStyle}
               onPress={() => {}}
@@ -101,8 +103,10 @@ const HeaderSearch = ({
         )}
       </View>
       <Icon
-        type="ionicon"
-        name="grid-outline"
+       // type="ionicon"
+       type="material-community"
+    //   name="grid-outline"
+       name="view-grid-outline"
         size={30}
         onPress={() => navigation.toggleDrawer()}
         color={colors.primaryColor}

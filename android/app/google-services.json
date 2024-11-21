@@ -1,51 +1,26 @@
 {
   "project_info": {
-    "project_number": "680938651993",
-    "project_id": "khayrat-alyoum",
-    "storage_bucket": "khayrat-alyoum.appspot.com"
+    "project_number": "352438222951",
+    "project_id": "khyrat-el-yum",
+    "storage_bucket": "khyrat-el-yum.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:680938651993:android:84e1f70316ae2e75204c48",
+        "mobilesdk_app_id": "1:352438222951:android:17525ece799326fab414c2",
         "android_client_info": {
           "package_name": "com.bountiestoday"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "680938651993-in7a9b8ragemdkbg03l57rnt799kqrt5.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.bountiestoday",
-            "certificate_hash": "134cdd1bb0537e89a6d38009d5004405781649f0"
-          }
-        },
-        {
-          "client_id": "680938651993-p2ikgk3iq0lqsad7b99usdutkjt6cnsj.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyA7RosJjk9dnEraumdXDuAi_uD1XlLK-G0"
+          "current_key": "AIzaSyAF4kQj_kEXJJNQtnhB_mLksuFVfS5bWpk"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "680938651993-p2ikgk3iq0lqsad7b99usdutkjt6cnsj.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "680938651993-1j9v33vugrbseskspfchjpm84o79at8o.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.bountiestoday"
-              }
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
